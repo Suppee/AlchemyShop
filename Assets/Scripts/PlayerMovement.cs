@@ -1,15 +1,16 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class PlayerMovement : MonoBehaviour
 {
-
-    public float moveSpeed = 5f;
+    // Movement Variables
 
     public Rigidbody rb;
-
+    public float moveSpeed = 5f;
     Vector3 movement;
+
 
     // Look towards
 
@@ -18,7 +19,7 @@ public class PlayerMovement : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+
     }
 
     // Update is called once per frame
@@ -29,9 +30,6 @@ public class PlayerMovement : MonoBehaviour
         movement.z = Input.GetAxisRaw("Vertical");
 
         // Look towards
-        // Vector3 relativePos = target.position - transform.position;
-        // Quaternion rotation = Quaternion.LookRotation(relativePos, Vector3.up);
-        // transform.rotation = rotation;
 
         float moveVertical = Input.GetAxis("Vertical");
         float moveHorizontal = Input.GetAxis("Horizontal");
@@ -39,7 +37,6 @@ public class PlayerMovement : MonoBehaviour
         Vector3 newPosition = new Vector3(moveHorizontal, 0.0f, moveVertical);
         transform.LookAt(newPosition + transform.position);
         transform.Translate(newPosition * moveSpeed * Time.deltaTime, Space.World);
-
     }
 
     private void FixedUpdate()
