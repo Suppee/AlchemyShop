@@ -11,6 +11,10 @@ public class PlayerMovement : MonoBehaviour
 
     Vector3 movement;
 
+    // Look towards
+
+    public Transform target;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -23,6 +27,19 @@ public class PlayerMovement : MonoBehaviour
         // Input
         movement.x = Input.GetAxisRaw("Horizontal");
         movement.z = Input.GetAxisRaw("Vertical");
+
+        // Look towards
+        // Vector3 relativePos = target.position - transform.position;
+        // Quaternion rotation = Quaternion.LookRotation(relativePos, Vector3.up);
+        // transform.rotation = rotation;
+
+        float moveVertical = Input.GetAxis("Vertical");
+        float moveHorizontal = Input.GetAxis("Horizontal");
+
+        Vector3 newPosition = new Vector3(moveHorizontal, 0.0f, moveVertical);
+        transform.LookAt(newPosition + transform.position);
+        transform.Translate(newPosition * moveSpeed * Time.deltaTime, Space.World);
+
     }
 
     private void FixedUpdate()
