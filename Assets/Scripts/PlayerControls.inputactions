@@ -2,11 +2,11 @@
     "name": "PlayerControls",
     "maps": [
         {
-            "name": "New action map",
+            "name": "PlayerControls",
             "id": "039ba3df-e314-4c73-a763-f58b6e0719a1",
             "actions": [
                 {
-                    "name": "New action",
+                    "name": "Interact",
                     "type": "Button",
                     "id": "43b0a3d2-258e-450c-b1f8-53300e16c89e",
                     "expectedControlType": "Button",
@@ -18,11 +18,22 @@
                 {
                     "name": "",
                     "id": "0477dd9a-09cc-495f-a5b8-170b9e2b3f37",
+                    "path": "<Keyboard>/e",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Interact",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "924dc908-8f7f-4abe-b3db-30f70a678548",
                     "path": "",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "New action",
+                    "action": "Interact",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
