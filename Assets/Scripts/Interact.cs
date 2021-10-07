@@ -10,21 +10,22 @@ public class Interact : MonoBehaviour
     public UnityEvent interactAction;
     public KeyCode interactKey;
     public bool isInRange;
-
+  
     // Start is called before the first frame update
     void Start()
     {
         
     }
-
+    
     // Update is called once per frame
     void Update()
     {
         if (isInRange)
         {
+           
             if (Input.GetKeyDown(interactKey)) //Key Check
             {
-
+                
                 Debug.Log("Activate");
                 interactAction.Invoke(); //Fire Event
 
