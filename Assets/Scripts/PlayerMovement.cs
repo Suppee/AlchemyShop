@@ -44,4 +44,6 @@ public class PlayerMovement : MonoBehaviour
         // Movement
         rb.MovePosition(rb.position + movement * moveSpeed);
     }
+
+    void OnMove()
 }
