@@ -22,38 +22,12 @@ public class Interact : MonoBehaviour
     {
         if (isInRange)
         {
-           
-            if (Input.GetKeyDown(interactKey)) //Key Check
-            {
-                
-                Debug.Log("Activate");
-                interactAction.Invoke(); //Fire Event
+                                        
+                //Debug.Log("Activate");
+               // interactAction.Invoke(); //Fire Event
 
-            }
         }
 
     }
-
-
-    void OnTriggerEnter(Collider collision)
-    {
-
-        if (collision.gameObject.CompareTag("Player"))
-        {
-            isInRange = true;
-            Debug.Log("Player in range");
-        }
-
-    }
-
-    void OnTriggerExit(Collider collision)
-    {
-
-        if (collision.gameObject.CompareTag("Player"))
-        {
-            isInRange = false;
-            Debug.Log("Player no longer in range");
-        }
-
-    }
+    
 }

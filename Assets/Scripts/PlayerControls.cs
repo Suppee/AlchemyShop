@@ -6,9 +6,12 @@ using UnityEngine.InputSystem;
 public class PlayerControls : MonoBehaviour
 {
 
-    public float moveSpeed = 5f;
+    public float bevægelsesFart = 5f;
     float bevægelseX;
     float bevægelseY;
+    public List<GameObject> inRange;
+
+
     // Start is called before the first frame update
     void Start()
     {
@@ -25,7 +28,7 @@ public class PlayerControls : MonoBehaviour
 
 
         // Move
-        transform.Translate(newPosition * moveSpeed * Time.deltaTime, Space.World);
+        transform.Translate(newPosition * bevægelsesFart * Time.deltaTime, Space.World);
     }
 
     void OnMove(InputValue bevægelseVærdi)
@@ -35,6 +38,8 @@ public class PlayerControls : MonoBehaviour
 
          bevægelseX = bevægelsesVector.x;
          bevægelseY = bevægelsesVector.y;
+        
+       
 
 
 
@@ -53,6 +58,31 @@ public class PlayerControls : MonoBehaviour
     {
 
         print("Bøvler");
+
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        
+        if(!inRange.Contains(other.gameObject))
+        {
+            if (other.gameObject.CompareTag("Workstation"))
+            {
+                inRange.Add(other.gameObject);
+                print(other + "in range");
+
+            }
+        }  
+               
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        if(inRange.Contains(other.gameObject))
+        { 
+            inRange.Remove(other.gameObject);
+            print(other + "out of range");
+        }
 
     }
 }
