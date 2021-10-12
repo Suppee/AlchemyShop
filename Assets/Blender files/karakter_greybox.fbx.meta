@@ -1,12 +1,11 @@
 fileFormatVersion: 2
-<<<<<<< Updated upstream
-guid: 6038951ec8aa041608da18e67f9d02fa
-=======
-guid: 506184db82f89e7449f0aaf34bc2c923
->>>>>>> Stashed changes
+guid: 535c61de68053c34a9bb42f463e3fca6
 ModelImporter:
   serializedVersion: 20200
-  internalIDToNameTable: []
+  internalIDToNameTable:
+  - first:
+      74: -3794364752351077074
+    second: Armature|Walk_cycle
   externalObjects: {}
   materials:
     materialImportMode: 2
