@@ -42,7 +42,7 @@ public class PlayerMovement : MonoBehaviour
     private void FixedUpdate()
     {
         // Movement
-        rb.MovePosition(rb.position + movement * moveSpeed);
+        // rb.MovePosition(rb.position + movement * moveSpeed);
     }
 
     //void OnMove()
