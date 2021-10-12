@@ -6,9 +6,9 @@ using UnityEngine.InputSystem;
 public class PlayerControls : MonoBehaviour
 {
 
-    public float bevægelsesFart = 5f;
-    float bevægelseX;
-    float bevægelseY;
+    public float bevaegelsesFart = 5f;
+    float bevaegelseX;
+    float bevaegelseY;
     public List<GameObject> inRange;
     
     // Start is called before the first frame update
@@ -20,23 +20,23 @@ public class PlayerControls : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Vector3 newPosition = new Vector3(bevægelseX, 0.0f, bevægelseY);
+        Vector3 newPosition = new Vector3(bevaegelseX, 0.0f, bevaegelseY);
 
         // Look Towards
         transform.LookAt(newPosition + transform.position);
 
 
         // Move
-        transform.Translate(newPosition * bevægelsesFart * Time.deltaTime, Space.World);
+        transform.Translate(newPosition * bevaegelsesFart * Time.deltaTime, Space.World);
     }
 
-    void OnMove(InputValue bevægelseVærdi)
+    void OnMove(InputValue bevaegelseVaerdi)
     {
 
-        Vector2 bevægelsesVector = bevægelseVærdi.Get<Vector2>();
+        Vector2 bevaegelsesVector = bevaegelseVaerdi.Get<Vector2>();
 
-        bevægelseX = bevægelsesVector.x;
-        bevægelseY = bevægelsesVector.y;
+         bevaegelseX = bevaegelsesVector.x;
+         bevaegelseY = bevaegelsesVector.y;
         
     }
     
@@ -47,10 +47,10 @@ public class PlayerControls : MonoBehaviour
 
     }
 
-    void OnBøvle()
+    void OnBoevle()
     {
 
-        print("Bøvler");
+        print("Boevler");
 
     }
 
