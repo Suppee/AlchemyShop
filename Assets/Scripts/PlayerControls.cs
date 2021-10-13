@@ -9,8 +9,11 @@ public class PlayerControls : MonoBehaviour
     public float bevaegelsesFart = 5f;
     float bevaegelseX;
     float bevaegelseY;
-    public List<GameObject> inRange;
+    public List<GameObject> iRaekkevide;
+    bool holderobjekt;
+    public GameObject interaktionsobjekt;
     
+
     // Start is called before the first frame update
     void Start()
     {
@@ -42,11 +45,54 @@ public class PlayerControls : MonoBehaviour
     
     void OnInteract()
     {
-        
-        print("Interger!");
 
+        if(holderobjekt==false)
+        {
+
+            // Find tætteste objekt fra listen af objekter i rækkevidde
+            float kortestafstand = Mathf.Infinity;
+            foreach (var ting in iRaekkevide)
+            {
+                
+                //Find afstand mellem objekt og spiller
+                float afstand = Vector3.Distance(ting.transform.position, this.transform.position);
+
+                //Debug line
+                Debug.DrawLine(ting.transform.position, this.transform.position, Color.red, 1);
+                
+                //Hvis afstanden er kortere end den korteste afstand så sæt den korteste afstand til den nye afstand
+                if (afstand <= kortestafstand)
+                {
+                    kortestafstand = afstand;
+                    interaktionsobjekt = ting;    
+                }
+                              
+            }
+
+            //Interger med objekt
+            if (interaktionsobjekt.CompareTag("Workstation"))
+            {
+            
+            //Aktiver station
+            interaktionsobjekt.GetComponent<ActivateWorkstation>().Activate();
+
+            }
+            else if(interaktionsobjekt.CompareTag("Ingrediens"))
+            {
+
+            // Saml objekt op
+
+            }
+
+        }
+        else
+        {
+
+        }
+        interaktionsobjekt = null;
     }
 
+    // Bøvling
     void OnBoevle()
     {
 
@@ -54,25 +100,30 @@ public class PlayerControls : MonoBehaviour
 
     }
 
+    //Objekt kommer inden for rækkevidde
     private void OnTriggerEnter(Collider other)
     {
-        if(!inRange.Contains(other.gameObject))
+        if(!iRaekkevide.Contains(other.gameObject))
         {
             if (other.gameObject.CompareTag("Workstation"))
             {
-                inRange.Add(other.gameObject);
-                print(other + "in range");
+                iRaekkevide.Add(other.gameObject);
+                
+
+               // inRange.Find()
 
             }
         }       
     }
 
+    //Objekt forlader rækkevidde
     private void OnTriggerExit(Collider other)
     {
-        if(inRange.Contains(other.gameObject))
+        if(iRaekkevide.Contains(other.gameObject))
         { 
-            inRange.Remove(other.gameObject);
-            print(other + "out of range");
+            iRaekkevide.Remove(other.gameObject);   
         }
     }
+
+    
 }
