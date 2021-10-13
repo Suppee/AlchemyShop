@@ -10,8 +10,7 @@ public class PlayerControls : MonoBehaviour
     float bevaegelseX;
     float bevaegelseY;
     public List<GameObject> inRange;
-
-
+    
     // Start is called before the first frame update
     void Start()
     {
@@ -39,18 +38,12 @@ public class PlayerControls : MonoBehaviour
          bevaegelseX = bevaegelsesVector.x;
          bevaegelseY = bevaegelsesVector.y;
         
-       
-
-
-
-
     }
-
-
+    
     void OnInteract()
     {
-
-        print("HI");
+        
+        print("Interger!");
 
     }
 
@@ -63,7 +56,6 @@ public class PlayerControls : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        
         if(!inRange.Contains(other.gameObject))
         {
             if (other.gameObject.CompareTag("Workstation"))
@@ -72,8 +64,7 @@ public class PlayerControls : MonoBehaviour
                 print(other + "in range");
 
             }
-        }  
-               
+        }       
     }
 
     private void OnTriggerExit(Collider other)
@@ -83,6 +74,5 @@ public class PlayerControls : MonoBehaviour
             inRange.Remove(other.gameObject);
             print(other + "out of range");
         }
-
     }
 }

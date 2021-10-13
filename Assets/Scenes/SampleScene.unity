@@ -550,6 +550,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 7573299378100624470, guid: ad8f87f1841e18d43934ef50f43212f2, type: 3}
     - target: {fileID: 6071945413657735884, guid: 5d7347808503f1c4aab8a3c47e0ea506, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6071945413657735884, guid: 5d7347808503f1c4aab8a3c47e0ea506, type: 3}
       propertyPath: interactAction.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
       value: 2
       objectReference: {fileID: 0}
@@ -633,7 +637,8 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 4647408146656540921, guid: 5d7347808503f1c4aab8a3c47e0ea506, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 5d7347808503f1c4aab8a3c47e0ea506, type: 3}
 --- !u!54 &1086862191 stripped
 Rigidbody:
