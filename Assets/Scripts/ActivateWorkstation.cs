@@ -15,4 +15,9 @@ public class ActivateWorkstation : MonoBehaviour
     {
         
     }
+
+    public virtual void Activate()
+    {
+
+    }
 }

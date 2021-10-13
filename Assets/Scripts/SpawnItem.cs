@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SpawnItem : MonoBehaviour
+public class SpawnItem : ActivateWorkstation
 {
 
     // Variables
@@ -19,7 +19,7 @@ public class SpawnItem : MonoBehaviour
 
     // Spawn prefab
 
-    public void Spawn(GameObject Ingredient)
+    public override void Activate()
     {
 
         Instantiate(myPrefab, transform.position + new Vector3(0,1,0), transform.rotation);
