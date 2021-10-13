@@ -10,7 +10,14 @@ public class PlayerControls : MonoBehaviour
     float bevaegelseX;
     float bevaegelseY;
     public List<GameObject> inRange;
+
+    //PickUps
+    public bool HolderPickUp;
+    public GameObject PickUp;
+    public Transform Player; 
     
+    
+
     // Start is called before the first frame update
     void Start()
     {
@@ -28,6 +35,20 @@ public class PlayerControls : MonoBehaviour
 
         // Move
         transform.Translate(newPosition * bevaegelsesFart * Time.deltaTime, Space.World);
+
+        /*
+        //PickUps
+        if (HolderIngrediens == false)
+        {
+            Ingrediens.transform.SetParent(Player.transform);
+        }
+        else
+        {
+            Ingrediens.transform.SetParent(null);
+        }
+        //
+        */
+
     }
 
     void OnMove(InputValue bevaegelseVaerdi)
@@ -44,6 +65,9 @@ public class PlayerControls : MonoBehaviour
     {
         
         print("Interger!");
+
+        print("HI");
+        
 
     }
 
@@ -64,7 +88,16 @@ public class PlayerControls : MonoBehaviour
                 print(other + "in range");
 
             }
-        }       
+        }
+
+        //PickUps
+        if (Input.GetKey("p") && other.gameObject.tag == "PickUpItem")
+        {
+            gameObject.transform.parent = PickUp.transform;
+        }
+            
+     
+
     }
 
     private void OnTriggerExit(Collider other)

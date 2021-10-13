@@ -249,6 +249,10 @@ PrefabInstance:
       propertyPath: rb
       value: 
       objectReference: {fileID: 1086862191}
+    - target: {fileID: 2912081337559091083, guid: 0828d83e9a79d464485edeed0109add4, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3161900485499034087, guid: 0828d83e9a79d464485edeed0109add4, type: 3}
       propertyPath: m_RootOrder
       value: 2
@@ -263,7 +267,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3161900485499034087, guid: 0828d83e9a79d464485edeed0109add4, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -0.67
+      value: -0.52
       objectReference: {fileID: 0}
     - target: {fileID: 3161900485499034087, guid: 0828d83e9a79d464485edeed0109add4, type: 3}
       propertyPath: m_LocalRotation.w
@@ -296,6 +300,18 @@ PrefabInstance:
     - target: {fileID: 3451674776516952864, guid: 0828d83e9a79d464485edeed0109add4, type: 3}
       propertyPath: m_TagString
       value: Untagged
+      objectReference: {fileID: 0}
+    - target: {fileID: 8542573561031593826, guid: 0828d83e9a79d464485edeed0109add4, type: 3}
+      propertyPath: Player
+      value: 
+      objectReference: {fileID: 1267221638}
+    - target: {fileID: 8542573561031593826, guid: 0828d83e9a79d464485edeed0109add4, type: 3}
+      propertyPath: Ingrediens
+      value: 
+      objectReference: {fileID: 1514376270}
+    - target: {fileID: 8542573561031593826, guid: 0828d83e9a79d464485edeed0109add4, type: 3}
+      propertyPath: HolderIngrediens
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0828d83e9a79d464485edeed0109add4, type: 3}
@@ -743,6 +759,11 @@ Transform:
 --- !u!1 &1267221637 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1399137627833062961, guid: 0828d83e9a79d464485edeed0109add4, type: 3}
+  m_PrefabInstance: {fileID: 141343325}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &1267221638 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 3161900485499034087, guid: 0828d83e9a79d464485edeed0109add4, type: 3}
   m_PrefabInstance: {fileID: 141343325}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &1276931975

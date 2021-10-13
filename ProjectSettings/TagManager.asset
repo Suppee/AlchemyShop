@@ -7,6 +7,7 @@ TagManager:
   - Workstation
   - Ingredient
   - Product
+  - PickUpItem
   layers:
   - Default
   - TransparentFX
