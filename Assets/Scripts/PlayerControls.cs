@@ -89,17 +89,18 @@ public class PlayerControls : MonoBehaviour
                 interaktionsobjekt.transform.position = PickUpHolder.position;
                 interaktionsobjekt.transform.parent = PickUpHolder;
                 holderObjekt = true;
+                interaktionsobjekt.GetComponent<Rigidbody>().useGravity = false;
+                interaktionsobjekt.GetComponent<Rigidbody>().isKinematic = true;
             }
-
         }
 
         else
         {
             interaktionsobjekt.transform.parent = null;
             holderObjekt = false;
-        }
-        
-        
+            interaktionsobjekt.GetComponent<Rigidbody>().useGravity = true;
+            interaktionsobjekt.GetComponent<Rigidbody>().isKinematic = false;
+        } 
     }
 
     // Boevling
