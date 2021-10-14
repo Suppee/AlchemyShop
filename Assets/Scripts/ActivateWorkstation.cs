@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class ActivateWorkstation : MonoBehaviour
 {
+    public GameObject Player;
     // Start is called before the first frame update
     void Start()
     {
@@ -15,4 +16,9 @@ public class ActivateWorkstation : MonoBehaviour
     {
         
     }
+
+    public virtual void Activate()
+    {
+
+    }   
 }
