@@ -10,7 +10,7 @@ public class PlayerControls : MonoBehaviour
     float bevaegelseX;
     float bevaegelseY;
     public List<GameObject> iRaekkevide;
-    public bool holderobjekt;
+    bool holderObjekt;
     public GameObject interaktionsobjekt;
 
     //PickUp
@@ -50,7 +50,7 @@ public class PlayerControls : MonoBehaviour
     void OnInteract()
     {
 
-        if (holderobjekt == false)
+        if(holderObjekt==false)
         {
 
             // Find taetteste objekt fra listen af objekter i r�kkevidde
