@@ -88,7 +88,7 @@ public class PlayerControls : MonoBehaviour
 
                 interaktionsobjekt.transform.position = PickUpHolder.position;
                 interaktionsobjekt.transform.parent = PickUpHolder;
-                holderobjekt = true;
+                holderObjekt = true;
             }
 
         }
@@ -96,7 +96,7 @@ public class PlayerControls : MonoBehaviour
         else
         {
             interaktionsobjekt.transform.parent = null;
-            holderobjekt = false;
+            holderObjekt = false;
         }
         
         
