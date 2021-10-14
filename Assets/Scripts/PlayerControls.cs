@@ -76,6 +76,7 @@ public class PlayerControls : MonoBehaviour
             //Interger med objekt
             if (interaktionsobjekt.CompareTag("Workstation"))
             {
+                Debug.Log("Spawn fra Workstation");
                 //Aktiver station
                 interaktionsobjekt.GetComponent<ActivateWorkstation>().Activate();
             }
@@ -114,10 +115,12 @@ public class PlayerControls : MonoBehaviour
     {
         if(!iRaekkevide.Contains(other.gameObject))
         {
-            if (other.gameObject.CompareTag("Workstation"))
+            if (other.gameObject.CompareTag("Workstation") || (other.gameObject.CompareTag("Ingredient")))
             {
                 iRaekkevide.Add(other.gameObject);
+
                 
+
 
                // inRange.Find()
 
