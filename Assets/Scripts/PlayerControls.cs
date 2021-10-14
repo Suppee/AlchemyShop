@@ -10,8 +10,11 @@ public class PlayerControls : MonoBehaviour
     float bevaegelseX;
     float bevaegelseY;
     public List<GameObject> iRaekkevide;
-    bool holderobjekt;
+    public bool holderobjekt;
     public GameObject interaktionsobjekt;
+
+    //PickUp
+    public Transform PickUpHolder;
     
 
     // Start is called before the first frame update
@@ -32,19 +35,6 @@ public class PlayerControls : MonoBehaviour
         // Move
         transform.Translate(newPosition * bevaegelsesFart * Time.deltaTime, Space.World);
 
-        /*
-        //PickUps
-        if (HolderIngrediens == false)
-        {
-            Ingrediens.transform.SetParent(Player.transform);
-        }
-        else
-        {
-            Ingrediens.transform.SetParent(null);
-        }
-        //
-        */
-
     }
 
     void OnMove(InputValue bevaegelseVaerdi)
@@ -60,53 +50,58 @@ public class PlayerControls : MonoBehaviour
     void OnInteract()
     {
 
-        if(holderobjekt==false)
+        if (holderobjekt == false)
         {
 
-            // Find t�tteste objekt fra listen af objekter i r�kkevidde
+            // Find taetteste objekt fra listen af objekter i r�kkevidde
             float kortestafstand = Mathf.Infinity;
             foreach (var ting in iRaekkevide)
             {
-                
+
                 //Find afstand mellem objekt og spiller
                 float afstand = Vector3.Distance(ting.transform.position, this.transform.position);
 
                 //Debug line
                 Debug.DrawLine(ting.transform.position, this.transform.position, Color.red, 1);
-                
-                //Hvis afstanden er kortere end den korteste afstand s� s�t den korteste afstand til den nye afstand
+
+                //Hvis afstanden er kortere end den korteste afstand saa saet den korteste afstand til den nye afstand
                 if (afstand <= kortestafstand)
                 {
                     kortestafstand = afstand;
-                    interaktionsobjekt = ting;    
+                    interaktionsobjekt = ting;
                 }
-                              
+
             }
 
             //Interger med objekt
             if (interaktionsobjekt.CompareTag("Workstation"))
             {
-            
-            //Aktiver station
-            interaktionsobjekt.GetComponent<ActivateWorkstation>().Activate();
-
+                //Aktiver station
+                interaktionsobjekt.GetComponent<ActivateWorkstation>().Activate();
             }
-            else if(interaktionsobjekt.CompareTag("Ingrediens"))
+            else if (interaktionsobjekt.CompareTag("Ingredient"))
             {
+                Debug.Log("Ingrediens samlet op");
 
-            // Saml objekt op
+                // Saml objekt op
 
+                interaktionsobjekt.transform.position = PickUpHolder.position;
+                interaktionsobjekt.transform.parent = PickUpHolder;
+                holderobjekt = true;
             }
 
         }
+
         else
         {
-
+            interaktionsobjekt.transform.parent = null;
+            holderobjekt = false;
         }
-        interaktionsobjekt = null;
+        
+        
     }
 
-    // B�vling
+    // Boevling
     void OnBoevle()
     {
 
@@ -114,7 +109,7 @@ public class PlayerControls : MonoBehaviour
 
     }
 
-    //Objekt kommer inden for r�kkevidde
+    //Objekt kommer inden for raekkevidde
     private void OnTriggerEnter(Collider other)
     {
         if(!iRaekkevide.Contains(other.gameObject))
@@ -129,17 +124,10 @@ public class PlayerControls : MonoBehaviour
             }
         }
 
-        //PickUps
-        if (Input.GetKey("p") && other.gameObject.tag == "PickUpItem")
-        {
-            gameObject.transform.parent = PickUp.transform;
-        }
-            
-     
-
+       
     }
 
-    //Objekt forlader r�kkevidde
+    //Objekt forlader raekkevidde
     private void OnTriggerExit(Collider other)
     {
         if(iRaekkevide.Contains(other.gameObject))
