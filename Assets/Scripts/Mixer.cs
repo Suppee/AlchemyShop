@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Mixer : ActivateWorkstation
+public class Mixer : ActivateStation
 {   
     
     public List<GameObject> Ingredienser;

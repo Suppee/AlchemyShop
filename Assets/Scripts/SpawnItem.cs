@@ -2,27 +2,19 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SpawnItem : ActivateWorkstation
+public class SpawnItem : ActivateStation
 {
 
     // Variables
 
-    public GameObject myPrefab;
+    public GameObject ingrediensPrefab;
     
-    
-    // Start
-
-    private void Start()
-    {
-      
-    }
-
-    // Spawn prefab
+    // Hidkald Prefab
 
     public override void Activate()
     {
 
-        Instantiate(myPrefab, transform.position + new Vector3(0,1,0), transform.rotation);
+        Instantiate(ingrediensPrefab, transform.position + new Vector3(0,1,0), transform.rotation);
         
     }
 
