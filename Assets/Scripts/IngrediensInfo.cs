@@ -14,5 +14,6 @@ public class IngrediensInfo : MonoBehaviour
     void Start()
     {
         this.GetComponent<MeshFilter>().mesh = Ingredient.ingrediensModel;
+        this.GetComponent<MeshRenderer>().material = Ingredient.material;
     }
 }
