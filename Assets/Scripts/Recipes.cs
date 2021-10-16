@@ -6,5 +6,5 @@ public class Recipes : ScriptableObject
 {
     new public string name = "New recipe";
     public Mesh model;
-    public GameObject[] ingredients;
+    public Ingredient[] ingredients;
 }
