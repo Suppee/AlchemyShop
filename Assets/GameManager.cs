@@ -2,9 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ActivateWorkstation : MonoBehaviour
+public class GameManager : MonoBehaviour
 {
-    public GameObject Player;
+    public List<Recipes> Opskrifter;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -16,9 +17,4 @@ public class ActivateWorkstation : MonoBehaviour
     {
         
     }
-
-    public virtual void Activate()
-    {
-
-    }   
 }
