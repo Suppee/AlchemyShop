@@ -7,4 +7,6 @@ public class Recipes : ScriptableObject
     new public string name = "New recipe";
     public Mesh model;
     public Ingredient[] ingredients;
+    public Material material;
+    public Texture texture;
 }

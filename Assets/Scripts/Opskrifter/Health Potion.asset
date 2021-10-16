@@ -18,3 +18,5 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
+  material: {fileID: 0}
+  texture: {fileID: 2800000, guid: 2168a46a8c723a545aa1ff009f7ae7f7, type: 3}
