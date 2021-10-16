@@ -5,15 +5,17 @@ using UnityEngine.InputSystem;
 
 public class PlayerControls : MonoBehaviour
 {
-
+    // Bevaegelse Variable
     public float bevaegelsesFart = 5f;
     float bevaegelseX;
     float bevaegelseY;
+
+    // Interger
     public List<GameObject> iRaekkevide;
     bool holderObjekt;
     public GameObject interaktionsobjekt;
 
-    //PickUp
+    // PickUp
     public Transform PickUpHolder;
     
 
@@ -42,8 +44,8 @@ public class PlayerControls : MonoBehaviour
 
         Vector2 bevaegelsesVector = bevaegelseVaerdi.Get<Vector2>();
 
-         bevaegelseX = bevaegelsesVector.x;
-         bevaegelseY = bevaegelsesVector.y;
+        bevaegelseX = bevaegelsesVector.x;
+        bevaegelseY = bevaegelsesVector.y;
         
     }
     
@@ -55,14 +57,14 @@ public class PlayerControls : MonoBehaviour
 
             // Find taetteste objekt fra listen af objekter i r�kkevidde
             float kortestafstand = Mathf.Infinity;
-            foreach (var ting in iRaekkevide)
+            foreach (GameObject ting in iRaekkevide)
             {
 
                 //Find afstand mellem objekt og spiller
                 float afstand = Vector3.Distance(ting.transform.position, this.transform.position);
 
                 //Debug line
-                Debug.DrawLine(ting.transform.position, this.transform.position, Color.red, 1);
+                Debug.DrawLine(ting.transform.position, this.transform.position, Color.red, 3);
 
                 //Hvis afstanden er kortere end den korteste afstand saa saet den korteste afstand til den nye afstand
                 if (afstand <= kortestafstand)
@@ -74,13 +76,13 @@ public class PlayerControls : MonoBehaviour
             }
 
             //Interger med objekt
-            if (interaktionsobjekt.CompareTag("Workstation"))
+            if (interaktionsobjekt.CompareTag("Station"))
             {
                 Debug.Log("Spawn fra Workstation");
                 //Aktiver station
-                interaktionsobjekt.GetComponent<ActivateWorkstation>().Activate();
+                interaktionsobjekt.GetComponent<ActivateStation>().Activate();
             }
-            else if (interaktionsobjekt.CompareTag("Ingredient"))
+            else if (interaktionsobjekt.CompareTag("PickUp"))
             {
                 Debug.Log("Ingrediens samlet op");
 
@@ -88,6 +90,7 @@ public class PlayerControls : MonoBehaviour
 
                 interaktionsobjekt.transform.position = PickUpHolder.position;
                 interaktionsobjekt.transform.parent = PickUpHolder;
+
                 holderObjekt = true;
                 interaktionsobjekt.GetComponent<Rigidbody>().useGravity = false;
                 interaktionsobjekt.GetComponent<Rigidbody>().isKinematic = true;
@@ -96,10 +99,10 @@ public class PlayerControls : MonoBehaviour
 
         else
         {
-            interaktionsobjekt.transform.parent = null;
-            holderObjekt = false;
             interaktionsobjekt.GetComponent<Rigidbody>().useGravity = true;
             interaktionsobjekt.GetComponent<Rigidbody>().isKinematic = false;
+            interaktionsobjekt.transform.parent = null;
+            holderObjekt = false;
         } 
     }
 
@@ -116,19 +119,11 @@ public class PlayerControls : MonoBehaviour
     {
         if(!iRaekkevide.Contains(other.gameObject))
         {
-            if (other.gameObject.CompareTag("Workstation") || (other.gameObject.CompareTag("Ingredient")))
+            if (other.gameObject.CompareTag("Station") || (other.gameObject.CompareTag("PickUp")))
             {
                 iRaekkevide.Add(other.gameObject);
-
-                
-
-
-               // inRange.Find()
-
             }
         }
-
-       
     }
 
     //Objekt forlader raekkevidde
