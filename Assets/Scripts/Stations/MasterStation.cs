@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ActivateStation : MonoBehaviour
+public class MasterStation : MonoBehaviour
 {
 
     //Variabler

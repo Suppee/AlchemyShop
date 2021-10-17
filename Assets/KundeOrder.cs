@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class KundeOrder : ActivateStation
+public class KundeOrder : MasterStation
 {
 
     bool orderIgang;

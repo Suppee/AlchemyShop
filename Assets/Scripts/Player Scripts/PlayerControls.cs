@@ -80,7 +80,7 @@ public class PlayerControls : MonoBehaviour
             {
                 Debug.Log("Spawn fra Workstation");
                 //Aktiver station
-                interaktionsobjekt.GetComponent<ActivateStation>().Activate();
+                interaktionsobjekt.GetComponent<MasterStation>().Activate();
             }
             else if (interaktionsobjekt.CompareTag("PickUp"))
             {
