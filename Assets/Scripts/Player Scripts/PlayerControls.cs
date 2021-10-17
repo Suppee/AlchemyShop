@@ -17,6 +17,7 @@ public class PlayerControls : MonoBehaviour
 
     // PickUp
     public Transform PickUpHolder;
+    GameObject objekthold;
     
 
     // Start is called before the first frame update
@@ -32,6 +33,7 @@ public class PlayerControls : MonoBehaviour
 
         // Look Towards
         transform.LookAt(newPosition + transform.position);
+        
 
 
         // Move
@@ -46,6 +48,7 @@ public class PlayerControls : MonoBehaviour
 
         bevaegelseX = bevaegelsesVector.x;
         bevaegelseY = bevaegelsesVector.y;
+
         print("test");
         
     }
@@ -92,19 +95,21 @@ public class PlayerControls : MonoBehaviour
                 interaktionsobjekt.transform.parent = PickUpHolder;
 
                 holderObjekt = true;
-                interaktionsobjekt.GetComponent<Rigidbody>().useGravity = false;
-                interaktionsobjekt.GetComponent<Rigidbody>().isKinematic = true;
-                interaktionsobjekt.GetComponent<SphereCollider>().enabled = false;
+                objekthold = interaktionsobjekt;
+                objekthold.GetComponent<Rigidbody>().useGravity = false;
+                objekthold.GetComponent<Rigidbody>().isKinematic = true;
             }
         }
         else
         {
-            interaktionsobjekt.GetComponent<Rigidbody>().useGravity = true;
-            interaktionsobjekt.GetComponent<Rigidbody>().isKinematic = false;
-            interaktionsobjekt.GetComponent<SphereCollider>().enabled = true;
-            interaktionsobjekt.transform.parent = null;
+
+            //Smid objekt
+            objekthold.GetComponent<Rigidbody>().useGravity = true;
+            objekthold.GetComponent<Rigidbody>().isKinematic = false;
+            objekthold.transform.parent = null;
             holderObjekt = false;
-        } 
+        }
+        interaktionsobjekt = null;
     }
 
     // Boevling

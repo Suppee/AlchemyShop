@@ -15,5 +15,6 @@ public class IngrediensInfo : MonoBehaviour
     {
         this.GetComponent<MeshFilter>().mesh = Ingredient.ingrediensModel;
         this.GetComponent<MeshRenderer>().material = Ingredient.material;
+        this.GetComponent<MeshCollider>().sharedMesh = Ingredient.ingrediensModel;
     }
 }
