@@ -137,7 +137,7 @@ GameObject:
   - component: {fileID: 121347624}
   - component: {fileID: 121347628}
   m_Layer: 0
-  m_Name: Cube (4)
+  m_Name: MixingStation
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1741,7 +1741,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1086862191, guid: 0828d83e9a79d464485edeed0109add4, type: 3}
       propertyPath: m_Constraints
-      value: 0
+      value: 80
+      objectReference: {fileID: 0}
+    - target: {fileID: 1086862191, guid: 0828d83e9a79d464485edeed0109add4, type: 3}
+      propertyPath: m_IsKinematic
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1399137627833062961, guid: 0828d83e9a79d464485edeed0109add4, type: 3}
       propertyPath: m_Name
@@ -1753,7 +1757,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2912081337559091083, guid: 0828d83e9a79d464485edeed0109add4, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -2.33
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 2912081337559091083, guid: 0828d83e9a79d464485edeed0109add4, type: 3}
       propertyPath: m_LocalPosition.z
@@ -1769,7 +1773,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3161900485499034087, guid: 0828d83e9a79d464485edeed0109add4, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 4.21
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3161900485499034087, guid: 0828d83e9a79d464485edeed0109add4, type: 3}
       propertyPath: m_LocalPosition.z
@@ -2151,9 +2155,25 @@ PrefabInstance:
       propertyPath: myPrefab
       value: 
       objectReference: {fileID: 5458098826133215305, guid: 6a124e952c05043e0a13c7eb20867bd2, type: 3}
+    - target: {fileID: 199044010, guid: 5d7347808503f1c4aab8a3c47e0ea506, type: 3}
+      propertyPath: ingrediensPrefab
+      value: 
+      objectReference: {fileID: 1533100967}
+    - target: {fileID: 1432937110, guid: 5d7347808503f1c4aab8a3c47e0ea506, type: 3}
+      propertyPath: ingrediensPrefab
+      value: 
+      objectReference: {fileID: 1533100967}
+    - target: {fileID: 514035337528313647, guid: 5d7347808503f1c4aab8a3c47e0ea506, type: 3}
+      propertyPath: m_TagString
+      value: Station
+      objectReference: {fileID: 0}
     - target: {fileID: 545546438292191865, guid: 5d7347808503f1c4aab8a3c47e0ea506, type: 3}
       propertyPath: m_Name
       value: ResourceStation
+      objectReference: {fileID: 0}
+    - target: {fileID: 545546438292191865, guid: 5d7347808503f1c4aab8a3c47e0ea506, type: 3}
+      propertyPath: m_TagString
+      value: Station
       objectReference: {fileID: 0}
     - target: {fileID: 7165782514875673761, guid: 5d7347808503f1c4aab8a3c47e0ea506, type: 3}
       propertyPath: m_RootOrder
@@ -2212,9 +2232,25 @@ PrefabInstance:
       propertyPath: myPrefab
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 4315286900132635828, guid: 84c9c78d19ad94671b85d08a05472b44, type: 3}
+      propertyPath: ingrediensPrefab
+      value: 
+      objectReference: {fileID: 1533100967}
+    - target: {fileID: 4315286901653810568, guid: 84c9c78d19ad94671b85d08a05472b44, type: 3}
+      propertyPath: ingrediensPrefab
+      value: 
+      objectReference: {fileID: 1533100967}
     - target: {fileID: 4355210682858683483, guid: 84c9c78d19ad94671b85d08a05472b44, type: 3}
       propertyPath: m_Name
       value: ResourceStation2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4355210682858683483, guid: 84c9c78d19ad94671b85d08a05472b44, type: 3}
+      propertyPath: m_TagString
+      value: Station
+      objectReference: {fileID: 0}
+    - target: {fileID: 4377713211038368013, guid: 84c9c78d19ad94671b85d08a05472b44, type: 3}
+      propertyPath: m_TagString
+      value: Station
       objectReference: {fileID: 0}
     - target: {fileID: 6382449125324696195, guid: 84c9c78d19ad94671b85d08a05472b44, type: 3}
       propertyPath: m_RootOrder

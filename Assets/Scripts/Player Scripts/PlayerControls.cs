@@ -46,12 +46,12 @@ public class PlayerControls : MonoBehaviour
 
         bevaegelseX = bevaegelsesVector.x;
         bevaegelseY = bevaegelsesVector.y;
+        print("test");
         
     }
     
     void OnInteract()
     {
-
         if(holderObjekt==false)
         {
 
@@ -94,13 +94,14 @@ public class PlayerControls : MonoBehaviour
                 holderObjekt = true;
                 interaktionsobjekt.GetComponent<Rigidbody>().useGravity = false;
                 interaktionsobjekt.GetComponent<Rigidbody>().isKinematic = true;
+                interaktionsobjekt.GetComponent<SphereCollider>().enabled = false;
             }
         }
-
         else
         {
             interaktionsobjekt.GetComponent<Rigidbody>().useGravity = true;
             interaktionsobjekt.GetComponent<Rigidbody>().isKinematic = false;
+            interaktionsobjekt.GetComponent<SphereCollider>().enabled = true;
             interaktionsobjekt.transform.parent = null;
             holderObjekt = false;
         } 
@@ -109,31 +110,20 @@ public class PlayerControls : MonoBehaviour
     // Boevling
     void OnBoevle()
     {
-
         print("Boevler");
-
     }
 
     //Objekt kommer inden for raekkevidde
     private void OnTriggerEnter(Collider other)
     {
-        if(!iRaekkevide.Contains(other.gameObject))
-        {
-            if (other.gameObject.CompareTag("Station") || (other.gameObject.CompareTag("PickUp")))
-            {
-                iRaekkevide.Add(other.gameObject);
-            }
-        }
+        if(!iRaekkevide.Contains(other.gameObject) && (other.gameObject.CompareTag("Station") || (other.gameObject.CompareTag("PickUp"))))
+            iRaekkevide.Add(other.gameObject);   
     }
 
     //Objekt forlader raekkevidde
     private void OnTriggerExit(Collider other)
     {
         if(iRaekkevide.Contains(other.gameObject))
-        { 
             iRaekkevide.Remove(other.gameObject);   
-        }
     }
-
-    
 }
