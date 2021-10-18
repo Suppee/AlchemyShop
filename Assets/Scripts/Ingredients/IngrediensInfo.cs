@@ -11,7 +11,7 @@ public class IngrediensInfo : MonoBehaviour
 
 
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
         this.GetComponent<MeshFilter>().mesh = Ingredient.ingrediensModel;
         this.GetComponent<MeshRenderer>().material = Ingredient.material;

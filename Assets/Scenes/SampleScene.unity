@@ -231,11 +231,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 437d76ece6606494bacdf0289eeed3cd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Player: {fileID: 0}
-  Ingredienser: []
-  Opskrifter: []
-  HarTingIHaanden: 0
-  Blander: 0
 --- !u!1 &423561740
 GameObject:
   m_ObjectHideFlags: 0
@@ -2238,17 +2233,25 @@ PrefabInstance:
       propertyPath: m_Name
       value: Ingrediens
       objectReference: {fileID: 0}
+    - target: {fileID: 5175779227404207544, guid: 4c01a965b8ac57e42afe4b2ba5fed5a7, type: 3}
+      propertyPath: Ingredient
+      value: 
+      objectReference: {fileID: 11400000, guid: deab1997909777c439188f59112a4ef9, type: 2}
+    - target: {fileID: 5175779227404207547, guid: 4c01a965b8ac57e42afe4b2ba5fed5a7, type: 3}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
     - target: {fileID: 5175779227404207548, guid: 4c01a965b8ac57e42afe4b2ba5fed5a7, type: 3}
       propertyPath: m_RootOrder
       value: 17
       objectReference: {fileID: 0}
     - target: {fileID: 5175779227404207548, guid: 4c01a965b8ac57e42afe4b2ba5fed5a7, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -7.25
+      value: -6.894
       objectReference: {fileID: 0}
     - target: {fileID: 5175779227404207548, guid: 4c01a965b8ac57e42afe4b2ba5fed5a7, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.9
+      value: 2.117
       objectReference: {fileID: 0}
     - target: {fileID: 5175779227404207548, guid: 4c01a965b8ac57e42afe4b2ba5fed5a7, type: 3}
       propertyPath: m_LocalPosition.z
@@ -2281,6 +2284,10 @@ PrefabInstance:
     - target: {fileID: 5175779227404207548, guid: 4c01a965b8ac57e42afe4b2ba5fed5a7, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5175779227404207550, guid: 4c01a965b8ac57e42afe4b2ba5fed5a7, type: 3}
+      propertyPath: m_Enabled
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4c01a965b8ac57e42afe4b2ba5fed5a7, type: 3}

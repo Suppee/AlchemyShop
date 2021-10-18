@@ -49,7 +49,7 @@ public class PlayerControls : MonoBehaviour
         bevaegelseX = bevaegelsesVector.x;
         bevaegelseY = bevaegelsesVector.y;
 
-        print("test");
+        Debug.Log("Bevægelse");
         
     }
     
