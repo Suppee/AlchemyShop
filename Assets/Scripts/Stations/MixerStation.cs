@@ -19,6 +19,7 @@ public class MixerStation : MasterStation
     {
         if (Blander == false && HarTingIHaanden == true)
         {
+
             //tilføj ingrediens til listen
             
         } else if (Blander == false && HarTingIHaanden == false)

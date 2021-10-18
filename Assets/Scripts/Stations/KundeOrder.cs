@@ -12,6 +12,7 @@ public class KundeOrder : MasterStation
     public List<Recipes> opskriftListe;
     public GameObject[] vare;
     public List<Recipes> aktivorder;
+    
 
     //Texture
 
@@ -52,6 +53,7 @@ public class KundeOrder : MasterStation
             //Ingen order i gang
             print("Tag en order");
             orderIgang = true;
+
         }
         
     }
@@ -64,14 +66,17 @@ public class KundeOrder : MasterStation
             v.GetComponent<RawImage>().texture = null;
         }
 
+        aktivorder.Clear();
+
         int orderstroelse = Random.Range(1, 4);
 
-        for(int i = 0; i < orderstroelse; i++)
+        for(int i = 0; i <= orderstroelse; i++)
         {
             int index = Random.Range(0, opskriftListe.Count);
             print(opskriftListe[index]);
            
             vare[i].GetComponent<RawImage>().texture = opskriftListe[index].texture;
+            aktivorder.Add(opskriftListe[index]);
 
         }
     }

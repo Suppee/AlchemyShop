@@ -7,7 +7,9 @@ public class MasterStation : MonoBehaviour
 {
 
     //Variabler
-    public GameObject Player;
+    public GameObject player;
+    public GameObject playerPickup;
+
 
     //Aktiver Metode
     public virtual void Activate()

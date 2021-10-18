@@ -83,6 +83,8 @@ public class PlayerControls : MonoBehaviour
             {
                 Debug.Log("Spawn fra Workstation");
                 //Aktiver station
+                interaktionsobjekt.GetComponent<MasterStation>().playerPickup = objekthold;
+                interaktionsobjekt.GetComponent<MasterStation>().player = this.gameObject;
                 interaktionsobjekt.GetComponent<MasterStation>().Activate();
             }
             else if (interaktionsobjekt.CompareTag("PickUp"))
