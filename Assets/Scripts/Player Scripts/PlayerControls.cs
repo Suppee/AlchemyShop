@@ -62,16 +62,17 @@ public class PlayerControls : MonoBehaviour
             //Interger med objekt
             if (interaktionsobjekt.CompareTag("Station"))
             {
-                if(holderObjekt == true) //&& interaktionsobjekt.compare)
+                interaktionsobjekt.GetComponent<MasterStation>().playerPickup = objekthold;
+                interaktionsobjekt.GetComponent<MasterStation>().player = this.gameObject;
+                interaktionsobjekt.GetComponent<MasterStation>().Activate();
+                /* if(holderObjekt == true) //&& interaktionsobjekt.compare)
                 {
 
                 }
                 else
                 {
-                    interaktionsobjekt.GetComponent<MasterStation>().playerPickup = objekthold;
-                    interaktionsobjekt.GetComponent<MasterStation>().player = this.gameObject;
-                    interaktionsobjekt.GetComponent<MasterStation>().Activate();
-                }
+                    
+                } */
 
                 Debug.Log("Aktiver Workstation");
 
@@ -148,6 +149,7 @@ public class PlayerControls : MonoBehaviour
     //Objekt kommer inden for raekkevidde
     private void OnTriggerEnter(Collider other)
     {
+        print(other);
         if(!iRaekkevide.Contains(other.gameObject) && (other.gameObject.CompareTag("Station") || (other.gameObject.CompareTag("PickUp"))))
             iRaekkevide.Add(other.gameObject);   
     }
