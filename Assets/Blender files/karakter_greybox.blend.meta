@@ -1,5 +1,4 @@
 fileFormatVersion: 2
-<<<<<<< Updated upstream
 guid: cdf017b2604be43ab98fc757e2e07971
 ModelImporter:
   serializedVersion: 20200
@@ -7,12 +6,6 @@ ModelImporter:
   - first:
       74: -623603649343465320
     second: Scene
-=======
-guid: 7af1d6cc25ff85343b7823ddadbd5e8a
-ModelImporter:
-  serializedVersion: 20200
-  internalIDToNameTable: []
->>>>>>> Stashed changes
   externalObjects: {}
   materials:
     materialImportMode: 1
