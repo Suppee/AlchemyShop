@@ -17,7 +17,7 @@ public class PlayerControls : MonoBehaviour
 
     // PickUp
     public Transform PickUpHolder;
-    GameObject objekthold;
+    public GameObject objekthold;
     
 
     // Start is called before the first frame update
@@ -55,65 +55,90 @@ public class PlayerControls : MonoBehaviour
     
     void OnInteract()
     {
-        if(holderObjekt==false)
+        if(holderObjekt == false)
         {
-
-            // Find taetteste objekt fra listen af objekter i r�kkevidde
-            float kortestafstand = Mathf.Infinity;
-            foreach (GameObject ting in iRaekkevide)
-            {
-
-                //Find afstand mellem objekt og spiller
-                float afstand = Vector3.Distance(ting.transform.position, this.transform.position);
-
-                //Debug line
-                Debug.DrawLine(ting.transform.position, this.transform.position, Color.red, 3);
-
-                //Hvis afstanden er kortere end den korteste afstand saa saet den korteste afstand til den nye afstand
-                if (afstand <= kortestafstand)
-                {
-                    kortestafstand = afstand;
-                    interaktionsobjekt = ting;
-                }
-
-            }
-
+            StartCoroutine("FindTaettestObjekt");
+        
             //Interger med objekt
             if (interaktionsobjekt.CompareTag("Station"))
             {
-                Debug.Log("Spawn fra Workstation");
-                //Aktiver station
-                interaktionsobjekt.GetComponent<MasterStation>().playerPickup = objekthold;
-                interaktionsobjekt.GetComponent<MasterStation>().player = this.gameObject;
-                interaktionsobjekt.GetComponent<MasterStation>().Activate();
+                if(holderObjekt == true) //&& interaktionsobjekt.compare)
+                {
+
+                }
+                else
+                {
+                    interaktionsobjekt.GetComponent<MasterStation>().playerPickup = objekthold;
+                    interaktionsobjekt.GetComponent<MasterStation>().player = this.gameObject;
+                    interaktionsobjekt.GetComponent<MasterStation>().Activate();
+                }
+
+                Debug.Log("Aktiver Workstation");
+
+                // Aktiver station                
+                
             }
             else if (interaktionsobjekt.CompareTag("PickUp"))
             {
                 Debug.Log("Ingrediens samlet op");
 
-                // Saml objekt op
-
-                interaktionsobjekt.transform.position = PickUpHolder.position;
-                interaktionsobjekt.transform.parent = PickUpHolder;
-
+                // Saml objekt op              
                 holderObjekt = true;
                 objekthold = interaktionsobjekt;
+                objekthold.transform.position = PickUpHolder.position;
+                objekthold.transform.parent = PickUpHolder;
                 objekthold.GetComponent<Rigidbody>().useGravity = false;
                 objekthold.GetComponent<Rigidbody>().isKinematic = true;
             }
         }
         else
-        {
-
-            //Smid objekt
-            objekthold.GetComponent<Rigidbody>().useGravity = true;
-            objekthold.GetComponent<Rigidbody>().isKinematic = false;
-            objekthold.transform.parent = null;
-            holderObjekt = false;
+        {          
+            if(iRaekkevide.Count > 1)
+            {
+                StartCoroutine("FindTaettesteObjekt");
+                interaktionsobjekt.GetComponent<MasterStation>().playerPickup = objekthold;
+                interaktionsobjekt.GetComponent<MasterStation>().player = this.gameObject;
+                interaktionsobjekt.GetComponent<MasterStation>().Activate();
+            }
+            
+            else
+            {
+                holderObjekt = false;
+                objekthold.transform.parent = null;
+                objekthold.GetComponent<Rigidbody>().useGravity = true;
+                objekthold.GetComponent<Rigidbody>().isKinematic = false;
+                objekthold = null;
+            }
+           
         }
         interaktionsobjekt = null;
+        
     }
 
+    void AktiverStation()
+    {
+
+    }
+
+    void SamlOp()
+    {
+        holderObjekt = true;
+        objekthold = interaktionsobjekt;
+        objekthold.transform.position = PickUpHolder.position;
+        objekthold.transform.parent = PickUpHolder;
+        objekthold.GetComponent<Rigidbody>().useGravity = false;
+        objekthold.GetComponent<Rigidbody>().isKinematic = true;
+    }
+
+    void Smid()
+    {
+        holderObjekt = false;
+        objekthold.transform.parent = null;
+        objekthold.GetComponent<Rigidbody>().useGravity = true;
+        objekthold.GetComponent<Rigidbody>().isKinematic = false;
+        objekthold = null;
+    }
+    
     // Boevling
     void OnBoevle()
     {
@@ -132,5 +157,29 @@ public class PlayerControls : MonoBehaviour
     {
         if(iRaekkevide.Contains(other.gameObject))
             iRaekkevide.Remove(other.gameObject);   
+    }
+
+    //Find taetteste objekt
+    IEnumerator FindTaettestObjekt()
+    {
+            // Find taetteste objekt fra listen af objekter i r�kkevidde
+            float kortestafstand = Mathf.Infinity;
+            foreach (GameObject ting in iRaekkevide)
+            {
+                //Debug line
+                Debug.DrawLine(ting.transform.position, this.transform.position, Color.red, 3);
+
+                //Find afstand mellem objekt og spiller
+                float afstand = Vector3.Distance(ting.transform.position, this.transform.position);
+                           
+                //Hvis afstanden er kortere end den korteste afstand saa saet den korteste afstand til den nye afstand
+                if (afstand <= kortestafstand)
+                {
+                    kortestafstand = afstand;
+                    interaktionsobjekt = ting;
+                    print("Co-Routine Finished");
+                }
+            }
+            yield return interaktionsobjekt;
     }
 }

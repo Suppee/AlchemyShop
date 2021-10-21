@@ -232,8 +232,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 437d76ece6606494bacdf0289eeed3cd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Player: {fileID: 0}
-  Ingredienser: []
+  player: {fileID: 0}
+  playerPickup: {fileID: 0}
+  blanding: []
   Opskrifter: []
   HarTingIHaanden: 0
 --- !u!1 &423561740
@@ -1166,7 +1167,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e2cffeab3f8edf249a629cb8136ebe97, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Player: {fileID: 0}
+  player: {fileID: 0}
+  playerPickup: {fileID: 0}
   order:
   - {fileID: 2800000, guid: 7c709c424ce07474d97277b733579020, type: 3}
   - {fileID: 2800000, guid: 6d75c124030ef89428c26e0701ea9c6b, type: 3}
@@ -1346,7 +1348,7 @@ GameObject:
   - component: {fileID: 1674335863}
   - component: {fileID: 1674335862}
   m_Layer: 0
-  m_Name: Cube (1)
+  m_Name: IngredientStation
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
