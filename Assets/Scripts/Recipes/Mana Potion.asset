@@ -14,6 +14,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   name: New recipe
   model: {fileID: 0}
-  ingredients: []
+  ingredients:
+  - {fileID: 11400000, guid: 4a1d730a480474743bd855cd61b68ecc, type: 2}
+  - {fileID: 11400000, guid: 411735f224be9c84393c03507e9b308d, type: 2}
+  - {fileID: 11400000, guid: 411735f224be9c84393c03507e9b308d, type: 2}
+  - {fileID: 11400000, guid: 411735f224be9c84393c03507e9b308d, type: 2}
+  - {fileID: 11400000, guid: deab1997909777c439188f59112a4ef9, type: 2}
   material: {fileID: 0}
   texture: {fileID: 2800000, guid: a8f08378c83ff5e4686988b573528bf5, type: 3}
+  Kode: 5R

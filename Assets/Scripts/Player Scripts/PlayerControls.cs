@@ -9,17 +9,14 @@ public class PlayerControls : MonoBehaviour
     public float bevaegelsesFart = 5f;
     float bevaegelseX;
     float bevaegelseY;
-
-    // Interger
-    public List<GameObject> iRaekkevide;
-    bool holderObjekt;
-    public GameObject interaktionsobjekt;
-
-    // PickUp
-    public Transform PickUpHolder;
-    public GameObject objekthold;
     
-
+    // Interger Variabler 
+    public List<GameObject> iRaekkevide;    // Objekter indenfor raekkevidde af spilleren    
+    public GameObject interaktionsobjekt;   // Det objekt man forsøger at interger med
+    public bool holderObjekt;               // Bool til at tjekke om man holdet et objekt eller ej
+    public Transform PickUpHolder;          // Placeringen af objektet på spilleren
+    public GameObject objekthold;           // Objektet man holder
+    
     // Start is called before the first frame update
     void Start()
     {
@@ -29,114 +26,84 @@ public class PlayerControls : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Vector3 newPosition = new Vector3(bevaegelseX, 0.0f, bevaegelseY);
+        Vector3 nyPosition = new Vector3(bevaegelseX, 0.0f, bevaegelseY);
 
-        // Look Towards
-        transform.LookAt(newPosition + transform.position);
-        
-
-
-        // Move
-        transform.Translate(newPosition * bevaegelsesFart * Time.deltaTime, Space.World);
-
+        // Vend mod ny position (Pej fremad) og bevæg mod ny position
+        transform.LookAt(nyPosition + transform.position);
+        transform.Translate(nyPosition * bevaegelsesFart * Time.deltaTime, Space.World);
     }
 
     void OnMove(InputValue bevaegelseVaerdi)
     {
-
         Vector2 bevaegelsesVector = bevaegelseVaerdi.Get<Vector2>();
 
         bevaegelseX = bevaegelsesVector.x;
         bevaegelseY = bevaegelsesVector.y;
 
-        Debug.Log("Bevægelse");
-        
+        Debug.Log("Bevægelse");        
     }
     
+    //Interger med objekt
     void OnInteract()
     {
-        if(holderObjekt == false)
+        if(iRaekkevide.Count > 0)
         {
             StartCoroutine("FindTaettestObjekt");
         
-            //Interger med objekt
-            if (interaktionsobjekt.CompareTag("Station"))
+            //Interger med Station
+            if (interaktionsobjekt.tag.Contains("Station"))
             {
-                interaktionsobjekt.GetComponent<MasterStation>().playerPickup = objekthold;
-                interaktionsobjekt.GetComponent<MasterStation>().player = this.gameObject;
-                interaktionsobjekt.GetComponent<MasterStation>().Activate();
-                /* if(holderObjekt == true) //&& interaktionsobjekt.compare)
-                {
-
-                }
+                if ((holderObjekt == true && !interaktionsobjekt.tag.Contains("Ingredient")) || (holderObjekt == false))
+                    AktiverStation();               
                 else
-                {
-                    
-                } */
-
-                Debug.Log("Aktiver Workstation");
-
-                // Aktiver station                
-                
+                    Debug.Log("Kan ikke aktiver" + interaktionsobjekt);
             }
-            else if (interaktionsobjekt.CompareTag("PickUp"))
+            //Interger med Pick Up
+            else if (interaktionsobjekt.tag.Contains("PickUp"))
             {
-                Debug.Log("Ingrediens samlet op");
-
-                // Saml objekt op              
-                holderObjekt = true;
-                objekthold = interaktionsobjekt;
-                objekthold.transform.position = PickUpHolder.position;
-                objekthold.transform.parent = PickUpHolder;
-                objekthold.GetComponent<Rigidbody>().useGravity = false;
-                objekthold.GetComponent<Rigidbody>().isKinematic = true;
+                if (holderObjekt == true)
+                    Smid();
+                else
+                    objekthold = interaktionsobjekt;
+                    SamlOp();                     
             }
         }
         else
-        {          
-            if(iRaekkevide.Count > 1)
-            {
-                StartCoroutine("FindTaettesteObjekt");
-                interaktionsobjekt.GetComponent<MasterStation>().playerPickup = objekthold;
-                interaktionsobjekt.GetComponent<MasterStation>().player = this.gameObject;
-                interaktionsobjekt.GetComponent<MasterStation>().Activate();
-            }
-            
-            else
-            {
-                holderObjekt = false;
-                objekthold.transform.parent = null;
-                objekthold.GetComponent<Rigidbody>().useGravity = true;
-                objekthold.GetComponent<Rigidbody>().isKinematic = false;
-                objekthold = null;
-            }
-           
-        }
-        interaktionsobjekt = null;
-        
+            Smid();
+        interaktionsobjekt = null;      
     }
 
+    //Aktiver Station
     void AktiverStation()
     {
-
+        Debug.Log(this.gameObject + "Aktiver Station");
+        interaktionsobjekt.GetComponent<MasterStation>().spillerref = this;    
+        interaktionsobjekt.GetComponent<MasterStation>().Activate();
     }
 
-    void SamlOp()
+    // Saml objekt op
+    public void SamlOp()
     {
+        Debug.Log("Ting samlet op");
         holderObjekt = true;
-        objekthold = interaktionsobjekt;
         objekthold.transform.position = PickUpHolder.position;
         objekthold.transform.parent = PickUpHolder;
+        objekthold.GetComponent<MeshCollider>().enabled = false;        
         objekthold.GetComponent<Rigidbody>().useGravity = false;
         objekthold.GetComponent<Rigidbody>().isKinematic = true;
+        iRaekkevide.Remove(objekthold);
     }
 
-    void Smid()
+    // Smid objekt i hånden
+    public void Smid()
     {
+        Debug.Log("Ting smidt");
         holderObjekt = false;
-        objekthold.transform.parent = null;
+        objekthold.transform.parent = null;        
+        objekthold.GetComponent<MeshCollider>().enabled = true;
         objekthold.GetComponent<Rigidbody>().useGravity = true;
         objekthold.GetComponent<Rigidbody>().isKinematic = false;
+        iRaekkevide.Add(objekthold);
         objekthold = null;
     }
     
@@ -149,15 +116,16 @@ public class PlayerControls : MonoBehaviour
     //Objekt kommer inden for raekkevidde
     private void OnTriggerEnter(Collider other)
     {
-        print(other);
-        if(!iRaekkevide.Contains(other.gameObject) && (other.gameObject.CompareTag("Station") || (other.gameObject.CompareTag("PickUp"))))
+        Debug.Log(other+ "inden raekkevidde");
+        if(!iRaekkevide.Contains(other.gameObject) && (other.gameObject.tag.Contains("Station") || (other.gameObject.tag.Contains("PickUp"))))
             iRaekkevide.Add(other.gameObject);   
     }
 
     //Objekt forlader raekkevidde
     private void OnTriggerExit(Collider other)
     {
-        if(iRaekkevide.Contains(other.gameObject))
+        Debug.Log(other + "udenfor raekkevidde");
+        if (iRaekkevide.Contains(other.gameObject))
             iRaekkevide.Remove(other.gameObject);   
     }
 

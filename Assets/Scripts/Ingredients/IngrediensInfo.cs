@@ -4,14 +4,11 @@ using UnityEngine;
 
 public class IngrediensInfo : MonoBehaviour
 {
-
+    // Variabler
     public Ingredient Ingredient;
 
-   // public MeshFilter mesh;
-
-
     // Start is called before the first frame update
-    void Awake()
+    void Start()
     {
         this.GetComponent<MeshFilter>().mesh = Ingredient.ingrediensModel;
         this.GetComponent<MeshRenderer>().material = Ingredient.material;

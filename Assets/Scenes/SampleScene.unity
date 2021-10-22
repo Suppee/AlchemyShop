@@ -231,11 +231,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 437d76ece6606494bacdf0289eeed3cd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 0}
+  spillerref: {fileID: 0}
   playerPickup: {fileID: 0}
   blanding: []
-  Opskrifter: []
+  Opskrifter:
+  - {fileID: 11400000, guid: db38266550e97384aa8468622c96601f, type: 2}
+  produktPrefab: {fileID: 2473549004927088009, guid: ca5c31bc3a818a1439311b21ca5d2ed1, type: 3}
   HarTingIHaanden: 0
+  blandingskode: 
 --- !u!1001 &364532245
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -291,6 +294,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7941511378368522778, guid: 1e6729553470add46b00befc40ea8d7f, type: 3}
+      propertyPath: ingredient
+      value: 
+      objectReference: {fileID: 11400000, guid: deab1997909777c439188f59112a4ef9, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1e6729553470add46b00befc40ea8d7f, type: 3}
 --- !u!1 &423561740
@@ -1335,7 +1342,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e2cffeab3f8edf249a629cb8136ebe97, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 0}
+  spillerref: {fileID: 0}
   playerPickup: {fileID: 0}
   order:
   - {fileID: 2800000, guid: 7c709c424ce07474d97277b733579020, type: 3}

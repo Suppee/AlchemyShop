@@ -7,6 +7,11 @@ TagManager:
   - PickUp
   - Station
   - Workstation
+  - Ingredient Station
+  - Mixing Station
+  - Order Station
+  - Product PickUp
+  - Ingredient PickUp
   layers:
   - Default
   - TransparentFX

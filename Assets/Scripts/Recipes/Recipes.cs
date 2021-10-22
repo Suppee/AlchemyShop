@@ -5,9 +5,20 @@ using UnityEngine;
 
 public class Recipes : ScriptableObject
 {
-    new public string name = "New recipe";
+    new public string name = "New Recipe";
     public Mesh model;
     public Ingredient[] ingredients;
     public Material material;
-    public Texture texture;
+    public Texture texture;    
+    public string Kode;
+
+    void OnValidate()
+    {
+        Kode = "";
+        Kode += ingredients.Length.ToString();
+        foreach (Ingredient ing in ingredients)
+        {
+            Kode += ing.Kode;
+        }
+    }
 }

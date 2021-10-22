@@ -15,3 +15,4 @@ MonoBehaviour:
   name: BrunIngredient
   ingrediensModel: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
   material: {fileID: -3746807463870966883, guid: 01681ce003b80094c8976502e64e24f8, type: 3}
+  Kode: Bu

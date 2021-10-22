@@ -5,15 +5,13 @@ using UnityEditor;
 
 public class MasterStation : MonoBehaviour
 {
-
     //Variabler
-    public GameObject player;
+    public PlayerControls spillerref;
     public GameObject playerPickup;
 
-
-    //Aktiver Metode
+    //Aktiver Station Metode
     public virtual void Activate()
-    {
-
-    }   
+    { 
+    }
+ 
 }

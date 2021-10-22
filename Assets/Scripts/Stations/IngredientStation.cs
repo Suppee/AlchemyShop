@@ -8,14 +8,16 @@ public class IngredientStation : MasterStation
     // Variables
 
     public GameObject ingrediensPrefab;
+    public Ingredient ingredient;
     
     // Hidkald Prefab
 
     public override void Activate()
     {
-
-        Instantiate(ingrediensPrefab, transform.position + new Vector3(0,1,0), transform.rotation);
-        
+        GameObject NyIngredient = Instantiate(ingrediensPrefab);
+        NyIngredient.GetComponent<IngrediensInfo>().Ingredient = ingredient;
+        spillerref.GetComponent<PlayerControls>().objekthold = NyIngredient;
+        spillerref.GetComponent<PlayerControls>().SamlOp();        
     }
 
     

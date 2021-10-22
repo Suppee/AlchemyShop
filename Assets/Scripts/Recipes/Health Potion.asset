@@ -13,10 +13,11 @@ MonoBehaviour:
   m_Name: Health Potion
   m_EditorClassIdentifier: 
   name: Health Potion
-  model: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
+  model: {fileID: 10206, guid: 0000000000000000e000000000000000, type: 0}
   ingredients:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  material: {fileID: 0}
+  - {fileID: 11400000, guid: deab1997909777c439188f59112a4ef9, type: 2}
+  - {fileID: 11400000, guid: deab1997909777c439188f59112a4ef9, type: 2}
+  - {fileID: 11400000, guid: deab1997909777c439188f59112a4ef9, type: 2}
+  material: {fileID: 2100000, guid: 539165557a9d3744680bb21164bea45e, type: 2}
   texture: {fileID: 2800000, guid: 7adaaab2410406347b7b77a63aad3f68, type: 3}
+  Kode: 3RRR
