@@ -4,10 +4,14 @@
 TagManager:
   serializedVersion: 2
   tags:
+  - PickUp
+  - Station
   - Workstation
-  - Ingredient
-  - Product
-  - PickUpItem
+  - Ingredient Station
+  - Mixing Station
+  - Order Station
+  - Product PickUp
+  - Ingredient PickUp
   layers:
   - Default
   - TransparentFX
