@@ -13,5 +13,12 @@ public class MasterStation : MonoBehaviour
     public virtual void Activate()
     { 
     }
+
+    public void Destroy()
+    {
+        Destroy(spillerref.objekthold);
+        spillerref.holderObjekt = false;
+        spillerref.objekthold = null;
+    }
  
 }
