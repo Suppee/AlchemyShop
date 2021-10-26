@@ -6,15 +6,13 @@ using UnityEngine.UI;
 
 public class KundeOrder : MasterStation
 {
-
-    bool orderIgang;
-    public List<Texture> order;
+    public bool orderIgang;
     public List<Recipes> opskriftListe;
     public GameObject[] vare;
     public List<Recipes> aktivorder;
+    public float mintid;
+    public float maxtid;
     
-
-    //Texture
 
     // Start is called before the first frame update
     void Start()
@@ -31,29 +29,47 @@ public class KundeOrder : MasterStation
 
         }
 
-            InvokeRepeating("SkabNyOrdre", 0, 2);
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+            Invoke("SkabNyOrdre", 2);
     }
 
     public override void Activate()
     {
-        if(orderIgang == true)
+        if(aktivorder.Count > 0 && orderIgang == true)
         {
-            //Aktiv order i gang
-
-
+            if (spillerref.holderObjekt == true)
+            {
+                for (int i = 0; i < aktivorder.Count; i++)
+                { 
+                    if (spillerref.objekthold.GetComponent<ProductInfo>().Opskrift.name.Equals(aktivorder[i].name))
+                    {
+                        aktivorder.RemoveAt(i);
+                        Debug.Log("Produkt godkendt");
+                        vare[i].GetComponent<RawImage>().texture = null;
+                        Destroy();
+                        //Ret UI
+                        for (int v = 0; v <= vare.Length; v++)
+                        {
+                            vare[v].GetComponent<RawImage>().texture = null;
+                            vare[v].GetComponent<RawImage>().texture = aktivorder[v].texture;
+                        }
+                        //Check om orderen er færdig
+                        if (aktivorder.Count == 0)
+                        {
+                            orderIgang = false;
+                            StartCoroutine("KundePause");
+                        }                         
+                        return;
+                    }
+                }
+            }
+            else
+                Debug.Log("Produkt ikke godkendt");
         }
-        else
+        else if (aktivorder.Count > 0 && orderIgang == false && spillerref.holderObjekt == false)
         {
             //Ingen order i gang
             print("Tag en order");
             orderIgang = true;
-
         }
         
     }
@@ -65,19 +81,29 @@ public class KundeOrder : MasterStation
         {
             v.GetComponent<RawImage>().texture = null;
         }
-
+        // Fjern alle elementer fra aktiv order 
         aktivorder.Clear();
-
+        //Find order størrelse
         int orderstroelse = Random.Range(1, 4);
-
         for(int i = 0; i <= orderstroelse; i++)
         {
             int index = Random.Range(0, opskriftListe.Count);
-            print(opskriftListe[index]);
-           
             vare[i].GetComponent<RawImage>().texture = opskriftListe[index].texture;
             aktivorder.Add(opskriftListe[index]);
-
         }
     }
+
+    IEnumerator KundePause()
+    {        
+            //Print the time of when the function is first called.
+            Debug.Log("Started Coroutine at timestamp : " + Time.time);
+
+            //yield on a new YieldInstruction that waits for 5 seconds.
+            yield return new WaitForSeconds(Random.Range(mintid,maxtid));
+
+            //After we have waited 5 seconds print the time again.
+            Debug.Log("Finished Coroutine at timestamp : " + Time.time);
+            SkabNyOrdre();
+    }
+    
 }

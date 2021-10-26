@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: GulIngredient
   m_EditorClassIdentifier: 
   name: Gul Ingredient
-  ingrediensModel: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
-  material: {fileID: 2100000, guid: 9b8eadc4de0544646b75ddcc43f8fd06, type: 2}
+  ingrediensModel: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
+  material: {fileID: 2100000, guid: e8b142dcba6fb4540b763e0a8c25023e, type: 2}
   Kode: G

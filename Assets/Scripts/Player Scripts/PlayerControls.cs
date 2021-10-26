@@ -17,12 +17,6 @@ public class PlayerControls : MonoBehaviour
     public Transform PickUpHolder;          // Placeringen af objektet på spilleren
     public GameObject objekthold;           // Objektet man holder
     
-    // Start is called before the first frame update
-    void Start()
-    {
-
-    }
-
     // Update is called once per frame
     void Update()
     {
@@ -40,7 +34,7 @@ public class PlayerControls : MonoBehaviour
         bevaegelseX = bevaegelsesVector.x;
         bevaegelseY = bevaegelsesVector.y;
 
-        Debug.Log("Bevægelse");        
+        //Debug.Log("Bevægelse");        
     }
     
     //Interger med objekt
@@ -54,9 +48,13 @@ public class PlayerControls : MonoBehaviour
             if (interaktionsobjekt.tag.Contains("Station"))
             {
                 if ((holderObjekt == true && !interaktionsobjekt.tag.Contains("Ingredient")) || (holderObjekt == false))
-                    AktiverStation();               
+                {
+                    Debug.Log(this.gameObject + " har aktivet" + interaktionsobjekt);
+                    interaktionsobjekt.GetComponent<MasterStation>().spillerref = this;
+                    interaktionsobjekt.GetComponent<MasterStation>().Activate();
+                }
                 else
-                    Debug.Log("Kan ikke aktiver" + interaktionsobjekt);
+                    Debug.Log("Kan ikke aktiver " + interaktionsobjekt);
             }
             //Interger med Pick Up
             else if (interaktionsobjekt.tag.Contains("PickUp"))
@@ -68,23 +66,15 @@ public class PlayerControls : MonoBehaviour
                     SamlOp();                     
             }
         }
-        else
+        else if (objekthold != null)
             Smid();
         interaktionsobjekt = null;      
-    }
-
-    //Aktiver Station
-    void AktiverStation()
-    {
-        Debug.Log(this.gameObject + "Aktiver Station");
-        interaktionsobjekt.GetComponent<MasterStation>().spillerref = this;    
-        interaktionsobjekt.GetComponent<MasterStation>().Activate();
     }
 
     // Saml objekt op
     public void SamlOp()
     {
-        Debug.Log("Ting samlet op");
+       // Debug.Log(interaktionsobjekt + " samlet op");
         holderObjekt = true;
         objekthold.transform.position = PickUpHolder.position;
         objekthold.transform.parent = PickUpHolder;
@@ -97,7 +87,7 @@ public class PlayerControls : MonoBehaviour
     // Smid objekt i hånden
     public void Smid()
     {
-        Debug.Log("Ting smidt");
+       // Debug.Log(objekthold + " smidt");
         holderObjekt = false;
         objekthold.transform.parent = null;        
         objekthold.GetComponent<MeshCollider>().enabled = true;
@@ -115,8 +105,7 @@ public class PlayerControls : MonoBehaviour
 
     //Objekt kommer inden for raekkevidde
     private void OnTriggerEnter(Collider other)
-    {
-        Debug.Log(other+ "inden raekkevidde");
+    {        
         if(!iRaekkevide.Contains(other.gameObject) && (other.gameObject.tag.Contains("Station") || (other.gameObject.tag.Contains("PickUp"))))
             iRaekkevide.Add(other.gameObject);   
     }
@@ -124,7 +113,6 @@ public class PlayerControls : MonoBehaviour
     //Objekt forlader raekkevidde
     private void OnTriggerExit(Collider other)
     {
-        Debug.Log(other + "udenfor raekkevidde");
         if (iRaekkevide.Contains(other.gameObject))
             iRaekkevide.Remove(other.gameObject);   
     }
@@ -146,8 +134,7 @@ public class PlayerControls : MonoBehaviour
                 if (afstand <= kortestafstand)
                 {
                     kortestafstand = afstand;
-                    interaktionsobjekt = ting;
-                    print("Co-Routine Finished");
+                    interaktionsobjekt = ting;                    
                 }
             }
             yield return interaktionsobjekt;

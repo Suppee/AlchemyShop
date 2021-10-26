@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: RodIngredient
   m_EditorClassIdentifier: 
   name: RodIngredient
-  ingrediensModel: {fileID: 4300000, guid: e3ae06a3979f53046aa05330d69de1fa, type: 3}
-  material: {fileID: 2100000, guid: 9289b362b3d27bc469e5d8a3fdff97ed, type: 2}
+  ingrediensModel: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+  material: {fileID: 2100000, guid: 75a387ff6a4f5b94bbb02455f82c9121, type: 2}
   Kode: R

@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: "Bl\xE5Ingrediens"
   m_EditorClassIdentifier: 
   name: "Bl\xE5 Ingrediens"
-  ingrediensModel: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
-  material: {fileID: 2100002, guid: ff6dc36862fe41641bb21568d92147c9, type: 3}
+  ingrediensModel: {fileID: 10208, guid: 0000000000000000e000000000000000, type: 0}
+  material: {fileID: 2100000, guid: def528c5a443d4470a4075fa7115586c, type: 2}
   Kode: B

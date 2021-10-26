@@ -24,9 +24,7 @@ public class MixerStation : MasterStation
         {
             // Tilføj ingrediens til listen
             blanding.Add(spillerref.objekthold.GetComponent<IngrediensInfo>().Ingredient);
-            Destroy(spillerref.objekthold);
-            spillerref.holderObjekt = false;
-            spillerref.objekthold = null;            
+            Destroy();           
 
             blandingskode = "";
             GenerereKode();
@@ -42,10 +40,10 @@ public class MixerStation : MasterStation
                     nyProdukt.GetComponent<ProductInfo>().Opskrift = opskrift;
                     spillerref.GetComponent<PlayerControls>().objekthold = nyProdukt;
                     spillerref.GetComponent<PlayerControls>().SamlOp();
+                    
                 }
             }
-            
-            
+            blanding.Clear();
         }
         spillerref = null;
     }
