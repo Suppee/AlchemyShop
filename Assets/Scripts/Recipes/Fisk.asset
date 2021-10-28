@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Fisk
   m_EditorClassIdentifier: 
   name: Fisk
-  model: {fileID: 10208, guid: 0000000000000000e000000000000000, type: 0}
+  model: {fileID: 4711208715938537054, guid: 364175aca066d964291b1e67e6ef945f, type: 3}
   ingredients:
   - {fileID: 11400000, guid: ebfb3551297bc9942984afdecec2fce0, type: 2}
   - {fileID: 11400000, guid: 1ba39dfa4b4b63e47bd4456c664cfc9d, type: 2}
