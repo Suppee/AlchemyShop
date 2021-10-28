@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class MixerStation : MasterStation 
-    // Ejer de ting MasterStation script har
+    // Ejer de ting MasterStation script har (eller inherit)
 
 {
     // Variabler

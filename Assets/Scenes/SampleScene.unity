@@ -2323,7 +2323,7 @@ MonoBehaviour:
   playerPickup: {fileID: 0}
   blanding: []
   Opskrifter:
-  - {fileID: 11400000, guid: 4e73c508dd9e6db4e94851b2efdf8942, type: 2}
+  - {fileID: 11400000, guid: ccd86d653d3d7fb448bbd379229eaeaa, type: 2}
   produktPrefab: {fileID: 2473549004927088009, guid: ca5c31bc3a818a1439311b21ca5d2ed1, type: 3}
   HarTingIHaanden: 0
   blandingskode: 
