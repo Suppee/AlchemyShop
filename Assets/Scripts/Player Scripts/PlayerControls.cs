@@ -6,9 +6,11 @@ using UnityEngine.InputSystem;
 public class PlayerControls : MonoBehaviour
 {
     // Bevaegelse Variable
-    public float bevaegelsesFart = 5f;
-    float bevaegelseX;
-    float bevaegelseY;
+    public float speed = 5;
+    CharacterController controller;
+    Vector3 direction = Vector3.zero;
+    public float turnSmoothTime = 0.1f;
+    float turnSmoothVelocity;
     
     // Interger Variabler 
     public List<GameObject> iRaekkevide;    // Objekter indenfor raekkevidde af spilleren    
@@ -16,27 +18,32 @@ public class PlayerControls : MonoBehaviour
     public bool holderObjekt;               // Bool til at tjekke om man holdet et objekt eller ej
     public Transform PickUpHolder;          // Placeringen af objektet på spilleren
     public GameObject objekthold;           // Objektet man holder
-    
-    // Update is called once per frame
+
+    private void Awake()
+    {
+        controller = GetComponent<CharacterController>();
+    }
+
+    public void OnMove(InputValue input)
+    {
+        Vector2 vec = input.Get<Vector2>();
+        direction = new Vector3(vec.x, 0, vec.y) * speed;
+    }    
+
+    private void FixedUpdate()
+    {
+        controller.SimpleMove(direction);
+    }
     void Update()
     {
-        Vector3 nyPosition = new Vector3(bevaegelseX, 0.0f, bevaegelseY);
-
-        // Vend mod ny position (Pej fremad) og bevæg mod ny position
-        transform.LookAt(nyPosition + transform.position);
-        transform.Translate(nyPosition * bevaegelsesFart * Time.deltaTime, Space.World);
+        if (direction.magnitude >= 0.1f)
+        {
+            float targetAngle = Mathf.Atan2(direction.x, direction.z) * Mathf.Rad2Deg;
+            float angle = Mathf.SmoothDampAngle(transform.eulerAngles.y, targetAngle, ref turnSmoothVelocity, turnSmoothTime);
+            transform.rotation = Quaternion.Euler(0f, angle, 0f);  
+        }
+        
     }
-
-    void OnMove(InputValue bevaegelseVaerdi)
-    {
-        Vector2 bevaegelsesVector = bevaegelseVaerdi.Get<Vector2>();
-
-        bevaegelseX = bevaegelsesVector.x;
-        bevaegelseY = bevaegelsesVector.y;
-
-        //Debug.Log("Bevægelse");        
-    }
-    
     //Interger med objekt
     void OnInteract()
     {
