@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 272fee04f7a379043b47fa08d5121f01, type: 3}
+  m_Name: ZapScroll
+  m_EditorClassIdentifier: 
+  name: ScrollOfZap
+  model: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+  ingredients:
+  - {fileID: 11400000, guid: c390dfac835b57c45ac3d63433c8e7e9, type: 2}
+  - {fileID: 11400000, guid: de61d93318babb44a87ffa957445ac99, type: 2}
+  material: {fileID: 2100000, guid: 55c183dc45153be48a45c4e530127fb3, type: 2}
+  texture: {fileID: 0}
+  Kode: 2MAGPLIG
