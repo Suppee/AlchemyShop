@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 272fee04f7a379043b47fa08d5121f01, type: 3}
+  m_Name: Spaakugle
+  m_EditorClassIdentifier: 
+  name: Spaakugle
+  model: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
+  ingredients:
+  - {fileID: 11400000, guid: f894f5a4ed397cb42ab7921b04e30683, type: 2}
+  - {fileID: 11400000, guid: 4faa6bd89e5fa29448db5d6ea057c710, type: 2}
+  - {fileID: 11400000, guid: c1937b8f66029d54997cc85c5f0bdeec, type: 2}
+  material: {fileID: 2100000, guid: cd71291c91c8cce499cb663b5db9970e, type: 2}
+  texture: {fileID: 0}
+  Kode: 3SPATROWIT
