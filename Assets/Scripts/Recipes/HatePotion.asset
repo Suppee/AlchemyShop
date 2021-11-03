@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 272fee04f7a379043b47fa08d5121f01, type: 3}
+  m_Name: HatePotion
+  m_EditorClassIdentifier: 
+  name: HatePotion
+  model: {fileID: 4711208715938537054, guid: 364175aca066d964291b1e67e6ef945f, type: 3}
+  ingredients:
+  - {fileID: 11400000, guid: 45fe7212773f354498e491a4ad896e78, type: 2}
+  - {fileID: 11400000, guid: 2e64f600294d50949ba447a95377e3a5, type: 2}
+  - {fileID: 11400000, guid: b00d295a5fcd9b04fba2596e143d9094, type: 2}
+  material: {fileID: 2100000, guid: bae110eee250e4b418b188f4ae4e3170, type: 3}
+  texture: {fileID: 0}
+  Kode: 3HUMPIXRAB
