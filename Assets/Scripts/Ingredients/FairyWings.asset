@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 808f220b674cfae4fb89834882b001a3, type: 3}
-  m_Name: GreenIngredient
+  m_Name: FairyWings
   m_EditorClassIdentifier: 
-  name: GreenIngredient
-  ingrediensModel: {fileID: 4711208715938537054, guid: 3b2daf096c4450249a9e1e2e1b25f324, type: 3}
-  material: {fileID: 2100002, guid: efe9381559c516743bd05cef82f39ebb, type: 3}
-  Kode: G
+  name: FairyWings
+  ingrediensModel: {fileID: 10206, guid: 0000000000000000e000000000000000, type: 0}
+  material: {fileID: 2100008, guid: 47616bd0cda748d4cbedcfc908506b9d, type: 3}
+  Kode: FAI

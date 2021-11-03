@@ -52,7 +52,7 @@ public class KundeOrder : MasterStation
                             vare[v].GetComponent<RawImage>().texture = null;
                             vare[v].GetComponent<RawImage>().texture = aktivorder[v].texture;
                         }
-                        //Check om orderen er færdig
+                        //Check om orderen er fÃ¦rdig
                         if (aktivorder.Count == 0)
                         {
                             orderIgang = false;
@@ -83,8 +83,8 @@ public class KundeOrder : MasterStation
         }
         // Fjern alle elementer fra aktiv order 
         aktivorder.Clear();
-        //Find order størrelse
-        int orderstroelse = Random.Range(1, 4);
+        //Find order stï¿½rrelse
+        int orderstroelse = Random.Range(1, 2);
         for(int i = 0; i <= orderstroelse; i++)
         {
             int index = Random.Range(0, opskriftListe.Count);

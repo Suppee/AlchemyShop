@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 272fee04f7a379043b47fa08d5121f01, type: 3}
+  m_Name: WorldEnlarger
+  m_EditorClassIdentifier: 
+  name: WorldEnlarger
+  model: {fileID: 4711208715938537054, guid: 3b2daf096c4450249a9e1e2e1b25f324, type: 3}
+  ingredients:
+  - {fileID: 11400000, guid: ebfb3551297bc9942984afdecec2fce0, type: 2}
+  - {fileID: 11400000, guid: de61d93318babb44a87ffa957445ac99, type: 2}
+  - {fileID: 11400000, guid: e04835e47d563054695ed6ec14fe222e, type: 2}
+  material: {fileID: 2100000, guid: a0427cf339e5891468d5f2b433b2d44a, type: 2}
+  texture: {fileID: 0}
+  Kode: 3UNILIGMON
