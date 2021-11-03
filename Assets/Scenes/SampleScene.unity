@@ -748,7 +748,7 @@ GameObject:
   - component: {fileID: 269680933}
   - component: {fileID: 269680932}
   m_Layer: 5
-  m_Name: SecondItem
+  m_Name: SecondItem_2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1065,7 +1065,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 19
+  m_RootOrder: 20
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &423561740
 GameObject:
@@ -1721,7 +1721,7 @@ MonoBehaviour:
     - original: 62
       remapped: 62
     - original: 19
-      remapped: 87
+      remapped: 8
 --- !u!114 &680773906
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1887,7 +1887,7 @@ RectTransform:
   m_Children:
   - {fileID: 793688395}
   m_Father: {fileID: 0}
-  m_RootOrder: 19
+  m_RootOrder: 21
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -2548,7 +2548,7 @@ GameObject:
   - component: {fileID: 870267674}
   - component: {fileID: 870267673}
   m_Layer: 5
-  m_Name: SecondItem
+  m_Name: SecondItem_4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2846,7 +2846,7 @@ GameObject:
   - component: {fileID: 1045759382}
   - component: {fileID: 1045759381}
   m_Layer: 5
-  m_Name: FirstItem
+  m_Name: FirstItem_2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2964,7 +2964,7 @@ PrefabInstance:
     - target: {fileID: 8428476517740385417, guid: 079567ec0046d9d48817e718be2ec34e, type: 3}
       propertyPath: vare.Array.data[0]
       value: 
-      objectReference: {fileID: 383023139}
+      objectReference: {fileID: 1933319097}
     - target: {fileID: 8428476517740385417, guid: 079567ec0046d9d48817e718be2ec34e, type: 3}
       propertyPath: vare.Array.data[1]
       value: 
@@ -3212,7 +3212,7 @@ GameObject:
   - component: {fileID: 1262238302}
   - component: {fileID: 1262238301}
   m_Layer: 5
-  m_Name: FirstItem
+  m_Name: FirstItem_3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3558,7 +3558,7 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_Children:
-  - {fileID: 383023140}
+  - {fileID: 1933319098}
   - {fileID: 870267672}
   - {fileID: 1970945867}
   m_Father: {fileID: 344161800}
@@ -3918,7 +3918,7 @@ GameObject:
   - component: {fileID: 1622286555}
   - component: {fileID: 1622286554}
   m_Layer: 5
-  m_Name: FirstItem
+  m_Name: FirstItem_1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4134,7 +4134,7 @@ GameObject:
   - component: {fileID: 1776911461}
   - component: {fileID: 1776911460}
   m_Layer: 5
-  m_Name: SecondItem
+  m_Name: SecondItem_3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4345,7 +4345,7 @@ GameObject:
   - component: {fileID: 1811253185}
   - component: {fileID: 1811253184}
   m_Layer: 5
-  m_Name: SecondItem
+  m_Name: SecondItem_1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4455,7 +4455,7 @@ GameObject:
   - component: {fileID: 1933319100}
   - component: {fileID: 1933319099}
   m_Layer: 5
-  m_Name: ThirdItem
+  m_Name: FirstItem_4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4468,16 +4468,16 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1933319097}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -0}
-  m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 0.49999997, y: 0.49999997, z: 0.49999997}
   m_Children: []
-  m_Father: {fileID: 1809190850}
-  m_RootOrder: 2
+  m_Father: {fileID: 1413364817}
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 0, y: -100}
+  m_AnchoredPosition: {x: 1200, y: -50}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0, y: 0}
 --- !u!114 &1933319099
@@ -4493,7 +4493,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 0, b: 0, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -4631,7 +4631,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 18
+  m_RootOrder: 19
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1948516068
 GameObject:
