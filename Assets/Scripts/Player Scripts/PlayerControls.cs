@@ -71,7 +71,7 @@ public class PlayerControls : MonoBehaviour
         interaktionsobjekt = null;      
     }
 
-    // Saml objekt op
+    // Saml objekt op - attach object to player and removes gravity and collission
     public void SamlOp()
     {
        // Debug.Log(interaktionsobjekt + " samlet op");
@@ -97,7 +97,7 @@ public class PlayerControls : MonoBehaviour
         objekthold = null;
     }
     
-    // Boevling
+    // Boevling (har ingen funktion lige nu)
     void OnBoevle()
     {
         print("Boevler");
@@ -120,7 +120,7 @@ public class PlayerControls : MonoBehaviour
     //Find taetteste objekt
     IEnumerator FindTaettestObjekt()
     {
-            // Find taetteste objekt fra listen af objekter i r�kkevidde
+            // Find taetteste objekt fra listen af objekter i raekkevidde
             float kortestafstand = Mathf.Infinity;
             foreach (GameObject ting in iRaekkevide)
             {
