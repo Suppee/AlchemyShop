@@ -7,7 +7,7 @@ public class SliderTime : MonoBehaviour
 {
     // Start is called before the first frame update
     public Slider timerSlider;
-    public int gameTime;
+    public float gameTime;
 
     private bool stopTimer;
     void Start()
@@ -20,16 +20,16 @@ public class SliderTime : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        float time = gameTime - Time.time;
+        gameTime -= Time.deltaTime;
 
-        if (time <= 0)
+        if (gameTime <= 0)
         {
             stopTimer = true;
         }
 
         if (stopTimer == false)
         {
-            timerSlider.value = time;
+            timerSlider.value = gameTime;
         }
     }
 }

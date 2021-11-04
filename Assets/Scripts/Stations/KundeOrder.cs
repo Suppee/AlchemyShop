@@ -46,12 +46,12 @@ public class KundeOrder : MasterStation
                     vare[i].GetComponent<RawImage>().texture = null;
                     Destroy();
                     //Ret UI
-                    for (int v = 0; v <= vare.Length; v++)
+                    /*for (int va = 0; va <= vare.Length; va++)
                     {
-                        vare[v].GetComponent<RawImage>().texture = null;
-                        vare[v].GetComponent<RawImage>().texture = aktivorder[v].texture;
+                        vare[va].GetComponent<RawImage>().texture = null;
+                        vare[va].GetComponent<RawImage>().texture = aktivorder[va].texture;
                         Debug.Log(vare.Length);
-                    } 
+                    } */
                     //Check om orderen er færdig
                     if (aktivorder.Count == 0)
                     
@@ -60,6 +60,8 @@ public class KundeOrder : MasterStation
                         SkabNyOrdre();
                         Debug.Log("Hello");
                         //StartCoroutine("KundePause");
+                        GameObject.Find("Ur&Penge").GetComponent<Penge>().gold += 10;
+                        GameObject.Find("SliderTimer").GetComponent<SliderTime>().gameTime = 25;
                     }                        
                     return;
                 }
