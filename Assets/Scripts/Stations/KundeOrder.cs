@@ -29,8 +29,9 @@ public class KundeOrder : MasterStation
             opskriftListe.Add(opskrift);
 
         }
+        this.GetComponent<MeshRenderer>().material.color = Color.red;
 
-            Invoke("SkabNyOrdre", 2);
+        Invoke("SkabNyOrdre", 2);
     }
 
     public override void Activate()
@@ -46,17 +47,21 @@ public class KundeOrder : MasterStation
                     vare[i].GetComponent<RawImage>().texture = null;
                     Destroy();
                     //Ret UI
-                    for (int v = 0; v <= vare.Length; v++)
+                    /*for (int va = 0; va < 2; va++)
                     {
-                        vare[v].GetComponent<RawImage>().texture = null;
-                        vare[v].GetComponent<RawImage>().texture = aktivorder[v].texture;
-                        Debug.Log(vare.Length);
-                    } 
+                        Debug.Log(va);
+                        Debug.Log(aktivorder[va]);
+                        Debug.Log(vare[va]);
+                        //vare[va].GetComponent<RawImage>().texture = null;
+                        //vare[va].GetComponent<RawImage>().texture = aktivorder[va].texture;
+
+                    }*/
+
                     //Check om orderen er færdig
-                    if (aktivorder.Count == 0)
-                    
+                    if (aktivorder.Count == 0)                    
                     {
                         orderIgang = false;
+                        this.GetComponent<MeshRenderer>().material.color = Color.red;
                         SkabNyOrdre();
                         Debug.Log("Hello");
                         //StartCoroutine("KundePause");
@@ -72,7 +77,9 @@ public class KundeOrder : MasterStation
         //Ingen order i gang
             print("Tag en order");
             orderIgang = true;
+            this.gameObject.GetComponent<MeshRenderer>().material.color = Color.green;
         }
+      
     }
 
     public void SkabNyOrdre()
