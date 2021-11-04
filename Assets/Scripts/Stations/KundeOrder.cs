@@ -15,6 +15,7 @@ public class KundeOrder : MasterStation
     
 
     // Start is called before the first frame update
+
     void Start()
     {
 
@@ -34,44 +35,44 @@ public class KundeOrder : MasterStation
 
     public override void Activate()
     {
-        if(aktivorder.Count > 0 && orderIgang == true)
+        if(aktivorder.Count > 0 && orderIgang == true && spillerref.holderObjekt == true)
         {
-            if (spillerref.holderObjekt == true)
-            {
-                for (int i = 0; i < aktivorder.Count; i++)
-                { 
-                    if (spillerref.objekthold.GetComponent<ProductInfo>().Opskrift.name.Equals(aktivorder[i].name))
+            for (int i = 0; i < aktivorder.Count; i++)
+            { 
+                if (spillerref.objekthold.GetComponent<ProductInfo>().Opskrift.name.Equals(aktivorder[i].name))
+                {
+                    aktivorder.RemoveAt(i);
+                    Debug.Log("Produkt godkendt");
+                    vare[i].GetComponent<RawImage>().texture = null;
+                    Destroy();
+                    //Ret UI
+                    for (int v = 0; v <= vare.Length; v++)
                     {
-                        aktivorder.RemoveAt(i);
-                        Debug.Log("Produkt godkendt");
-                        vare[i].GetComponent<RawImage>().texture = null;
-                        Destroy();
-                        //Ret UI
-                        for (int v = 0; v <= vare.Length; v++)
-                        {
-                            vare[v].GetComponent<RawImage>().texture = null;
-                            vare[v].GetComponent<RawImage>().texture = aktivorder[v].texture;
-                        }
-                        //Check om orderen er færdig
-                        if (aktivorder.Count == 0)
-                        {
-                            orderIgang = false;
-                            StartCoroutine("KundePause");
-                        }                         
-                        return;
-                    }
+                        vare[v].GetComponent<RawImage>().texture = null;
+                        vare[v].GetComponent<RawImage>().texture = aktivorder[v].texture;
+                        Debug.Log(vare.Length);
+                    } 
+                    //Check om orderen er færdig
+                    if (aktivorder.Count == 0)
+                    
+                    {
+                        orderIgang = false;
+                        SkabNyOrdre();
+                        Debug.Log("Hello");
+                        //StartCoroutine("KundePause");
+                    }                        
+                    return;
                 }
+                else
+                    Debug.Log("Produkt ikke godkendt");
             }
-            else
-                Debug.Log("Produkt ikke godkendt");
         }
         else if (aktivorder.Count > 0 && orderIgang == false && spillerref.holderObjekt == false)
         {
-            //Ingen order i gang
+        //Ingen order i gang
             print("Tag en order");
             orderIgang = true;
         }
-        
     }
 
     public void SkabNyOrdre()
