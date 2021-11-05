@@ -65,6 +65,8 @@ public class KundeOrder : MasterStation
                         SkabNyOrdre();
                         Debug.Log("Hello");
                         //StartCoroutine("KundePause");
+                        GameObject.Find("Ur&Penge").GetComponent<Penge>().gold += 10;
+                        GameObject.Find("SliderTimer").GetComponent<SliderTime>().gameTime = 25;
                     }                        
                     return;
                 }
