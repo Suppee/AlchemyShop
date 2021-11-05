@@ -10,4 +10,5 @@ public class Ingredient : ScriptableObject
     public Mesh ingrediensModel;
     public Material material;
     public string Kode;
+    public Texture icon;
 }
