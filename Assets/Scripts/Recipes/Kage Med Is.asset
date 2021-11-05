@@ -18,6 +18,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 4a1d730a480474743bd855cd61b68ecc, type: 2}
   - {fileID: 11400000, guid: deab1997909777c439188f59112a4ef9, type: 2}
   - {fileID: 11400000, guid: f53df7e24658e2f46b2ad66c6251346f, type: 2}
+  - {fileID: 11400000, guid: 0c68bddc088e66c4baa7601c0ca5b90b, type: 2}
   material: {fileID: 0}
   texture: {fileID: 2800000, guid: 2172d31017a7ff940a0f27caee32e52e, type: 3}
-  Kode: 3BRG
+  Kode: 4BRGPAP
