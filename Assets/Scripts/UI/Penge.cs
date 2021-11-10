@@ -9,7 +9,7 @@ public class Penge : MonoBehaviour
     public Text goldtext;
     GameObject currencyUI;
 
-    void Update()
+    public void Update()
     {
        if (gold > 0)
        {
@@ -21,7 +21,7 @@ public class Penge : MonoBehaviour
        }
        DisplayGold(gold);
     }
-    void DisplayGold(float goldToDisplay)
+     public void DisplayGold(float goldToDisplay)
     {
 
     goldtext.text = gold.ToString();    

@@ -6,9 +6,8 @@ public class Timer : MonoBehaviour
 {
    public float timeValue = 90;
    public Text timeText;
-
     // Update is called once per frame
-    void Update()
+   public void Update()
     {
         if(timeValue > 0)
         {
@@ -21,11 +20,12 @@ public class Timer : MonoBehaviour
         DisplayTime(timeValue);
     }
 
-    void DisplayTime(float timeToDisplay)
+    public void DisplayTime(float timeToDisplay)
     {
         if(timeToDisplay < 0)
         {
             timeToDisplay = 0;
+            GameObject.Find("GameManager").GetComponent<GameManager>().End = true;
         }
         else if(timeToDisplay > 0)
         {

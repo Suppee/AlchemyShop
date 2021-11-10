@@ -12,6 +12,7 @@ public class KundeOrder : MasterStation
     public List<Recipes> aktivorder;
     public float mintid;
     public float maxtid;
+    public int PengeOrder = 10;
     
 
     // Start is called before the first frame update
@@ -65,8 +66,8 @@ public class KundeOrder : MasterStation
                         SkabNyOrdre();
                         Debug.Log("Hello");
                         //StartCoroutine("KundePause");
-                        GameObject.Find("Ur&Penge").GetComponent<Penge>().gold += 10;
-                        GameObject.Find("SliderTimer").GetComponent<SliderTime>().gameTime = 25;
+                        GameObject.Find("Ur_Penge").GetComponent<Penge>().gold += PengeOrder;
+                        GameObject.Find("SliderTimer").GetComponent<SliderTime>().gameTime = 60;
                     }                        
                     return;
                 }
