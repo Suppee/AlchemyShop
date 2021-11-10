@@ -735,7 +735,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   timerSlider: {fileID: 440931318}
-  gameTime: 25
+  gameTime: 60
 --- !u!1 &344161799
 GameObject:
   m_ObjectHideFlags: 0
@@ -948,6 +948,53 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 16
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &407475540
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 407475542}
+  - component: {fileID: 407475541}
+  m_Layer: 0
+  m_Name: GameManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &407475541
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 407475540}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a372a6bd6af1bb4d878bd7896479150, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  restartDelay: 10
+  Ur_Penge: {fileID: 705238855}
+  End: 0
+  WinningMonney: 100
+--- !u!4 &407475542
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 407475540}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -6.67405, y: 4.66017, z: 0.091819584}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 18
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &423561740
 GameObject:
@@ -1569,7 +1616,7 @@ GameObject:
   - component: {fileID: 705238856}
   - component: {fileID: 705238861}
   m_Layer: 5
-  m_Name: Ur&Penge
+  m_Name: Ur_Penge
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1587,7 +1634,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6b6572f8799bad6459eaae5dd99f37b6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  timeValue: 300
+  timeValue: 100
   timeText: {fileID: 793688393}
 --- !u!114 &705238857
 MonoBehaviour:
@@ -1683,7 +1730,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b75e02b29a12f7748a16f0ba051e6e9d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gold: 0
+  gold: 100
   goldtext: {fileID: 1541192924}
 --- !u!1 &731532823
 GameObject:
@@ -2064,8 +2111,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9a372a6bd6af1bb4d878bd7896479150, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Opskrifter:
-  - {fileID: 0}
+  restartDelay: 10
+  Ur_Penge: {fileID: 705238855}
+  End: 0
+  WinningMonney: 0
 --- !u!1 &857707369
 GameObject:
   m_ObjectHideFlags: 0
@@ -2915,6 +2964,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: 0cea0fdc3a94adf49ade7f491ab86cbc, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 0cea0fdc3a94adf49ade7f491ab86cbc, type: 3}
       propertyPath: m_Name
       value: Workstation blockout
@@ -3479,7 +3532,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   timerSlider: {fileID: 1451732715}
-  gameTime: 25
+  gameTime: 60
 --- !u!4 &1547723938
 Transform:
   m_ObjectHideFlags: 0
@@ -3540,7 +3593,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   timerSlider: {fileID: 1228971945}
-  gameTime: 25
+  gameTime: 60
 --- !u!1 &1622286552
 GameObject:
   m_ObjectHideFlags: 0
@@ -3810,7 +3863,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1809190849}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1344c3c82d62a2a41a3576d8abb8e3ea, type: 3}
   m_Name: 
@@ -4243,6 +4296,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1966376524}
   - component: {fileID: 1966376523}
+  - component: {fileID: 1966376525}
   m_Layer: 0
   m_Name: Directional Light
   m_TagString: Untagged
@@ -4261,7 +4315,7 @@ Light:
   serializedVersion: 10
   m_Type: 1
   m_Shape: 0
-  m_Color: {r: 1, g: 0.95686275, b: 0.8392157, a: 1}
+  m_Color: {r: 0.9716981, g: 0.9716981, b: 0.9716981, a: 1}
   m_Intensity: 1
   m_Range: 10
   m_SpotAngle: 30
@@ -4272,8 +4326,8 @@ Light:
     m_Resolution: -1
     m_CustomResolution: -1
     m_Strength: 1
-    m_Bias: 0.02
-    m_NormalBias: 0.1
+    m_Bias: 1
+    m_NormalBias: 1
     m_NearPlane: 0.1
     m_CullingMatrixOverride:
       e00: 1
@@ -4301,7 +4355,7 @@ Light:
     serializedVersion: 2
     m_Bits: 4294967295
   m_RenderingLayerMask: 1
-  m_Lightmapping: 4
+  m_Lightmapping: 2
   m_LightShadowCasterMode: 0
   m_AreaSize: {x: 1, y: 1}
   m_BounceIntensity: 1
@@ -4326,6 +4380,19 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
+--- !u!114 &1966376525
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1966376522}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 474bcb49853aa07438625e644c072ee6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_UsePipelineSettings: 1
 --- !u!1 &1970945866
 GameObject:
   m_ObjectHideFlags: 0
@@ -4371,7 +4438,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   timerSlider: {fileID: 574768375}
-  gameTime: 25
+  gameTime: 60
 --- !u!1 &2056363714
 GameObject:
   m_ObjectHideFlags: 0

@@ -126,9 +126,9 @@ CapsuleCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   m_Radius: 0.95
-  m_Height: 2.87
+  m_Height: 3.62639
   m_Direction: 1
-  m_Center: {x: 0, y: 0.75, z: 0}
+  m_Center: {x: 0, y: 1.128195, z: 0}
 --- !u!114 &7941511378368522778
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -141,9 +141,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 454350110f672f844a31241151b13cdc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 0}
+  spillerref: {fileID: 0}
   playerPickup: {fileID: 0}
   ingrediensPrefab: {fileID: 5175779227404207543, guid: 4c01a965b8ac57e42afe4b2ba5fed5a7, type: 3}
+  ingredient: {fileID: 11400000, guid: f53df7e24658e2f46b2ad66c6251346f, type: 2}
 --- !u!1 &9146249520877746575
 GameObject:
   m_ObjectHideFlags: 0
