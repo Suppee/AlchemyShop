@@ -99,7 +99,8 @@ public class KundeOrder : MasterStation
         for(int i = 0; i <= orderstroelse; i++)
         {
             int index = Random.Range(0, opskriftListe.Count);
-            vare[i].GetComponent<RawImage>().texture = opskriftListe[index].texture;
+            //GetComponent<Canvas>.Instantiate
+            //Instantiate(CanvasPrefab);
             aktivorder.Add(opskriftListe[index]);
         }
     }
