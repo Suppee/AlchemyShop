@@ -16,3 +16,4 @@ MonoBehaviour:
   ingrediensModel: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
   material: {fileID: 2100000, guid: e8b142dcba6fb4540b763e0a8c25023e, type: 2}
   Kode: G
+  icon: {fileID: 2800000, guid: 4a599935a176d7345a06fbd9e7298fb4, type: 3}
