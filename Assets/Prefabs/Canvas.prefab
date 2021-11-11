@@ -341,7 +341,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Texture: {fileID: 2800000, guid: b28e65202ee63364ca2018b678844db0, type: 3}
+  m_Texture: {fileID: 0}
   m_UVRect:
     serializedVersion: 2
     x: 0
@@ -449,7 +449,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Texture: {fileID: 2800000, guid: b28e65202ee63364ca2018b678844db0, type: 3}
+  m_Texture: {fileID: 0}
   m_UVRect:
     serializedVersion: 2
     x: 0
@@ -655,7 +655,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Texture: {fileID: 2800000, guid: b28e65202ee63364ca2018b678844db0, type: 3}
+  m_Texture: {fileID: 0}
   m_UVRect:
     serializedVersion: 2
     x: 0
@@ -802,7 +802,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Texture: {fileID: 2800000, guid: 7adaaab2410406347b7b77a63aad3f68, type: 3}
+  m_Texture: {fileID: 0}
   m_UVRect:
     serializedVersion: 2
     x: 0
@@ -954,8 +954,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 69383b563ff8e75488d0a21b0ad8ce02, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentrecipe: {fileID: 11400000, guid: db38266550e97384aa8468622c96601f, type: 2}
+  currentrecipe: {fileID: 0}
   product: {fileID: 1174028252381862249}
   first_ingredient: {fileID: 1014014828}
   second_ingredient: {fileID: 1109791943}
-  third_ingredient: {fileID: 0}
+  third_ingredient: {fileID: 731532823}

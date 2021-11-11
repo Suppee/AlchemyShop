@@ -28,7 +28,7 @@ RectTransform:
   m_GameObject: {fileID: 745304587683901072}
   m_LocalRotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 2, y: 2, z: 2}
+  m_LocalScale: {x: 3, y: 3, z: 2}
   m_Children:
   - {fileID: 1585474169716654946}
   m_Father: {fileID: 7619901421445011667}
@@ -166,7 +166,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Texture: {fileID: 2800000, guid: 92b6dbdf13f9b4149b23be2a3ca28121, type: 3}
+  m_Texture: {fileID: 2800000, guid: 9363bf8293d89ef4890c2b8251ce356f, type: 3}
   m_UVRect:
     serializedVersion: 2
     x: 0
@@ -338,7 +338,7 @@ MonoBehaviour:
   spillerref: {fileID: 0}
   playerPickup: {fileID: 0}
   ingrediensPrefab: {fileID: 5175779227404207543, guid: 4c01a965b8ac57e42afe4b2ba5fed5a7, type: 3}
-  ingredient: {fileID: 11400000, guid: 4a1d730a480474743bd855cd61b68ecc, type: 2}
+  ingredient: {fileID: 11400000, guid: 45fe7212773f354498e491a4ad896e78, type: 2}
   ingredienticon: {fileID: 6375618622139927805}
 --- !u!1 &9146249520877746575
 GameObject:

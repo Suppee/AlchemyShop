@@ -13,18 +13,11 @@ public class UIRecipeInfo : MonoBehaviour
     public GameObject third_ingredient;
 
     // Start is called before the first frame update
-    void OnValidate()
-    {
+    public void OnBegin()
+    {      
         product.GetComponent<RawImage>().texture = currentrecipe.texture;
         first_ingredient.GetComponent<RawImage>().texture = currentrecipe.ingredients[0].icon;
         second_ingredient.GetComponent<RawImage>().texture = currentrecipe.ingredients[1].icon;
         third_ingredient.GetComponent<RawImage>().texture = currentrecipe.ingredients[2].icon;
-
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    }    
 }

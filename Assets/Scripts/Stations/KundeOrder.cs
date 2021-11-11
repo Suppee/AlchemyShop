@@ -43,13 +43,11 @@ public class KundeOrder : MasterStation
             { 
                 if (spillerref.objekthold.GetComponent<ProductInfo>().Opskrift.name.Equals(aktivorder[i].name))
                 {
-                    aktivorder.RemoveAt(i);
-                    Destroy(this.gameObject.transform.GetChild(0).gameObject.transform.GetChild(i).gameObject);
-                    Debug.Log("Produkt godkendt");
-                    //vare[i].GetComponent<RawImage>().texture = null;
+                    aktivorder.RemoveAt(i);                    
+                    Debug.Log("Produkt godkendt");                  
                     Destroy();
-                    //Ret UI
-                    
+                    //Ret UI               
+                    Destroy(this.gameObject.transform.GetChild(0).gameObject.transform.GetChild(i).gameObject);
 
                     //Check om orderen er færdig
                     if (aktivorder.Count == 0)                    
@@ -80,20 +78,17 @@ public class KundeOrder : MasterStation
 
     public void SkabNyOrdre()
     {
-        //Reset UI
-        
-
         // Fjern alle elementer fra aktiv order 
-
         aktivorder.Clear();
         //Find order st�rrelse
        
         int orderstroelse = Random.Range(0,5);
         for(int i = 0; i <= orderstroelse; i++)
         {
-            int index = Random.Range(0, opskriftListe.Count);
-            //GetComponent<Canvas>.Instantiate
-            Instantiate(CanvasPrefab, this.gameObject.transform.GetChild(0));
+            int index = Random.Range(0, opskriftListe.Count);            
+            GameObject thiscanvas = Instantiate(CanvasPrefab, this.gameObject.transform.GetChild(0));
+            thiscanvas.GetComponent<UIRecipeInfo>().currentrecipe = opskriftListe[index];
+            thiscanvas.GetComponent<UIRecipeInfo>().OnBegin();
             aktivorder.Add(opskriftListe[index]);
         }
     }
