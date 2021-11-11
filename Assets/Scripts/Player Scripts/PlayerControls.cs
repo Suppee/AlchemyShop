@@ -19,9 +19,14 @@ public class PlayerControls : MonoBehaviour
     public Transform PickUpHolder;          // Placeringen af objektet på spilleren
     public GameObject objekthold;           // Objektet man holder
 
+    // Kaste med ting
+    Rigidbody m_Rigidbody;
+    public float kraft;
+
     private void Awake()
     {
         controller = GetComponent<CharacterController>();
+        m_Rigidbody = GetComponent<Rigidbody>();
     }
 
     public void OnMove(InputValue input)
@@ -102,6 +107,7 @@ public class PlayerControls : MonoBehaviour
         objekthold.GetComponent<Rigidbody>().isKinematic = false;
         iRaekkevide.Add(objekthold);
         objekthold = null;
+        m_Rigidbody.AddForce(transform.up * kraft);
     }
     
     // Boevling (har ingen funktion lige nu)

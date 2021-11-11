@@ -16,3 +16,4 @@ MonoBehaviour:
   ingrediensModel: {fileID: 10208, guid: 0000000000000000e000000000000000, type: 0}
   material: {fileID: 2100000, guid: d72b68758d344f34f9ba52445f684680, type: 2}
   Kode: RAB
+  icon: {fileID: 2800000, guid: dcc182fbdcefb5c45a1040aa497f5548, type: 3}
