@@ -7,12 +7,12 @@ using UnityEngine.UI;
 public class KundeOrder : MasterStation
 {
     public bool orderIgang;
-    public List<Recipes> opskriftListe;
-    public GameObject[] vare;
+    public List<Recipes> opskriftListe;    
     public List<Recipes> aktivorder;
     public float mintid;
     public float maxtid;
     public int PengeOrder = 10;
+    public GameObject CanvasPrefab;
     
 
     // Start is called before the first frame update
@@ -44,19 +44,12 @@ public class KundeOrder : MasterStation
                 if (spillerref.objekthold.GetComponent<ProductInfo>().Opskrift.name.Equals(aktivorder[i].name))
                 {
                     aktivorder.RemoveAt(i);
+                    Destroy(this.gameObject.transform.GetChild(0).gameObject.transform.GetChild(i).gameObject);
                     Debug.Log("Produkt godkendt");
-                    vare[i].GetComponent<RawImage>().texture = null;
+                    //vare[i].GetComponent<RawImage>().texture = null;
                     Destroy();
                     //Ret UI
-                    /*for (int va = 0; va < 2; va++)
-                    {
-                        Debug.Log(va);
-                        Debug.Log(aktivorder[va]);
-                        Debug.Log(vare[va]);
-                        //vare[va].GetComponent<RawImage>().texture = null;
-                        //vare[va].GetComponent<RawImage>().texture = aktivorder[va].texture;
-
-                    }*/
+                    
 
                     //Check om orderen er færdig
                     if (aktivorder.Count == 0)                    
@@ -88,19 +81,19 @@ public class KundeOrder : MasterStation
     public void SkabNyOrdre()
     {
         //Reset UI
-        foreach (GameObject v in vare)
-        {
-            v.GetComponent<RawImage>().texture = null;
-        }
+        
+
         // Fjern alle elementer fra aktiv order 
+
         aktivorder.Clear();
         //Find order st�rrelse
-        int orderstroelse = Random.Range(1, 2);
+       
+        int orderstroelse = Random.Range(0,5);
         for(int i = 0; i <= orderstroelse; i++)
         {
             int index = Random.Range(0, opskriftListe.Count);
             //GetComponent<Canvas>.Instantiate
-            //Instantiate(CanvasPrefab);
+            Instantiate(CanvasPrefab, this.gameObject.transform.GetChild(0));
             aktivorder.Add(opskriftListe[index]);
         }
     }
