@@ -25,9 +25,9 @@ public class SliderTime : MonoBehaviour
         if (gameTime <= 0)
         {
             stopTimer = true;
+            gameTime = 0;
         }
-
-        if (stopTimer == false)
+        else if (stopTimer == false)
         {
             timerSlider.value = gameTime;
         }

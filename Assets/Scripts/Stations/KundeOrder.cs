@@ -58,7 +58,7 @@ public class KundeOrder : MasterStation
                         Debug.Log("Hello");
                         //StartCoroutine("KundePause");
                         GameObject.Find("Ur_Penge").GetComponent<Penge>().gold += PengeOrder;
-                        GameObject.Find("SliderTimer").GetComponent<SliderTime>().gameTime = 60;
+                        GameObject.Find("Slider").GetComponent<SliderTime>().gameTime = 60;
                     }                        
                     return;
                 }
@@ -91,6 +91,7 @@ public class KundeOrder : MasterStation
             thiscanvas.GetComponent<UIRecipeInfo>().OnBegin();
             aktivorder.Add(opskriftListe[index]);
         }
+        GameObject.Find("Slider").GetComponent<SliderTime>().gameTime = 60;
     }
 
     IEnumerator KundePause()
