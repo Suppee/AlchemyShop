@@ -3,14 +3,23 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class PlayerControls : MonoBehaviour
+public class Mover : MonoBehaviour
 {
     // Bevaegelse Variable
+
+    [SerializeField]
     public float speed = 5;
+
     CharacterController controller;
     Vector3 direction = Vector3.zero;
+    Vector2 inputVector = Vector2.zero;
     public float turnSmoothTime = 0.1f;
     float turnSmoothVelocity;
+    
+    [SerializeField]
+    private int  playerIndex = 0;
+    PlayerInputHandler playerInputHandler;
+    public bool Interact = false;
     
     // Interger Variabler 
     public List<GameObject> iRaekkevide;    // Objekter indenfor raekkevidde af spilleren    
@@ -27,20 +36,26 @@ public class PlayerControls : MonoBehaviour
     {
         controller = GetComponent<CharacterController>();
         m_Rigidbody = GetComponent<Rigidbody>();
+        playerInputHandler = GetComponent<PlayerInputHandler>();
     }
 
-    public void OnMove(InputValue input)
+    public void SetInputVector(Vector2 direction)
     {
-        Vector2 vec = input.Get<Vector2>();
-        direction = new Vector3(vec.x, 0, vec.y) * speed;
-    }    
+       
+        inputVector = direction;
+       
+    }  
 
-    private void FixedUpdate()
+    public int GetPlayerIndex()
     {
+        return playerIndex;
+    }
+
+    public void Update()
+    {
+        direction = new Vector3(inputVector.x, 0, inputVector.y) * speed;
         controller.SimpleMove(direction);
-    }
-    void Update()
-    {
+
         if (direction.magnitude >= 0.1f)
         {
             float targetAngle = Mathf.Atan2(direction.x, direction.z) * Mathf.Rad2Deg;
@@ -48,9 +63,18 @@ public class PlayerControls : MonoBehaviour
             transform.rotation = Quaternion.Euler(0f, angle, 0f);  
         }
         
+        if (Interact == true)
+        {
+           Invoke("OnPickUp",0);
+           Debug.Log(Interact);
+        }
+        else
+        {
+            Debug.Log(Interact);
+        }
     }
     //Interger med objekt
-    void OnInteract()
+    private void OnPickUp()
     {
         if(iRaekkevide.Count > 0)
         {
@@ -105,9 +129,11 @@ public class PlayerControls : MonoBehaviour
         objekthold.GetComponent<MeshCollider>().enabled = true;
         objekthold.GetComponent<Rigidbody>().useGravity = true;
         objekthold.GetComponent<Rigidbody>().isKinematic = false;
+        objekthold.GetComponent<Rigidbody>().AddForce(transform.up * kraft);
+        objekthold.GetComponent<Rigidbody>().AddForce(transform.forward * kraft);
         iRaekkevide.Add(objekthold);
         objekthold = null;
-        m_Rigidbody.AddForce(transform.up * kraft);
+      
     }
     
     // Boevling (har ingen funktion lige nu)

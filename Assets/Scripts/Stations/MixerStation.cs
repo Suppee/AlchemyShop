@@ -23,7 +23,7 @@ public class MixerStation : MasterStation
         Debug.Log("Aktiveret" + this);
         if (spillerref.holderObjekt == true)
         {
-            // Tilføj ingrediens til listen
+            // Tilfï¿½j ingrediens til listen
             blanding.Add(spillerref.objekthold.GetComponent<IngrediensInfo>().Ingredient);
             Destroy();           
 
@@ -39,8 +39,8 @@ public class MixerStation : MasterStation
                 {
                     GameObject nyProdukt = Instantiate(produktPrefab);
                     nyProdukt.GetComponent<ProductInfo>().Opskrift = opskrift;
-                    spillerref.GetComponent<PlayerControls>().objekthold = nyProdukt;
-                    spillerref.GetComponent<PlayerControls>().SamlOp();
+                    spillerref.GetComponent<Mover>().objekthold = nyProdukt;
+                    spillerref.GetComponent<Mover>().SamlOp();
                     
                 }
             }

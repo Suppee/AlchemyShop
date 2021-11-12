@@ -7,17 +7,11 @@ public class GameManager : MonoBehaviour
 {
     bool GameHasEnded = false; 
     public float restartDelay = 1f;
-    public GameObject Ur_Penge;
-    private Penge monney;
+    public int monney;
     private Timer tid;
     public bool End = false;
     public int WinningMonney = 100;
 
-    void Start()
-    {
-        monney = Ur_Penge.GetComponent<Penge>();
-        tid = Ur_Penge.GetComponent<Timer>();
-    }
     public void Update()
     {
         if(End == true)
@@ -34,7 +28,7 @@ public class GameManager : MonoBehaviour
             GameHasEnded = true;
             Debug.Log("EndGame");
             
-            if(monney.gold >= WinningMonney)
+            if(monney >= WinningMonney)
             {
                 Debug.Log("win");
                 

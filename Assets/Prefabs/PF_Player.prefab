@@ -506,7 +506,6 @@ GameObject:
   - component: {fileID: 4042721267090767535}
   - component: {fileID: 4580188238420912578}
   - component: {fileID: 4580188238420912576}
-  - component: {fileID: 4580188238420912577}
   - component: {fileID: 8360178011830923160}
   - component: {fileID: 4805923761587041468}
   m_Layer: 0
@@ -524,7 +523,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3697861280693806101}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 2, y: 0, z: 0}
   m_LocalScale: {x: 0.7, y: 0.7, z: 0.7}
   m_Children:
   - {fileID: 4947895509885349425}
@@ -565,41 +564,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 5
   turnSmoothTime: 0.1
+  playerIndex: 0
+  Interact: 0
   iRaekkevide: []
   interaktionsobjekt: {fileID: 0}
   holderObjekt: 0
   PickUpHolder: {fileID: 397008915291519801}
   objekthold: {fileID: 0}
---- !u!114 &4580188238420912577
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3697861280693806101}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 62899f850307741f2a39c98a8b639597, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Actions: {fileID: -944628639613478452, guid: d1f5eb6883cb8fa42957fb7c2da968fc, type: 3}
-  m_NotificationBehavior: 0
-  m_UIInputModule: {fileID: 0}
-  m_DeviceLostEvent:
-    m_PersistentCalls:
-      m_Calls: []
-  m_DeviceRegainedEvent:
-    m_PersistentCalls:
-      m_Calls: []
-  m_ControlsChangedEvent:
-    m_PersistentCalls:
-      m_Calls: []
-  m_ActionEvents: []
-  m_NeverAutoSwitchControlSchemes: 0
-  m_DefaultControlScheme: 
-  m_DefaultActionMap: default
-  m_SplitScreenIndex: -1
-  m_Camera: {fileID: 0}
+  kraft: 200
 --- !u!136 &8360178011830923160
 CapsuleCollider:
   m_ObjectHideFlags: 0
