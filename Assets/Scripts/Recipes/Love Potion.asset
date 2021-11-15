@@ -13,10 +13,11 @@ MonoBehaviour:
   m_Name: Love Potion
   m_EditorClassIdentifier: 
   name: Love Potion
-  model: {fileID: 4300008, guid: 47616bd0cda748d4cbedcfc908506b9d, type: 3}
+  model: {fileID: 10208, guid: 0000000000000000e000000000000000, type: 0}
   ingredients:
-  - {fileID: 11400000, guid: deab1997909777c439188f59112a4ef9, type: 2}
-  - {fileID: 11400000, guid: 4a1d730a480474743bd855cd61b68ecc, type: 2}
-  material: {fileID: 0}
-  texture: {fileID: 2800000, guid: 996a74d1d5addd8489674f431ca4a681, type: 3}
-  Kode: 2RB
+  - {fileID: 11400000, guid: ebfb3551297bc9942984afdecec2fce0, type: 2}
+  - {fileID: 11400000, guid: 318f3fe94b25190429edc826e9d3db36, type: 2}
+  - {fileID: 11400000, guid: 45fe7212773f354498e491a4ad896e78, type: 2}
+  material: {fileID: 2100000, guid: 51fcd5c22ab4c7d4cb04cfe5c48bb155, type: 2}
+  texture: {fileID: 2800000, guid: f9010ddc112d14742b39dfbb2faf968f, type: 3}
+  Kode: 3UNIFOUHUM

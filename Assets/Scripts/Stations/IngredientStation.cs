@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class IngredientStation : MasterStation
 {
@@ -9,8 +10,14 @@ public class IngredientStation : MasterStation
 
     public GameObject ingrediensPrefab;
     public Ingredient ingredient;
-    
+    public GameObject ingredienticon;
+
     // Hidkald Prefab
+
+    private void OnValidate()
+    {
+        ingredienticon.GetComponent<RawImage>().texture = ingredient.icon;
+    }
 
     public override void Activate()
     {

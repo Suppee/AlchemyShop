@@ -10,9 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 808f220b674cfae4fb89834882b001a3, type: 3}
-  m_Name: PurpleIngredient
+  m_Name: Batwing
   m_EditorClassIdentifier: 
-  name: New Ingredient
-  ingrediensModel: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
-  material: {fileID: 2100000, guid: 0e4811eb1e435034489192436b1b6d12, type: 2}
-  Kode: P
+  name: RodIngredient
+  ingrediensModel: {fileID: 4300006, guid: 47616bd0cda748d4cbedcfc908506b9d, type: 3}
+  material: {fileID: 2100002, guid: 47616bd0cda748d4cbedcfc908506b9d, type: 3}
+  Kode: R
+  icon: {fileID: 2800000, guid: 1749141648c8e9b4e9d6ba09208eaf12, type: 3}
