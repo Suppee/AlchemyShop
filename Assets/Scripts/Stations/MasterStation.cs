@@ -6,7 +6,7 @@ using UnityEditor;
 public class MasterStation : MonoBehaviour
 {
     //Variabler
-    public PlayerControls spillerref;
+    public Mover spillerref;
     public GameObject playerPickup;
 
     //Aktiver Station Metode

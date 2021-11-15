@@ -23,8 +23,8 @@ public class IngredientStation : MasterStation
     {
         GameObject NyIngredient = Instantiate(ingrediensPrefab);
         NyIngredient.GetComponent<IngrediensInfo>().Ingredient = ingredient;
-        spillerref.GetComponent<PlayerControls>().objekthold = NyIngredient;
-        spillerref.GetComponent<PlayerControls>().SamlOp();        
+        spillerref.GetComponent<Mover>().objekthold = NyIngredient;
+        spillerref.GetComponent<Mover>().SamlOp();        
     }
 
     

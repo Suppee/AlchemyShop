@@ -1,5 +1,5 @@
 {
-    "name": "PlayerControls",
+    "name": "PlayerInput",
     "maps": [
         {
             "name": "default",
@@ -93,7 +93,7 @@
                     "name": "",
                     "id": "c6d54b62-6692-44fe-b088-4342792dd11b",
                     "path": "<Keyboard>/e",
-                    "interactions": "",
+                    "interactions": "Tap",
                     "processors": "",
                     "groups": "Keyboard",
                     "action": "Interact",
@@ -104,7 +104,7 @@
                     "name": "",
                     "id": "0b704387-c4d4-44d1-81bd-d0d66b29a265",
                     "path": "<Gamepad>/buttonEast",
-                    "interactions": "",
+                    "interactions": "Tap",
                     "processors": "",
                     "groups": "Gamepad",
                     "action": "Interact",
