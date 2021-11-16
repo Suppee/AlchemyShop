@@ -82,7 +82,7 @@ public class KundeOrder : MasterStation
         aktivorder.Clear();
         //Find order st�rrelse
        
-        int orderstroelse = Random.Range(0,5);
+        int orderstroelse = Random.Range(0,3);
         for(int i = 0; i <= orderstroelse; i++)
         {
             int index = Random.Range(0, opskriftListe.Count);            
