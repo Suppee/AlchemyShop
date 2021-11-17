@@ -15,9 +15,9 @@ MonoBehaviour:
   name: HatePotion
   model: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
   ingredients:
-  - {fileID: 11400000, guid: 45fe7212773f354498e491a4ad896e78, type: 2}
+  - {fileID: 11400000, guid: deab1997909777c439188f59112a4ef9, type: 2}
   - {fileID: 11400000, guid: 2e64f600294d50949ba447a95377e3a5, type: 2}
   - {fileID: 11400000, guid: b00d295a5fcd9b04fba2596e143d9094, type: 2}
   material: {fileID: 2100000, guid: bae110eee250e4b418b188f4ae4e3170, type: 3}
   texture: {fileID: 2800000, guid: 0abdc2594837e1d458f724c93cdc114f, type: 3}
-  Kode: 3HUMPIXRAB
+  Kode: 3RPIXRAB

@@ -65,13 +65,9 @@ public class Mover : MonoBehaviour
         
         if (Interact == true)
         {
-           Invoke("OnPickUp",0);
-           Debug.Log(Interact);
+           Invoke("OnPickUp",0);           
         }
-        else
-        {
-            Debug.Log(Interact);
-        }
+       
     }
     //Interger med objekt
     private void OnPickUp()
