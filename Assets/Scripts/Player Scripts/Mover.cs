@@ -28,9 +28,11 @@ public class Mover : MonoBehaviour
     public Transform PickUpHolder;          // Placeringen af objektet på spilleren
     public GameObject objekthold;           // Objektet man holder
 
-    // Kaste med ting
+    // Kast/lægge ting
     Rigidbody m_Rigidbody;
     public float kraft;
+
+    public bool putDown = false;
 
     private void Awake()
     {
@@ -65,7 +67,14 @@ public class Mover : MonoBehaviour
         
         if (Interact == true)
         {
-           Invoke("OnPickUp",0);           
+           Invoke("OnPickUp",0);   
+           Debug.Log("hahahahaha");        
+        }
+
+        if (putDown == true)
+        {
+            Invoke("OnPickUp",0);
+            Debug.Log("virker");
         }
        
     }
@@ -125,8 +134,12 @@ public class Mover : MonoBehaviour
         objekthold.GetComponent<MeshCollider>().enabled = true;
         objekthold.GetComponent<Rigidbody>().useGravity = true;
         objekthold.GetComponent<Rigidbody>().isKinematic = false;
-        objekthold.GetComponent<Rigidbody>().AddForce(transform.up * kraft);
-        objekthold.GetComponent<Rigidbody>().AddForce(transform.forward * kraft);
+        if(Interact == true)
+        {
+            objekthold.GetComponent<Rigidbody>().AddForce(transform.up * kraft);
+            objekthold.GetComponent<Rigidbody>().AddForce(transform.forward * kraft);
+            Interact = false;
+        }
         iRaekkevide.Add(objekthold);
         objekthold = null;
       

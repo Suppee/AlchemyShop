@@ -180,6 +180,52 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fca6da03a156120418812f7416be4f1a, type: 3}
+--- !u!1 &138354079 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4001928145236118363, guid: 8ebb7369dd2260e4689b76f59aba6cfe, type: 3}
+  m_PrefabInstance: {fileID: 1343908210}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &138354080
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 138354079}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1306e14b8c5b33d40ad1da45dec8a6aa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  players:
+  - name: Arrows
+    routes:
+    - original: 63
+      remapped: 63
+    - original: 64
+      remapped: 64
+    - original: 61
+      remapped: 61
+    - original: 62
+      remapped: 62
+    - original: 19
+      remapped: 8
+    - original: 32
+      remapped: 7
+  - name: WASD
+    routes:
+    - original: 63
+      remapped: 37
+    - original: 64
+      remapped: 33
+    - original: 61
+      remapped: 15
+    - original: 62
+      remapped: 18
+    - original: 19
+      remapped: 19
+    - original: 32
+      remapped: 32
 --- !u!1 &236991716
 GameObject:
   m_ObjectHideFlags: 0
@@ -1350,7 +1396,8 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 4001928145236118364, guid: 8ebb7369dd2260e4689b76f59aba6cfe, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 8ebb7369dd2260e4689b76f59aba6cfe, type: 3}
 --- !u!1001 &1425037196
 PrefabInstance:
@@ -1643,6 +1690,14 @@ PrefabInstance:
     - target: {fileID: 8428476517740385416, guid: 079567ec0046d9d48817e718be2ec34e, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8428476517740385417, guid: 079567ec0046d9d48817e718be2ec34e, type: 3}
+      propertyPath: maxtid
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 8428476517740385417, guid: 079567ec0046d9d48817e718be2ec34e, type: 3}
+      propertyPath: mintid
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 8428476517740385428, guid: 079567ec0046d9d48817e718be2ec34e, type: 3}
       propertyPath: m_Name
@@ -2090,13 +2145,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2124929567}
-  m_LocalRotation: {x: 0.5150381, y: 0, z: 0, w: 0.85716736}
-  m_LocalPosition: {x: -0.69, y: 16.37, z: -6.65}
+  m_LocalRotation: {x: 0.38268343, y: 0, z: 0, w: 0.92387956}
+  m_LocalPosition: {x: 0, y: 12.6, z: -10.8}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 13
-  m_LocalEulerAnglesHint: {x: 62, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 45, y: 0, z: 0}
 --- !u!1001 &8280892350474847218
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2252,6 +2307,14 @@ PrefabInstance:
     - target: {fileID: 8428476517740385416, guid: 079567ec0046d9d48817e718be2ec34e, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8428476517740385417, guid: 079567ec0046d9d48817e718be2ec34e, type: 3}
+      propertyPath: maxtid
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 8428476517740385417, guid: 079567ec0046d9d48817e718be2ec34e, type: 3}
+      propertyPath: mintid
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 8428476517740385428, guid: 079567ec0046d9d48817e718be2ec34e, type: 3}
       propertyPath: m_Name
