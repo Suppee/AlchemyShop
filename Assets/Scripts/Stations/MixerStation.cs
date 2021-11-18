@@ -50,7 +50,10 @@ public class MixerStation : MasterStation
 
             }
             foreach(GameObject spot in mixspots)
+            {
+                if(spot.transform.childCount > 0)
                 Destroy(spot.transform.GetChild(0).gameObject);
+            }                
             blanding.Clear();
         }
         spillerref = null;
