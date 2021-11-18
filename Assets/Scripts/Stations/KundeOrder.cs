@@ -56,7 +56,7 @@ public class KundeOrder : MasterStation
                         orderIgang = false;
                         this.GetComponent<MeshRenderer>().material.color = Color.red;
                         SkabNyOrdre();                        
-                        //StartCoroutine("KundePause");
+                        StartCoroutine("KundePause");
                         GameObject.Find("Ur_Penge").GetComponent<Penge>().gold += PengeOrder;
                        
                     }                        
