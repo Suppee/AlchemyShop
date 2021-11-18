@@ -6,17 +6,19 @@ using UnityEngine.SceneManagement;
 public class GameManager : MonoBehaviour
 {
     bool GameHasEnded = false; 
-    public float restartDelay = 1f;
+    public float restartDelay = 0;
     public int monney;
     private Timer tid;
     public bool End = false;
     public int WinningMonney = 100;
+    public GameObject victoryUI;
+    public GameObject LoseUI;
 
     public void Update()
     {
         if(End == true)
         {
-            Invoke("EndGame",restartDelay);
+            EndGame();
         }
 
     }
@@ -30,13 +32,12 @@ public class GameManager : MonoBehaviour
             
             if(monney >= WinningMonney)
             {
-                Debug.Log("win");
-                
+                victoryUI.SetActive(true); 
                 Invoke("Restart", restartDelay);
             }
             else
             {
-                Debug.Log("Lose");
+                LoseUI.SetActive(true);  
                 Invoke("Restart", restartDelay);
             }
 
@@ -45,7 +46,7 @@ public class GameManager : MonoBehaviour
 
     private void Restart()
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex - 1);
     }
 
 }
