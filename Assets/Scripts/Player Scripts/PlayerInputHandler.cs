@@ -32,8 +32,18 @@ public class PlayerInputHandler : MonoBehaviour
            mover.Interact = true;
         }
     }
+
+    public void OnPutDown(CallbackContext context)
+    {
+        if( mover != null)
+        {
+            mover.putDown = true;
+        }
+    }
+
     void LateUpdate()
     {
        mover.Interact = false;
+       mover.putDown = false;
     }
 }

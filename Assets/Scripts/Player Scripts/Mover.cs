@@ -20,6 +20,7 @@ public class Mover : MonoBehaviour
     private int  playerIndex = 0;
     PlayerInputHandler playerInputHandler;
     public bool Interact = false;
+    public bool putDown = false;
     
     // Interger Variabler 
     public List<GameObject> iRaekkevide;    // Objekter indenfor raekkevidde af spilleren    
@@ -28,7 +29,7 @@ public class Mover : MonoBehaviour
     public Transform PickUpHolder;          // Placeringen af objektet på spilleren
     public GameObject objekthold;           // Objektet man holder
 
-    // Kaste med ting
+    // Kast/lægge ting
     Rigidbody m_Rigidbody;
     public float kraft;
 
@@ -65,13 +66,14 @@ public class Mover : MonoBehaviour
         
         if (Interact == true)
         {
-           Invoke("OnPickUp",0);
-           Debug.Log(Interact);
+           Invoke("OnPickUp",0);          
         }
-        else
+
+        if (putDown == true)
         {
-            Debug.Log(Interact);
+            Invoke("OnPickUp",0);
         }
+       
     }
     //Interger med objekt
     private void OnPickUp()
@@ -129,8 +131,12 @@ public class Mover : MonoBehaviour
         objekthold.GetComponent<MeshCollider>().enabled = true;
         objekthold.GetComponent<Rigidbody>().useGravity = true;
         objekthold.GetComponent<Rigidbody>().isKinematic = false;
-        objekthold.GetComponent<Rigidbody>().AddForce(transform.up * kraft);
-        objekthold.GetComponent<Rigidbody>().AddForce(transform.forward * kraft);
+        if(Interact == true)
+        {
+            objekthold.GetComponent<Rigidbody>().AddForce(transform.up * kraft);
+            objekthold.GetComponent<Rigidbody>().AddForce(transform.forward * kraft);
+            Interact = false;
+        }
         iRaekkevide.Add(objekthold);
         objekthold = null;
       

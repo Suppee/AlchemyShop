@@ -10,7 +10,7 @@ public class SliderTime : MonoBehaviour
     public float gameTime;
 
     private bool stopTimer;
-    void Start()
+    public void OnStart()
     {
         stopTimer = false;
         timerSlider.maxValue = gameTime;
@@ -24,8 +24,11 @@ public class SliderTime : MonoBehaviour
 
         if (gameTime <= 0)
         {
+            
             stopTimer = true;
             gameTime = 0;
+            this.gameObject.GetComponentInParent<KundeOrder>().SkabNyOrdre();
+            
         }
         else if (stopTimer == false)
         {

@@ -7,6 +7,7 @@ public class MixerStation : MasterStation
 
 {
     // Variabler
+    //[HideInInspector]
     public List<ScriptableObject> blanding;
     public List<ScriptableObject> Opskrifter;
     public GameObject produktPrefab;
@@ -14,6 +15,7 @@ public class MixerStation : MasterStation
     public bool HarTingIHaanden;
     public string blandingskode;
     private bool Blander;
+    public GameObject[] mixspots;
 
     // Aktiver station
     
@@ -24,8 +26,11 @@ public class MixerStation : MasterStation
         if (spillerref.holderObjekt == true)
         {
             // Tilf�j ingrediens til listen
-            blanding.Add(spillerref.objekthold.GetComponent<IngrediensInfo>().Ingredient);
-            Destroy();           
+            blanding.Add(spillerref.objekthold.GetComponent<IngrediensInfo>().Ingredient);     
+            spillerref.objekthold.transform.position = mixspots[blanding.Count -1].gameObject.transform.position;
+            spillerref.objekthold.transform.parent = mixspots[blanding.Count -1].gameObject.transform;
+            spillerref.holderObjekt = false;
+            spillerref.objekthold = null;
 
             blandingskode = "";
             GenerereKode();
@@ -40,10 +45,12 @@ public class MixerStation : MasterStation
                     GameObject nyProdukt = Instantiate(produktPrefab);
                     nyProdukt.GetComponent<ProductInfo>().Opskrift = opskrift;
                     spillerref.GetComponent<Mover>().objekthold = nyProdukt;
-                    spillerref.GetComponent<Mover>().SamlOp();
-                    
+                    spillerref.GetComponent<Mover>().SamlOp();                    
                 }
+
             }
+            foreach(GameObject spot in mixspots)
+                Destroy(spot.transform.GetChild(0).gameObject);
             blanding.Clear();
         }
         spillerref = null;
