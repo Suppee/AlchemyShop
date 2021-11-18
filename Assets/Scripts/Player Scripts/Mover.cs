@@ -20,6 +20,7 @@ public class Mover : MonoBehaviour
     private int  playerIndex = 0;
     PlayerInputHandler playerInputHandler;
     public bool Interact = false;
+    public bool putDown = false;
     
     // Interger Variabler 
     public List<GameObject> iRaekkevide;    // Objekter indenfor raekkevidde af spilleren    
@@ -31,8 +32,6 @@ public class Mover : MonoBehaviour
     // Kast/lægge ting
     Rigidbody m_Rigidbody;
     public float kraft;
-
-    public bool putDown = false;
 
     private void Awake()
     {
@@ -67,14 +66,12 @@ public class Mover : MonoBehaviour
         
         if (Interact == true)
         {
-           Invoke("OnPickUp",0);   
-           Debug.Log("hahahahaha");        
+           Invoke("OnPickUp",0);          
         }
 
         if (putDown == true)
         {
             Invoke("OnPickUp",0);
-            Debug.Log("virker");
         }
        
     }
