@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.UI;
 
 //Her laver vi referencen til filmenuen
 [CreateAssetMenu(fileName = "New Recipe", menuName = "Recipe")]
@@ -9,8 +10,9 @@ public class Recipes : ScriptableObject
     public Mesh model;
     public Ingredient[] ingredients;
     public Material material;
-    public Texture texture;    
+    public Texture productIcon;    
     public string Kode;
+    public Texture stationIcon;
 
     void OnValidate()
     {

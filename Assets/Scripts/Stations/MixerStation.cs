@@ -47,10 +47,12 @@ public class MixerStation : MasterStation
                     spillerref.GetComponent<Mover>().objekthold = nyProdukt;
                     spillerref.GetComponent<Mover>().SamlOp();                    
                 }
-
             }
             foreach(GameObject spot in mixspots)
+            {
+                if(spot.transform.childCount > 0)
                 Destroy(spot.transform.GetChild(0).gameObject);
+            }                
             blanding.Clear();
         }
         spillerref = null;

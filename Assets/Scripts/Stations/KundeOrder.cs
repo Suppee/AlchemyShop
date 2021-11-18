@@ -16,8 +16,7 @@ public class KundeOrder : MasterStation
     public GameObject sliderref;
     public float mintimetillnextcustomer;
     public float maxtimetillnextcustomer;
-
-
+    
     // Start is called before the first frame update
 
     void Start()
@@ -33,9 +32,9 @@ public class KundeOrder : MasterStation
             opskriftListe.Add(opskrift);
         }
         this.GetComponent<MeshRenderer>().material.color = Color.red;
-        Invoke("SkabNyOrdre", Random.Range(mintimetillnextcustomer, maxtimetillnextcustomer));
+        Invoke("SkabNyOrdre", 3);
     }
-
+    
     public override void Activate()
     {
         if(aktivorder.Count > 0 && orderIgang == true && spillerref.holderObjekt == true)
@@ -55,8 +54,8 @@ public class KundeOrder : MasterStation
                     {
                         orderIgang = false;
                         this.GetComponent<MeshRenderer>().material.color = Color.red;
-                        SkabNyOrdre();                        
-                        StartCoroutine("KundePause");
+                        // Invoke("SkabNyOrdre", Random.Range(mintimetillnextcustomer, maxtimetillnextcustomer));
+                        KundePause();
                         GameObject.Find("Ur_Penge").GetComponent<Penge>().gold += PengeOrder;
                        
                     }                        
@@ -72,6 +71,7 @@ public class KundeOrder : MasterStation
             print("Tag en order");
             orderIgang = true;
             this.gameObject.GetComponent<MeshRenderer>().material.color = Color.green;
+            sliderref.GetComponent<SliderTime>().enabled = true;
         }
       
     }
@@ -79,8 +79,11 @@ public class KundeOrder : MasterStation
     //Method to create a new order.
     public void SkabNyOrdre()
     {
-        // Remove all elements from the current active order, this is a failsafe to avoid left over items from the last order.
+        // Reset Station
+        sliderref.GetComponent<SliderTime>().enabled = false;
+        orderIgang = false;        
         sliderref.SetActive(false);
+        this.gameObject.transform.GetChild(0).gameObject.SetActive(true);
 
         for (int i = 0; i < aktivorder.Count; i++)
         {
@@ -107,15 +110,18 @@ public class KundeOrder : MasterStation
         }
         //Set slider visible and the time before this order disappears
         sliderref.SetActive(true);
-        sliderref.GetComponent<SliderTime>().gameTime = 60;
+        sliderref.GetComponent<SliderTime>().gameTime = 15;        
         sliderref.GetComponent<SliderTime>().OnStart();
-        
+
     }
 
-    IEnumerator KundePause()
-    {                                  
-            //yield on a new YieldInstruction that waits for 5 seconds.
-            yield return new WaitForSeconds(Random.Range(mintid,maxtid));            
+    public void KundePause()
+    {
+        orderIgang = false;
+        aktivorder.Clear();
+        this.gameObject.transform.GetChild(0).gameObject.SetActive(false);
+        this.GetComponent<MeshRenderer>().material.color = Color.red;
+        Invoke("SkabNyOrdre", Random.Range(mintimetillnextcustomer, maxtimetillnextcustomer));
     }
     
 }

@@ -631,8 +631,10 @@ MonoBehaviour:
   orderIgang: 0
   opskriftListe: []
   aktivorder: []
-  mintid: 0
-  maxtid: 5
+  mintid: 5
+  maxtid: 10
   PengeOrder: 10
   CanvasPrefab: {fileID: 4748187947088275667, guid: 4ce43cdbbd47ca841a2139ee13f772c8, type: 3}
   sliderref: {fileID: 528212272}
+  mintimetillnextcustomer: 5
+  maxtimetillnextcustomer: 10
