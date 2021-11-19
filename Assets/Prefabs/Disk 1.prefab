@@ -203,7 +203,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   timerSlider: {fileID: 528212274}
-  gameTime: 60
+  gameTime: 404
 --- !u!1 &758153160
 GameObject:
   m_ObjectHideFlags: 0
@@ -475,7 +475,7 @@ RectTransform:
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
+  m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 10, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -631,8 +631,8 @@ MonoBehaviour:
   orderIgang: 0
   opskriftListe: []
   aktivorder: []
-  mintid: 5
-  maxtid: 10
+  mintid: 1
+  maxtid: 3
   PengeOrder: 10
   CanvasPrefab: {fileID: 4748187947088275667, guid: 4ce43cdbbd47ca841a2139ee13f772c8, type: 3}
   sliderref: {fileID: 528212272}

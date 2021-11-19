@@ -53,8 +53,7 @@ public class KundeOrder : MasterStation
                     if (aktivorder.Count == 0)                    
                     {
                         orderIgang = false;
-                        this.GetComponent<MeshRenderer>().material.color = Color.red;
-                        // Invoke("SkabNyOrdre", Random.Range(mintimetillnextcustomer, maxtimetillnextcustomer));
+                        this.GetComponent<MeshRenderer>().material.color = Color.red;                        
                         KundePause();
                         GameObject.Find("Ur_Penge").GetComponent<Penge>().gold += PengeOrder;
                        
@@ -92,7 +91,7 @@ public class KundeOrder : MasterStation
         aktivorder.Clear();
 
         //Find order size by choosing a random number between 1 as the minimum order size and the largest order size + 1 because of the loop following.
-        int orderstroelse = Random.Range(1,3);
+        int orderstroelse = Random.Range(1,4);
 
         //Loops an amount of time equal to the order size, then adds one random recipe to the order for each time.
         for(int i = 0; i < orderstroelse; i++)
@@ -110,17 +109,21 @@ public class KundeOrder : MasterStation
         }
         //Set slider visible and the time before this order disappears
         sliderref.SetActive(true);
-        sliderref.GetComponent<SliderTime>().gameTime = 15;        
+        sliderref.GetComponent<SliderTime>().gameTime = aktivorder.Count * 15;        
         sliderref.GetComponent<SliderTime>().OnStart();
 
     }
 
     public void KundePause()
     {
-        orderIgang = false;
-        aktivorder.Clear();
+        orderIgang = false;        
         this.gameObject.transform.GetChild(0).gameObject.SetActive(false);
         this.GetComponent<MeshRenderer>().material.color = Color.red;
+        for (int i = 0; i < aktivorder.Count; i++)
+        {
+            Destroy(this.gameObject.transform.GetChild(0).gameObject.transform.GetChild(i + 1).gameObject);
+        }
+        aktivorder.Clear();
         Invoke("SkabNyOrdre", Random.Range(mintimetillnextcustomer, maxtimetillnextcustomer));
     }
     
