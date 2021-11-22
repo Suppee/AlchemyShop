@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: UnicornHorn
   m_EditorClassIdentifier: 
   name: Unicornhorn
-  ingrediensModel: {fileID: 4711208715938537054, guid: 3b2daf096c4450249a9e1e2e1b25f324, type: 3}
+  ingrediensModel: {fileID: 10206, guid: 0000000000000000e000000000000000, type: 0}
   material: {fileID: 2100002, guid: efe9381559c516743bd05cef82f39ebb, type: 3}
   Kode: UNI
+  icon: {fileID: 2800000, guid: ed1e2e3636d30c14e9d71ebf05d03282, type: 3}

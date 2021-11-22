@@ -10,7 +10,6 @@ GameObject:
   m_Component:
   - component: {fileID: 4001928145236118366}
   - component: {fileID: 4001928145236118365}
-  - component: {fileID: 4001928145236118364}
   m_Layer: 0
   m_Name: PlayerInputManager
   m_TagString: Untagged
@@ -75,44 +74,3 @@ MonoBehaviour:
     y: 0
     width: 1
     height: 1
---- !u!114 &4001928145236118364
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4001928145236118363}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1306e14b8c5b33d40ad1da45dec8a6aa, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  players:
-  - name: WASD
-    routes:
-    - original: 63
-      remapped: 37
-    - original: 64
-      remapped: 33
-    - original: 61
-      remapped: 15
-    - original: 62
-      remapped: 18
-    - original: 19
-      remapped: 19
-    - original: 21
-      remapped: 21
-  - name: Arrows
-    routes:
-    - original: 63
-      remapped: 63
-    - original: 64
-      remapped: 64
-    - original: 61
-      remapped: 61
-    - original: 62
-      remapped: 62
-    - original: 19
-      remapped: 19
-    - original: 21
-      remapped: 21

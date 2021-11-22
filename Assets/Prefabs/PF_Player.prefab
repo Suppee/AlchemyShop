@@ -23,12 +23,12 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 147838562633360513}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.673, y: 1.34, z: 0.86}
-  m_LocalScale: {x: 1.4285713, y: 1.4285713, z: 1.4285713}
+  m_LocalRotation: {x: 0.023336424, y: 0.58256733, z: 0.8106386, w: -0.054183807}
+  m_LocalPosition: {x: 0, y: 0.0014823773, z: -0.00012766919}
+  m_LocalScale: {x: 0.014285708, y: 0.01428571, z: 0.014285714}
   m_Children: []
-  m_Father: {fileID: 4042721267090767535}
-  m_RootOrder: 2
+  m_Father: {fileID: 6280979177358057350}
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &241891768462085058
 GameObject:
@@ -506,7 +506,6 @@ GameObject:
   - component: {fileID: 4042721267090767535}
   - component: {fileID: 4580188238420912578}
   - component: {fileID: 4580188238420912576}
-  - component: {fileID: 4580188238420912577}
   - component: {fileID: 8360178011830923160}
   - component: {fileID: 4805923761587041468}
   m_Layer: 0
@@ -524,12 +523,11 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3697861280693806101}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 2, y: 0, z: 0}
   m_LocalScale: {x: 0.7, y: 0.7, z: 0.7}
   m_Children:
   - {fileID: 4947895509885349425}
   - {fileID: 5213798133026148258}
-  - {fileID: 397008915291519801}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -565,41 +563,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 5
   turnSmoothTime: 0.1
+  playerIndex: 0
+  Interact: 0
+  putDown: 0
   iRaekkevide: []
   interaktionsobjekt: {fileID: 0}
   holderObjekt: 0
   PickUpHolder: {fileID: 397008915291519801}
   objekthold: {fileID: 0}
---- !u!114 &4580188238420912577
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3697861280693806101}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 62899f850307741f2a39c98a8b639597, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Actions: {fileID: -944628639613478452, guid: d1f5eb6883cb8fa42957fb7c2da968fc, type: 3}
-  m_NotificationBehavior: 0
-  m_UIInputModule: {fileID: 0}
-  m_DeviceLostEvent:
-    m_PersistentCalls:
-      m_Calls: []
-  m_DeviceRegainedEvent:
-    m_PersistentCalls:
-      m_Calls: []
-  m_ControlsChangedEvent:
-    m_PersistentCalls:
-      m_Calls: []
-  m_ActionEvents: []
-  m_NeverAutoSwitchControlSchemes: 0
-  m_DefaultControlScheme: 
-  m_DefaultActionMap: default
-  m_SplitScreenIndex: -1
-  m_Camera: {fileID: 0}
+  kraft: 200
 --- !u!136 &8360178011830923160
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -1101,7 +1073,8 @@ Transform:
   m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -0, y: 0.0052148784, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
+  m_Children:
+  - {fileID: 397008915291519801}
   m_Father: {fileID: 8212846043542801570}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

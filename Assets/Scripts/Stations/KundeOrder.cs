@@ -7,14 +7,18 @@ using UnityEngine.UI;
 public class KundeOrder : MasterStation
 {
     public bool orderIgang;
-    public List<Recipes> opskriftListe;
-    public GameObject[] vare;
+    public List<Recipes> opskriftListe;    
     public List<Recipes> aktivorder;
     public float mintid;
     public float maxtid;
+    public int PengeOrder = 10;
+    public GameObject CanvasPrefab;
+    public GameObject sliderref;
+    public float mintimetillnextcustomer;
+    public float maxtimetillnextcustomer;
     
-
     // Start is called before the first frame update
+
     void Start()
     {
 
@@ -26,84 +30,101 @@ public class KundeOrder : MasterStation
             var opskriftSti = AssetDatabase.GUIDToAssetPath(opskriftstreng);
             var opskrift = AssetDatabase.LoadAssetAtPath<Recipes>(opskriftSti);
             opskriftListe.Add(opskrift);
-
         }
-
-            Invoke("SkabNyOrdre", 2);
+        this.GetComponent<MeshRenderer>().material.color = Color.red;
+        Invoke("SkabNyOrdre", 3);
     }
-
+    
     public override void Activate()
     {
-        if(aktivorder.Count > 0 && orderIgang == true)
+        if(aktivorder.Count > 0 && orderIgang == true && spillerref.holderObjekt == true)
         {
-            if (spillerref.holderObjekt == true)
-            {
-                for (int i = 0; i < aktivorder.Count; i++)
-                { 
-                    if (spillerref.objekthold.GetComponent<ProductInfo>().Opskrift.name.Equals(aktivorder[i].name))
+            for (int i = 0; i < aktivorder.Count; i++)
+            { 
+                if (spillerref.objekthold.GetComponent<ProductInfo>().Opskrift.name.Equals(aktivorder[i].name))
+                {
+                    aktivorder.RemoveAt(i);                    
+                    Debug.Log("Produkt godkendt");                  
+                    Destroy();
+                    //Ret UI               
+                    Destroy(this.gameObject.transform.GetChild(0).gameObject.transform.GetChild(i+1).gameObject);
+
+                    //Check om orderen er færdig
+                    if (aktivorder.Count == 0)                    
                     {
-                        aktivorder.RemoveAt(i);
-                        Debug.Log("Produkt godkendt");
-                        vare[i].GetComponent<RawImage>().texture = null;
-                        Destroy();
-                        //Ret UI
-                        for (int v = 0; v <= vare.Length; v++)
-                        {
-                            vare[v].GetComponent<RawImage>().texture = null;
-                            vare[v].GetComponent<RawImage>().texture = aktivorder[v].texture;
-                        }
-                        //Check om orderen er færdig
-                        if (aktivorder.Count == 0)
-                        {
-                            orderIgang = false;
-                            StartCoroutine("KundePause");
-                        }                         
-                        return;
-                    }
+                        orderIgang = false;
+                        this.GetComponent<MeshRenderer>().material.color = Color.red;                        
+                        KundePause();
+                        GameObject.Find("Ur_Penge").GetComponent<Penge>().gold += PengeOrder;
+                       
+                    }                        
+                    return;
                 }
+                else
+                    Debug.Log("Produkt ikke godkendt");
             }
-            else
-                Debug.Log("Produkt ikke godkendt");
         }
         else if (aktivorder.Count > 0 && orderIgang == false && spillerref.holderObjekt == false)
         {
-            //Ingen order i gang
+        //Ingen order i gang
             print("Tag en order");
             orderIgang = true;
+            this.gameObject.GetComponent<MeshRenderer>().material.color = Color.green;
+            sliderref.GetComponent<SliderTime>().enabled = true;
         }
-        
+      
     }
 
+    //Method to create a new order.
     public void SkabNyOrdre()
     {
-        //Reset UI
-        foreach (GameObject v in vare)
+        // Reset Station
+        sliderref.GetComponent<SliderTime>().enabled = false;
+        orderIgang = false;        
+        sliderref.SetActive(false);
+        this.gameObject.transform.GetChild(0).gameObject.SetActive(true);
+
+        for (int i = 0; i < aktivorder.Count; i++)
         {
-            v.GetComponent<RawImage>().texture = null;
+            Destroy(this.gameObject.transform.GetChild(0).gameObject.transform.GetChild(i + 1).gameObject);
         }
-        // Fjern alle elementer fra aktiv order 
         aktivorder.Clear();
-        //Find order st�rrelse
-        int orderstroelse = Random.Range(1, 2);
-        for(int i = 0; i <= orderstroelse; i++)
+
+        //Find order size by choosing a random number between 1 as the minimum order size and the largest order size + 1 because of the loop following.
+        int orderstroelse = Random.Range(1,4);
+
+        //Loops an amount of time equal to the order size, then adds one random recipe to the order for each time.
+        for(int i = 0; i < orderstroelse; i++)
         {
+            //Finds a random recipe in the list of all recipes by choosing a random number between 0 and the number of recipes in the list of all recipes. This number serves as the indes in a search.
             int index = Random.Range(0, opskriftListe.Count);
-            vare[i].GetComponent<RawImage>().texture = opskriftListe[index].texture;
+
+            //Add the recipe at the given index from before into the list of recipes in the current active order, which stores the current order.
             aktivorder.Add(opskriftListe[index]);
+
+            //Spawn UI element for the chosen recipes and adds the proper icons for the product and ingredients.
+            GameObject thiscanvas = Instantiate(CanvasPrefab, this.gameObject.transform.GetChild(0));
+            thiscanvas.GetComponent<UIRecipeInfo>().currentrecipe = opskriftListe[index];
+            thiscanvas.GetComponent<UIRecipeInfo>().OnBegin();            
         }
+        //Set slider visible and the time before this order disappears
+        sliderref.SetActive(true);
+        sliderref.GetComponent<SliderTime>().gameTime = aktivorder.Count * 15;        
+        sliderref.GetComponent<SliderTime>().OnStart();
+
     }
 
-    IEnumerator KundePause()
-    {        
-            //Print the time of when the function is first called.
-            Debug.Log("Started Coroutine at timestamp : " + Time.time);
-
-            //yield on a new YieldInstruction that waits for 5 seconds.
-            yield return new WaitForSeconds(Random.Range(mintid,maxtid));
-
-            //After we have waited 5 seconds print the time again.
-            Debug.Log("Finished Coroutine at timestamp : " + Time.time);
-            SkabNyOrdre();
+    public void KundePause()
+    {
+        orderIgang = false;        
+        this.gameObject.transform.GetChild(0).gameObject.SetActive(false);
+        this.GetComponent<MeshRenderer>().material.color = Color.red;
+        for (int i = 0; i < aktivorder.Count; i++)
+        {
+            Destroy(this.gameObject.transform.GetChild(0).gameObject.transform.GetChild(i + 1).gameObject);
+        }
+        aktivorder.Clear();
+        Invoke("SkabNyOrdre", Random.Range(mintimetillnextcustomer, maxtimetillnextcustomer));
     }
     
 }
