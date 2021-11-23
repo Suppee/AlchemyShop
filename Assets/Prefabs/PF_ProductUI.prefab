@@ -796,7 +796,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 69383b563ff8e75488d0a21b0ad8ce02, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentrecipe: {fileID: 0}
+  currentrecipe: {fileID: 11400000, guid: ad5c9b6ff995a8c46987869aa9c3ede8, type: 2}
   stationRef: {fileID: 2413053299683746419}
   productRef: {fileID: 7262547016836761776}
   first_ingredientRef: {fileID: 2294286251402771392}

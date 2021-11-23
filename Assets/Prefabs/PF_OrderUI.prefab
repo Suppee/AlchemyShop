@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 796339748422194691}
   - component: {fileID: 1426397554645866499}
   - component: {fileID: 5965964764579247949}
+  - component: {fileID: 1905806696229607883}
   m_Layer: 5
   m_Name: Slider
   m_TagString: Untagged
@@ -124,6 +125,21 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_HorizontalFit: 0
   m_VerticalFit: 2
+--- !u!114 &1905806696229607883
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1179375145845612570}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b1fbb6be7326b0b4aa78718dfadb18b7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  timerSlider: {fileID: 796339748422194691}
+  gameTime: 0
+  fill: {fileID: 2450957279390239738}
 --- !u!1 &2450957279390239738
 GameObject:
   m_ObjectHideFlags: 0
@@ -182,7 +198,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0, g: 1, b: 0.11066723, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -337,9 +353,6 @@ MonoBehaviour:
   ordernumber: {fileID: 5330777499035516413}
   order: []
   productarea: {fileID: 6583477093480749377}
-  activeOrders:
-  - Order: []
-  - Order: []
 --- !u!1 &2530514489111028075
 GameObject:
   m_ObjectHideFlags: 0

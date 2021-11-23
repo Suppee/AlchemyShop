@@ -14,9 +14,10 @@ public class OrderSetupScript : MonoBehaviour
    // [System.Serializable]
     public class serializableClass
     {
-        public List<Recipes> Order;
+        public List<Recipes> SingleOrder;
     }
     public List<serializableClass> activeOrders; // = new List<serializableClass>();
+    
 
     public void Initiate()
     {
@@ -28,18 +29,11 @@ public class OrderSetupScript : MonoBehaviour
             Canvas.ForceUpdateCanvases();
         }
         LayoutRebuilder.ForceRebuildLayoutImmediate(this.gameObject.transform.parent.GetComponent<RectTransform>());
+
+        timeslider.GetComponent<SliderTime>().gameTime = 30 * order.Count;
+        timeslider.GetComponent<SliderTime>().OnStart();
+       // activeOrders.
     }
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
+    
 }
