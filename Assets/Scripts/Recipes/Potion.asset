@@ -10,15 +10,15 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 272fee04f7a379043b47fa08d5121f01, type: 3}
-  m_Name: HatePotion
+  m_Name: Potion
   m_EditorClassIdentifier: 
   name: HatePotion
   model: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
   ingredients:
-  - {fileID: 11400000, guid: deab1997909777c439188f59112a4ef9, type: 2}
-  - {fileID: 11400000, guid: 2e64f600294d50949ba447a95377e3a5, type: 2}
-  - {fileID: 11400000, guid: b00d295a5fcd9b04fba2596e143d9094, type: 2}
+  - {fileID: 11400000, guid: 000487a55fa314b96946156cfe20587b, type: 2}
+  - {fileID: 11400000, guid: aa4fb6fef4b514c3bbdf433f7e08765d, type: 2}
+  - {fileID: 11400000, guid: 2f74380b8f7e44a79b09a9cd71d903f0, type: 2}
   material: {fileID: 2100000, guid: bae110eee250e4b418b188f4ae4e3170, type: 3}
   productIcon: {fileID: 2800000, guid: 0abdc2594837e1d458f724c93cdc114f, type: 3}
-  Kode: 3RPIXRAB
+  Kode: 3CRYEYEMUS
   stationIcon: {fileID: 2800000, guid: d0945b5f92fa8194995ade13d6d512dd, type: 3}

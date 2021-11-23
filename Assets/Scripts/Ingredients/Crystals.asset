@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 808f220b674cfae4fb89834882b001a3, type: 3}
+  m_Name: Crystals
+  m_EditorClassIdentifier: 
+  name: Crystals
+  ingrediensModel: {fileID: 10206, guid: 0000000000000000e000000000000000, type: 0}
+  material: {fileID: 2100000, guid: 0e4811eb1e435034489192436b1b6d12, type: 2}
+  Kode: CRY
+  icon: {fileID: 2800000, guid: b5b48f3aa22b7444c9be461e6b929546, type: 3}
