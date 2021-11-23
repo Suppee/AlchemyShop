@@ -531,7 +531,7 @@ GameObject:
   - component: {fileID: 8428476517740385429}
   - component: {fileID: 8428476517740385417}
   m_Layer: 0
-  m_Name: Disk 1
+  m_Name: PF_OrderStation
   m_TagString: Order Station
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

@@ -16,9 +16,9 @@ public class KundeOrder : MasterStation
     public GameObject sliderref;
     public float mintimetillnextcustomer;
     public float maxtimetillnextcustomer;
+    public GameObject OrderCanvas;
     
     // Start is called before the first frame update
-
     void Start()
     {
 
@@ -103,14 +103,20 @@ public class KundeOrder : MasterStation
             aktivorder.Add(opskriftListe[index]);
 
             //Spawn UI element for the chosen recipes and adds the proper icons for the product and ingredients.
-            GameObject thiscanvas = Instantiate(CanvasPrefab, this.gameObject.transform.GetChild(0));
-            thiscanvas.GetComponent<UIRecipeInfo>().currentrecipe = opskriftListe[index];
-            thiscanvas.GetComponent<UIRecipeInfo>().OnBegin();            
+            //GameObject thiscanvas = Instantiate(CanvasPrefab, this.gameObject.transform.GetChild(0));
+            //thiscanvas.GetComponent<UIRecipeInfo>().currentrecipe = opskriftListe[index];
+           // thiscanvas.GetComponent<UIRecipeInfo>().OnBegin();            
         }
         //Set slider visible and the time before this order disappears
-        sliderref.SetActive(true);
-        sliderref.GetComponent<SliderTime>().gameTime = aktivorder.Count * 15;        
-        sliderref.GetComponent<SliderTime>().OnStart();
+        // sliderref.SetActive(true);
+        //sliderref.GetComponent<SliderTime>().gameTime = aktivorder.Count * 15;        
+        // sliderref.GetComponent<SliderTime>().OnStart();
+        GameObject Currentorder = Instantiate(CanvasPrefab, OrderCanvas.transform, true);
+        Currentorder.GetComponent<OrderSetupScript>().order = aktivorder;
+        Currentorder.GetComponent<OrderSetupScript>().Initiate();
+
+
+
 
     }
 

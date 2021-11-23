@@ -695,7 +695,7 @@ GameObject:
   - component: {fileID: 2704976019200805984}
   - component: {fileID: 996011612513607731}
   m_Layer: 0
-  m_Name: PF_OrderItemUI
+  m_Name: PF_ProductUI
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -766,7 +766,7 @@ MonoBehaviour:
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
   m_DynamicPixelsPerUnit: 1
-  m_PresetInfoIsWorld: 1
+  m_PresetInfoIsWorld: 0
 --- !u!114 &4733649206578702987
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -796,7 +796,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 69383b563ff8e75488d0a21b0ad8ce02, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentrecipe: {fileID: 11400000, guid: ad5c9b6ff995a8c46987869aa9c3ede8, type: 2}
+  currentrecipe: {fileID: 0}
   stationRef: {fileID: 2413053299683746419}
   productRef: {fileID: 7262547016836761776}
   first_ingredientRef: {fileID: 2294286251402771392}
