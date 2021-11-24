@@ -40,4 +40,9 @@ public class OrderSetupScript : MonoBehaviour
         
        // activeOrders.
     }    
+
+    public void DeleteOrder()
+    {
+        Destroy(this.gameObject);
+    }
 }

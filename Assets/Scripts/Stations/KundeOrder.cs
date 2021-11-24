@@ -20,7 +20,6 @@ public class KundeOrder : MasterStation
     // Start is called before the first frame update
     void Start()
     {
-
         //Find alle opskrifter
         string[] opskriftlokationer = AssetDatabase.FindAssets("t:scriptableobject", new[] { "Assets/Scripts/Recipes" });
         opskriftListe.Clear();
@@ -38,34 +37,39 @@ public class KundeOrder : MasterStation
     {
         if(spillerref.holderObjekt == true)
         {
-            for (int i = 0; i < neworder.Count; i++)
-            { 
-                if (spillerref.objekthold.GetComponent<ProductInfo>().Opskrift.name.Equals(neworder[i].name))
-                {
-                    neworder.RemoveAt(i);                    
-                    Debug.Log("Produkt godkendt");                  
-                    Destroy();
-                    //Ret UI               
-                    Destroy(this.gameObject.transform.GetChild(0).gameObject.transform.GetChild(i+1).gameObject);
+            for (int o = 0; o < OrderCanvas.transform.childCount; o++)
+            {
+                List<Recipes> CurrentOrder = OrderCanvas.transform.GetChild(o).gameObject.GetComponent<OrderSetupScript>().order;                
 
-                    //Check om orderen er færdig
-                    if (neworder.Count == 0)                    
-                    {                        
-                        this.GetComponent<MeshRenderer>().material.color = Color.red;                        
-                        KundePause();
+                for (int p = 0; p < CurrentOrder.Count; p++)
+                {
+                    if (spillerref.objekthold.GetComponent<ProductInfo>().Opskrift.name.Equals(CurrentOrder[p].name))
+                    {
+                        Debug.Log("Produkt godkendt");                        
                         GameObject.Find("Ur_Penge").GetComponent<Penge>().gold += PengeOrder;
-                       
-                    }                        
-                    return;
-                }
-                else
-                    Debug.Log("Produkt ikke godkendt");
+                        Destroy();
+                        //Ret UI               
+                        OrderCanvas.transform.GetChild(o).gameObject.transform.GetChild(2).gameObject.transform.GetChild(p).GetComponent<UIRecipeInfo>().productfinishedscreen.SetActive(true);
+
+                        //Check om orderen er færdig
+                        if (CurrentOrder.Count == 0)
+                        {
+                            KundePause();
+                            GameObject.Find("Ur_Penge").GetComponent<Penge>().gold += PengeOrder;
+                        }
+                        return;
+                    }
+                    else
+                        Debug.Log("Produkt ikke godkendt");
+                }                
             }
         }
         else if (neworderavailable == true && spillerref.holderObjekt == false)
         {
-            print("Tag en order");
+            print("Order Taget");
             StartNewOrder();
+            neworderavailable = false;
+            customer.SetActive(false);
         }
       
     }
@@ -73,7 +77,7 @@ public class KundeOrder : MasterStation
     //Method to create a new order.
     public void SkabNyOrdre()
     {
-        customer.SetActive(true);
+        
 
         for (int i = 0; i < neworder.Count; i++)
         {
@@ -95,6 +99,7 @@ public class KundeOrder : MasterStation
            
         }
         neworderavailable = true;
+        customer.SetActive(true);
     }
 
     public void StartNewOrder()
@@ -106,7 +111,6 @@ public class KundeOrder : MasterStation
 
     public void KundePause()
     {              
-        this.gameObject.transform.GetChild(0).gameObject.SetActive(false);
         this.GetComponent<MeshRenderer>().material.color = Color.red;
         for (int i = 0; i < neworder.Count; i++)
         {
