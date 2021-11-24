@@ -3,26 +3,27 @@ using UnityEditor;
 using UnityEngine;
 
 public class KundeOrder : MasterStation
-{    
-    
+{
+    [HideInInspector]
+    public List<Recipes> fullproductlist;
+    [HideInInspector]
+    public List<Recipes> neworder;
     public int moneyEarnedPerOrder = 10;
     bool neworderavailable;
     public float mintimetillnextcustomer;
     public float maxtimetillnextcustomer;
-    [HideInInspector]
-    public List<Recipes> fullproductlist;
-    public List<Recipes> neworder;
-    public GameObject orderPrefab;
-    public GameObject currentOrdersCanvas;
-    public GameObject customercharacter;
-    
-    
+    public GameObject orderPrefab;    
+    GameObject customercharacter;
+    GameObject currentOrdersCanvas;
+
+
     // Start is called before the first frame update
     void Start()
     {
+        currentOrdersCanvas = GameObject.Find("CurrentOrdersUI").gameObject;
+        customercharacter = gameObject.transform.GetChild(0).gameObject;
         //Find alle opskrifter
         string[] opskriftlokationer = AssetDatabase.FindAssets("t:scriptableobject", new[] { "Assets/Scripts/Recipes" });
-        fullproductlist.Clear();
         foreach (string opskriftstreng in opskriftlokationer)
         {
             var opskriftSti = AssetDatabase.GUIDToAssetPath(opskriftstreng);
@@ -50,12 +51,14 @@ public class KundeOrder : MasterStation
                         Destroy();
                         //Ret UI               
                         currentOrdersCanvas.transform.GetChild(o).gameObject.transform.GetChild(2).gameObject.transform.GetChild(p).GetComponent<UIRecipeInfo>().productfinishedscreen.SetActive(true);
+                        CurrentOrder.RemoveAt(p);
 
                         //Check om orderen er færdig
                         if (CurrentOrder.Count == 0)
                         {
                             KundePause();
                             GameObject.Find("Ur_Penge").GetComponent<Penge>().gold += moneyEarnedPerOrder;
+                            currentOrdersCanvas.transform.GetChild(o).gameObject.GetComponent<OrderSetupScript>().DeleteOrder();
                         }
                         return;
                     }

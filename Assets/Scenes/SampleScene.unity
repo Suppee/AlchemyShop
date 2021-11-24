@@ -217,7 +217,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8428476517740385416, guid: 079567ec0046d9d48817e718be2ec34e, type: 3}
       propertyPath: m_RootOrder
-      value: 20
+      value: 19
       objectReference: {fileID: 0}
     - target: {fileID: 8428476517740385416, guid: 079567ec0046d9d48817e718be2ec34e, type: 3}
       propertyPath: m_LocalPosition.x
@@ -267,6 +267,10 @@ PrefabInstance:
       propertyPath: CanvasPrefab
       value: 
       objectReference: {fileID: 2509431956048704936, guid: 792f7eedcd5b54b46ae0bceff0d32c8b, type: 3}
+    - target: {fileID: 8428476517740385417, guid: 079567ec0046d9d48817e718be2ec34e, type: 3}
+      propertyPath: currentOrdersCanvas
+      value: 
+      objectReference: {fileID: 840322947}
     - target: {fileID: 8428476517740385428, guid: 079567ec0046d9d48817e718be2ec34e, type: 3}
       propertyPath: m_Name
       value: Disk 3 (1)
@@ -954,7 +958,7 @@ RectTransform:
   - {fileID: 531179774}
   - {fileID: 825885773}
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -1979,7 +1983,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 8428476517740385416, guid: 079567ec0046d9d48817e718be2ec34e, type: 3}
       propertyPath: m_RootOrder
-      value: 3
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 8428476517740385416, guid: 079567ec0046d9d48817e718be2ec34e, type: 3}
       propertyPath: m_LocalPosition.x
@@ -2023,6 +2027,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8428476517740385417, guid: 079567ec0046d9d48817e718be2ec34e, type: 3}
       propertyPath: OrderCanvas
+      value: 
+      objectReference: {fileID: 840322947}
+    - target: {fileID: 8428476517740385417, guid: 079567ec0046d9d48817e718be2ec34e, type: 3}
+      propertyPath: currentOrdersCanvas
       value: 
       objectReference: {fileID: 840322947}
     - target: {fileID: 8428476517740385428, guid: 079567ec0046d9d48817e718be2ec34e, type: 3}
@@ -2124,7 +2132,7 @@ Transform:
   m_LocalScale: {x: 0.3625, y: 0.7831276, z: 14.908711}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 19
+  m_RootOrder: 20
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1948516068
 GameObject:

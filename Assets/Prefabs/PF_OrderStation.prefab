@@ -286,17 +286,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   spillerref: {fileID: 0}
   playerPickup: {fileID: 0}
-  opskriftListe: []
-  neworder: []
-  mintid: 1
-  maxtid: 3
-  PengeOrder: 10
-  CanvasPrefab: {fileID: 2509431956048704936, guid: 792f7eedcd5b54b46ae0bceff0d32c8b, type: 3}
-  sliderref: {fileID: 0}
+  moneyEarnedPerOrder: 10
   mintimetillnextcustomer: 5
   maxtimetillnextcustomer: 10
-  OrderCanvas: {fileID: 0}
-  customer: {fileID: 9017079947491973659}
+  fullproductlist: []
+  neworder: []
+  orderPrefab: {fileID: 2509431956048704936, guid: 792f7eedcd5b54b46ae0bceff0d32c8b, type: 3}
+  currentOrdersCanvas: {fileID: 0}
+  customercharacter: {fileID: 9017079947491973659}
 --- !u!1001 &8206248610267113290
 PrefabInstance:
   m_ObjectHideFlags: 0
