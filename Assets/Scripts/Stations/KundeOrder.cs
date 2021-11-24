@@ -4,30 +4,30 @@ using UnityEngine;
 
 public class KundeOrder : MasterStation
 {    
-    public List<Recipes> opskriftListe;    
-    public List<Recipes> neworder;
-    public float mintid;
-    public float maxtid;
-    public int PengeOrder = 10;
-    public GameObject CanvasPrefab;
-    public GameObject sliderref;
+    
+    public int moneyEarnedPerOrder = 10;
+    bool neworderavailable;
     public float mintimetillnextcustomer;
     public float maxtimetillnextcustomer;
-    public GameObject OrderCanvas;
-    public GameObject customer;
-    bool neworderavailable;
+    [HideInInspector]
+    public List<Recipes> fullproductlist;
+    public List<Recipes> neworder;
+    public GameObject orderPrefab;
+    public GameObject currentOrdersCanvas;
+    public GameObject customercharacter;
+    
     
     // Start is called before the first frame update
     void Start()
     {
         //Find alle opskrifter
         string[] opskriftlokationer = AssetDatabase.FindAssets("t:scriptableobject", new[] { "Assets/Scripts/Recipes" });
-        opskriftListe.Clear();
+        fullproductlist.Clear();
         foreach (string opskriftstreng in opskriftlokationer)
         {
             var opskriftSti = AssetDatabase.GUIDToAssetPath(opskriftstreng);
             var opskrift = AssetDatabase.LoadAssetAtPath<Recipes>(opskriftSti);
-            opskriftListe.Add(opskrift);
+            fullproductlist.Add(opskrift);
         }
         this.GetComponent<MeshRenderer>().material.color = Color.red;
         Invoke("SkabNyOrdre", 3);
@@ -37,25 +37,25 @@ public class KundeOrder : MasterStation
     {
         if(spillerref.holderObjekt == true)
         {
-            for (int o = 0; o < OrderCanvas.transform.childCount; o++)
+            for (int o = 0; o < currentOrdersCanvas.transform.childCount; o++)
             {
-                List<Recipes> CurrentOrder = OrderCanvas.transform.GetChild(o).gameObject.GetComponent<OrderSetupScript>().order;                
+                List<Recipes> CurrentOrder = currentOrdersCanvas.transform.GetChild(o).gameObject.GetComponent<OrderSetupScript>().order;                
 
                 for (int p = 0; p < CurrentOrder.Count; p++)
                 {
                     if (spillerref.objekthold.GetComponent<ProductInfo>().Opskrift.name.Equals(CurrentOrder[p].name))
                     {
                         Debug.Log("Produkt godkendt");                        
-                        GameObject.Find("Ur_Penge").GetComponent<Penge>().gold += PengeOrder;
+                        GameObject.Find("Ur_Penge").GetComponent<Penge>().gold += moneyEarnedPerOrder;
                         Destroy();
                         //Ret UI               
-                        OrderCanvas.transform.GetChild(o).gameObject.transform.GetChild(2).gameObject.transform.GetChild(p).GetComponent<UIRecipeInfo>().productfinishedscreen.SetActive(true);
+                        currentOrdersCanvas.transform.GetChild(o).gameObject.transform.GetChild(2).gameObject.transform.GetChild(p).GetComponent<UIRecipeInfo>().productfinishedscreen.SetActive(true);
 
                         //Check om orderen er færdig
                         if (CurrentOrder.Count == 0)
                         {
                             KundePause();
-                            GameObject.Find("Ur_Penge").GetComponent<Penge>().gold += PengeOrder;
+                            GameObject.Find("Ur_Penge").GetComponent<Penge>().gold += moneyEarnedPerOrder;
                         }
                         return;
                     }
@@ -69,7 +69,7 @@ public class KundeOrder : MasterStation
             print("Order Taget");
             StartNewOrder();
             neworderavailable = false;
-            customer.SetActive(false);
+            customercharacter.SetActive(false);
         }
       
     }
@@ -92,31 +92,25 @@ public class KundeOrder : MasterStation
         for(int i = 0; i < orderstroelse; i++)
         {
             //Finds a random recipe in the list of all recipes by choosing a random number between 0 and the number of recipes in the list of all recipes. This number serves as the indes in a search.
-            int index = Random.Range(0, opskriftListe.Count);
+            int index = Random.Range(0, fullproductlist.Count);
 
             //Add the recipe at the given index from before into the list of recipes in the current active order, which stores the current order.
-            neworder.Add(opskriftListe[index]);
+            neworder.Add(fullproductlist[index]);
            
         }
         neworderavailable = true;
-        customer.SetActive(true);
+        customercharacter.SetActive(true);
     }
 
     public void StartNewOrder()
     {
-        GameObject Currentorder = Instantiate(CanvasPrefab, OrderCanvas.transform, true);
+        GameObject Currentorder = Instantiate(orderPrefab, currentOrdersCanvas.transform, true);
         Currentorder.GetComponent<OrderSetupScript>().order = neworder;
         Currentorder.GetComponent<OrderSetupScript>().Initiate();
     }
 
     public void KundePause()
-    {              
-        this.GetComponent<MeshRenderer>().material.color = Color.red;
-        for (int i = 0; i < neworder.Count; i++)
-        {
-            Destroy(this.gameObject.transform.GetChild(0).gameObject.transform.GetChild(i + 1).gameObject);
-        }
-        neworder.Clear();
+    {
         Invoke("SkabNyOrdre", Random.Range(mintimetillnextcustomer, maxtimetillnextcustomer));
     }
     
