@@ -17,7 +17,8 @@ MonoBehaviour:
   ingredients:
   - {fileID: 11400000, guid: 7334cfb914215468985e8f00fab7bfbb, type: 2}
   - {fileID: 11400000, guid: 318f3fe94b25190429edc826e9d3db36, type: 2}
+  - {fileID: 11400000, guid: 08b43686c43c34295a01195219eb3371, type: 2}
   material: {fileID: 2100000, guid: 51fcd5c22ab4c7d4cb04cfe5c48bb155, type: 2}
   productIcon: {fileID: 2800000, guid: 7e21b9941828d497782f4413ce22ee6f, type: 3}
-  Kode: 2MAGFOU
+  Kode: 3MAGFOU
   stationIcon: {fileID: 2800000, guid: c565b4473b7a8f646974bdfc72c4eaf2, type: 3}
