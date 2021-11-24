@@ -43,8 +43,8 @@ public class SliderTime : MonoBehaviour
         {
             
             stopTimer = true;
-            gameTime = 0;            
-            this.gameObject.GetComponentInParent<KundeOrder>().KundePause();
+            gameTime = 0;
+            this.gameObject.GetComponentInParent<OrderSetupScript>().DeleteOrder();
             this.enabled = false;
 
         }

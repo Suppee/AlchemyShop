@@ -3,32 +3,32 @@ using UnityEditor;
 using UnityEngine;
 
 public class KundeOrder : MasterStation
-{    
-    public List<Recipes> opskriftListe;    
+{
+    [HideInInspector]
+    public List<Recipes> fullproductlist;
+    [HideInInspector]
     public List<Recipes> neworder;
-    public float mintid;
-    public float maxtid;
-    public int PengeOrder = 10;
-    public GameObject CanvasPrefab;
-    public GameObject sliderref;
+    public int moneyEarnedPerOrder = 10;
+    bool neworderavailable;
     public float mintimetillnextcustomer;
     public float maxtimetillnextcustomer;
-    public GameObject OrderCanvas;
-    public GameObject customer;
-    bool neworderavailable;
-    
+    public GameObject orderPrefab;    
+    GameObject customercharacter;
+    GameObject currentOrdersCanvas;
+
+
     // Start is called before the first frame update
     void Start()
     {
-
+        currentOrdersCanvas = GameObject.Find("CurrentOrdersUI").gameObject;
+        customercharacter = gameObject.transform.GetChild(0).gameObject;
         //Find alle opskrifter
         string[] opskriftlokationer = AssetDatabase.FindAssets("t:scriptableobject", new[] { "Assets/Scripts/Recipes" });
-        opskriftListe.Clear();
         foreach (string opskriftstreng in opskriftlokationer)
         {
             var opskriftSti = AssetDatabase.GUIDToAssetPath(opskriftstreng);
             var opskrift = AssetDatabase.LoadAssetAtPath<Recipes>(opskriftSti);
-            opskriftListe.Add(opskrift);
+            fullproductlist.Add(opskrift);
         }
         this.GetComponent<MeshRenderer>().material.color = Color.red;
         Invoke("SkabNyOrdre", 3);
@@ -38,34 +38,41 @@ public class KundeOrder : MasterStation
     {
         if(spillerref.holderObjekt == true)
         {
-            for (int i = 0; i < neworder.Count; i++)
-            { 
-                if (spillerref.objekthold.GetComponent<ProductInfo>().Opskrift.name.Equals(neworder[i].name))
-                {
-                    neworder.RemoveAt(i);                    
-                    Debug.Log("Produkt godkendt");                  
-                    Destroy();
-                    //Ret UI               
-                    Destroy(this.gameObject.transform.GetChild(0).gameObject.transform.GetChild(i+1).gameObject);
+            for (int o = 0; o < currentOrdersCanvas.transform.childCount; o++)
+            {
+                List<Recipes> CurrentOrder = currentOrdersCanvas.transform.GetChild(o).gameObject.GetComponent<OrderSetupScript>().order;                
 
-                    //Check om orderen er færdig
-                    if (neworder.Count == 0)                    
-                    {                        
-                        this.GetComponent<MeshRenderer>().material.color = Color.red;                        
-                        KundePause();
-                        GameObject.Find("Ur_Penge").GetComponent<Penge>().gold += PengeOrder;
-                       
-                    }                        
-                    return;
-                }
-                else
-                    Debug.Log("Produkt ikke godkendt");
+                for (int p = 0; p < CurrentOrder.Count; p++)
+                {
+                    if (spillerref.objekthold.GetComponent<ProductInfo>().Opskrift.name.Equals(CurrentOrder[p].name))
+                    {
+                        Debug.Log("Produkt godkendt");                        
+                        GameObject.Find("Ur_Penge").GetComponent<Penge>().gold += moneyEarnedPerOrder;
+                        Destroy();
+                        //Ret UI               
+                        currentOrdersCanvas.transform.GetChild(o).gameObject.transform.GetChild(2).gameObject.transform.GetChild(p).GetComponent<UIRecipeInfo>().productfinishedscreen.SetActive(true);
+                        CurrentOrder.RemoveAt(p);
+
+                        //Check om orderen er færdig
+                        if (CurrentOrder.Count == 0)
+                        {
+                            KundePause();
+                            GameObject.Find("Ur_Penge").GetComponent<Penge>().gold += moneyEarnedPerOrder;
+                            currentOrdersCanvas.transform.GetChild(o).gameObject.GetComponent<OrderSetupScript>().DeleteOrder();
+                        }
+                        return;
+                    }
+                    else
+                        Debug.Log("Produkt ikke godkendt");
+                }                
             }
         }
         else if (neworderavailable == true && spillerref.holderObjekt == false)
         {
-            print("Tag en order");
+            print("Order Taget");
             StartNewOrder();
+            neworderavailable = false;
+            customercharacter.SetActive(false);
         }
       
     }
@@ -73,7 +80,7 @@ public class KundeOrder : MasterStation
     //Method to create a new order.
     public void SkabNyOrdre()
     {
-        customer.SetActive(true);
+        
 
         for (int i = 0; i < neworder.Count; i++)
         {
@@ -88,31 +95,25 @@ public class KundeOrder : MasterStation
         for(int i = 0; i < orderstroelse; i++)
         {
             //Finds a random recipe in the list of all recipes by choosing a random number between 0 and the number of recipes in the list of all recipes. This number serves as the indes in a search.
-            int index = Random.Range(0, opskriftListe.Count);
+            int index = Random.Range(0, fullproductlist.Count);
 
             //Add the recipe at the given index from before into the list of recipes in the current active order, which stores the current order.
-            neworder.Add(opskriftListe[index]);
+            neworder.Add(fullproductlist[index]);
            
         }
         neworderavailable = true;
+        customercharacter.SetActive(true);
     }
 
     public void StartNewOrder()
     {
-        GameObject Currentorder = Instantiate(CanvasPrefab, OrderCanvas.transform, true);
+        GameObject Currentorder = Instantiate(orderPrefab, currentOrdersCanvas.transform, true);
         Currentorder.GetComponent<OrderSetupScript>().order = neworder;
         Currentorder.GetComponent<OrderSetupScript>().Initiate();
     }
 
     public void KundePause()
-    {              
-        this.gameObject.transform.GetChild(0).gameObject.SetActive(false);
-        this.GetComponent<MeshRenderer>().material.color = Color.red;
-        for (int i = 0; i < neworder.Count; i++)
-        {
-            Destroy(this.gameObject.transform.GetChild(0).gameObject.transform.GetChild(i + 1).gameObject);
-        }
-        neworder.Clear();
+    {
         Invoke("SkabNyOrdre", Random.Range(mintimetillnextcustomer, maxtimetillnextcustomer));
     }
     
