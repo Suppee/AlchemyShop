@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Mushroom
   m_EditorClassIdentifier: 
   name: Mushroom
-  ingrediensModel: {fileID: 10208, guid: 0000000000000000e000000000000000, type: 0}
-  material: {fileID: 2100000, guid: 75a387ff6a4f5b94bbb02455f82c9121, type: 2}
+  ingrediensModel: {fileID: 4300000, guid: feb7130396d774b419a66f9767cbcb2e, type: 3}
+  material: {fileID: 2100000, guid: 463be3c5bd00c4620a01ea01adf3aaef, type: 2}
   Kode: MUS
   icon: {fileID: 2800000, guid: e61802ae224bc478da63fd82b7787ba5, type: 3}
