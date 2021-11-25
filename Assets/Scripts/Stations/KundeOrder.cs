@@ -21,7 +21,6 @@ public class KundeOrder : MasterStation
     void Start()
     {
         currentOrdersCanvas = GameObject.Find("CurrentOrdersUI").gameObject;
-        customercharacter = gameObject.transform.GetChild(0).gameObject;
         //Find alle opskrifter
         string[] opskriftlokationer = AssetDatabase.FindAssets("t:scriptableobject", new[] { "Assets/Scripts/Recipes" });
         foreach (string opskriftstreng in opskriftlokationer)
