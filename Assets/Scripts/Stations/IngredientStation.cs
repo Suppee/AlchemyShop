@@ -5,20 +5,11 @@ using UnityEngine.UI;
 
 public class IngredientStation : MasterStation
 {
-
     // Variables
-
     public GameObject ingrediensPrefab;
     public Ingredient ingredient;
-    public GameObject ingredienticon;
 
     // Hidkald Prefab
-
-    private void OnValidate()
-    {
-        ingredienticon.GetComponent<RawImage>().texture = ingredient.icon;
-    }
-
     public override void Activate()
     {
         GameObject NyIngredient = Instantiate(ingrediensPrefab);
@@ -26,6 +17,4 @@ public class IngredientStation : MasterStation
         spillerref.GetComponent<Mover>().objekthold = NyIngredient;
         spillerref.GetComponent<Mover>().SamlOp();        
     }
-
-    
 }

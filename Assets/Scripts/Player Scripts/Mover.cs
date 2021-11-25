@@ -16,8 +16,7 @@ public class Mover : MonoBehaviour
     public float turnSmoothTime = 0.1f;
     float turnSmoothVelocity;
     
-    [SerializeField]
-    private int  playerIndex = 0;
+    public int  playerIndex = 0;
     PlayerInputHandler playerInputHandler;
     public bool Interact = false;
     public bool putDown = false;
@@ -31,7 +30,11 @@ public class Mover : MonoBehaviour
 
     // Kast/lægge ting
     Rigidbody m_Rigidbody;
-    public float kraft;
+
+    [SerializeField]
+    private float kraft;    
+    [SerializeField]
+    private float kraft2 = 200;
 
     private void Awake()
     {
@@ -100,8 +103,10 @@ public class Mover : MonoBehaviour
                 if (holderObjekt == true)
                     Smid();
                 else
+                {
                     objekthold = interaktionsobjekt;
-                    SamlOp();                     
+                    SamlOp();
+                }                      
             }
         }
         else if (objekthold != null)
@@ -113,6 +118,7 @@ public class Mover : MonoBehaviour
     public void SamlOp()
     {
        // Debug.Log(interaktionsobjekt + " samlet op");
+        objekthold.transform.GetChild(0).GetComponent<TrailRenderer>().enabled = false;
         holderObjekt = true;
         objekthold.transform.position = PickUpHolder.position;
         objekthold.transform.parent = PickUpHolder;
@@ -126,6 +132,7 @@ public class Mover : MonoBehaviour
     public void Smid()
     {
        // Debug.Log(objekthold + " smidt");
+        objekthold.transform.GetChild(0).GetComponent<TrailRenderer>().enabled = true;
         holderObjekt = false;
         objekthold.transform.parent = null;        
         objekthold.GetComponent<MeshCollider>().enabled = true;
@@ -133,8 +140,9 @@ public class Mover : MonoBehaviour
         objekthold.GetComponent<Rigidbody>().isKinematic = false;
         if(Interact == true)
         {
-            objekthold.GetComponent<Rigidbody>().AddForce(transform.up * kraft);
+            objekthold.GetComponent<Rigidbody>().AddForce(transform.up * kraft2);
             objekthold.GetComponent<Rigidbody>().AddForce(transform.forward * kraft);
+            
             Interact = false;
         }
         iRaekkevide.Add(objekthold);

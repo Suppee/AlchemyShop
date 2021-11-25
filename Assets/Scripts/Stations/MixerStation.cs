@@ -17,12 +17,15 @@ public class MixerStation : MasterStation
     private bool Blander;
     public GameObject[] mixspots;
 
+    [SerializeField]
+    private int index;
+
     // Aktiver station
     
     public override void Activate()
     {               
         Debug.Log("Aktiveret" + this);
-        if (spillerref.holderObjekt == true && spillerref.objekthold.tag.Contains("Ingredient"))
+        if (spillerref.holderObjekt == true && spillerref.objekthold.tag.Contains("Ingredient") && spillerref.playerIndex == index)
         {
             // Tilf�j ingrediens til listen
             blanding.Add(spillerref.objekthold.GetComponent<IngrediensInfo>().Ingredient);     
@@ -46,6 +49,10 @@ public class MixerStation : MasterStation
                     spillerref.GetComponent<Mover>().objekthold = nyProdukt;
                     spillerref.GetComponent<Mover>().SamlOp();                    
                 }
+                else
+                {
+                    Debug.Log("Stop");
+                }
             }
             foreach(GameObject spot in mixspots)
             {
@@ -53,6 +60,11 @@ public class MixerStation : MasterStation
                 Destroy(spot.transform.GetChild(0).gameObject);
             }                
             blanding.Clear();
+            blandingskode="";
+        }
+        else 
+        {
+            Debug.Log("Ikke din");
         }
         spillerref = null;
     }
@@ -65,5 +77,4 @@ public class MixerStation : MasterStation
             blandingskode += ing.Kode;
         }
     }
-
 }
