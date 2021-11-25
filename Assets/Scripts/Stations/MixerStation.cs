@@ -20,10 +20,9 @@ public class MixerStation : MasterStation
     // Aktiver station
     
     public override void Activate()
-    {
-               
+    {               
         Debug.Log("Aktiveret" + this);
-        if (spillerref.holderObjekt == true)
+        if (spillerref.holderObjekt == true && spillerref.objekthold.tag.Contains("Ingredient"))
         {
             // Tilf�j ingrediens til listen
             blanding.Add(spillerref.objekthold.GetComponent<IngrediensInfo>().Ingredient);     
@@ -35,7 +34,7 @@ public class MixerStation : MasterStation
             blandingskode = "";
             GenerereKode();
         }
-        else
+        else if (spillerref.holderObjekt == false)
         {
             //start mixer minigame
             foreach (Recipes opskrift in Opskrifter)

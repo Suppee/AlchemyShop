@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 5175779227404207550}
   m_Layer: 0
   m_Name: PF_Ingredient
-  m_TagString: PickUp
+  m_TagString: Ingredient PickUp
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
