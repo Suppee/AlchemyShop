@@ -30,7 +30,6 @@ public class KundeOrder : MasterStation
             var opskrift = AssetDatabase.LoadAssetAtPath<Recipes>(opskriftSti);
             fullproductlist.Add(opskrift);
         }
-        this.GetComponent<MeshRenderer>().material.color = Color.red;
         Invoke("SkabNyOrdre", 3);
     }
     

@@ -46,8 +46,8 @@ public class MixerStation : MasterStation
                 {
                     GameObject nyProdukt = Instantiate(produktPrefab);
                     nyProdukt.GetComponent<ProductInfo>().Opskrift = opskrift;
-                    spillerref.GetComponent<Mover>().objekthold = nyProdukt;
-                    spillerref.GetComponent<Mover>().SamlOp();                    
+                    spillerref.objekthold = nyProdukt;
+                    spillerref.SamlOp();                    
                 }
                 else
                 {
