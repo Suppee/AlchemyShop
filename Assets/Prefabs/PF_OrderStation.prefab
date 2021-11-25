@@ -778,6 +778,7 @@ MonoBehaviour:
   mintimetillnextcustomer: 5
   maxtimetillnextcustomer: 10
   orderPrefab: {fileID: 2509431956048704936, guid: 792f7eedcd5b54b46ae0bceff0d32c8b, type: 3}
+  customercharacter: {fileID: 4985430116925310657}
 --- !u!64 &5547065349317560399
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -1432,6 +1433,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 535c61de68053c34a9bb42f463e3fca6, type: 3}
+--- !u!1 &4985430116925310657 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 535c61de68053c34a9bb42f463e3fca6, type: 3}
+  m_PrefabInstance: {fileID: 5327379675802188688}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &5648673829869739131 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 535c61de68053c34a9bb42f463e3fca6, type: 3}
