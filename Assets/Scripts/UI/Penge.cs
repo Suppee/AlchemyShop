@@ -20,7 +20,7 @@ public class Penge : MonoBehaviour
            gold = 0;
        }
        DisplayGold(gold);
-       GameObject.Find("GameManager").GetComponent<GameManager>().monney = gold;
+       GameObject.Find("GameManager").GetComponent<GameManager>().money = gold;
     }
      public void DisplayGold(float goldToDisplay)
     {

@@ -7,10 +7,10 @@ public class GameManager : MonoBehaviour
 {
     bool GameHasEnded = false; 
     public float restartDelay = 0;
-    public int monney;
+    public int money;
     private Timer tid;
     public bool End = false;
-    public int WinningMonney = 100;
+    public int WinningMoney = 100;
     public GameObject victoryUI;
     public GameObject LoseUI;
 
@@ -30,7 +30,7 @@ public class GameManager : MonoBehaviour
             GameHasEnded = true;
             Debug.Log("EndGame");
             
-            if(monney >= WinningMonney)
+            if(money >= WinningMoney)
             {
                 victoryUI.SetActive(true); 
                 Invoke("Restart", restartDelay);
