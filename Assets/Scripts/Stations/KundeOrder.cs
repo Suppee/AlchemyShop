@@ -13,7 +13,7 @@ public class KundeOrder : MasterStation
     public float mintimetillnextcustomer;
     public float maxtimetillnextcustomer;
     public GameObject orderPrefab;    
-    GameObject customercharacter;
+    public GameObject customercharacter;
     GameObject currentOrdersCanvas;
 
 

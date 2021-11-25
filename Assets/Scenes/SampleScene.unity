@@ -1517,9 +1517,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   restartDelay: 4
-  monney: 0
+  money: 0
   End: 0
-  WinningMonney: 100
+  WinningMoney: 100
   victoryUI: {fileID: 531179773}
   LoseUI: {fileID: 825885772}
 --- !u!4 &407475542
@@ -4040,6 +4040,11 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 354358895518984116, guid: 4be3c415aba6b8749817c5a0f4bbea53, type: 3}
+--- !u!1 &1101367180 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4985430116925310657, guid: 0f8389adc6d37f74d98d6ec7e100c8f6, type: 3}
+  m_PrefabInstance: {fileID: 4038836300274807922}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1133180367
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5251,6 +5256,11 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1346389857}
   m_Mesh: {fileID: 3736213754101489272, guid: c9b03f61f89ad0a4ca94e054f2e73651, type: 3}
+--- !u!1 &1355752586 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4985430116925310657, guid: 0f8389adc6d37f74d98d6ec7e100c8f6, type: 3}
+  m_PrefabInstance: {fileID: 1738824888}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1358636006
 GameObject:
   m_ObjectHideFlags: 0
@@ -7269,6 +7279,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 4985430116925310657, guid: 0f8389adc6d37f74d98d6ec7e100c8f6, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5547065349317560398, guid: 0f8389adc6d37f74d98d6ec7e100c8f6, type: 3}
       propertyPath: m_Name
       value: PF_OrderStation
@@ -7317,6 +7331,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5547065349317560403, guid: 0f8389adc6d37f74d98d6ec7e100c8f6, type: 3}
+      propertyPath: customercharacter
+      value: 
+      objectReference: {fileID: 1355752586}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0f8389adc6d37f74d98d6ec7e100c8f6, type: 3}
 --- !u!1 &1753497264
@@ -11016,6 +11034,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5547065349317560403, guid: 0f8389adc6d37f74d98d6ec7e100c8f6, type: 3}
+      propertyPath: customercharacter
+      value: 
+      objectReference: {fileID: 1101367180}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0f8389adc6d37f74d98d6ec7e100c8f6, type: 3}
 --- !u!33 &4216106872027680474
