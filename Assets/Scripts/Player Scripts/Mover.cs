@@ -32,9 +32,9 @@ public class Mover : MonoBehaviour
     Rigidbody m_Rigidbody;
 
     [SerializeField]
-    private float kraft;    
+    private float yeet;    
     [SerializeField]
-    private float kraft2 = 200;
+    private float kraft = 200;
 
     private void Awake()
     {
@@ -118,7 +118,7 @@ public class Mover : MonoBehaviour
     public void SamlOp()
     {
        // Debug.Log(interaktionsobjekt + " samlet op");
-        objekthold.transform.GetChild(0).GetComponent<TrailRenderer>().enabled = false;
+        //objekthold.transform.GetChild(0).GetComponent<TrailRenderer>().enabled = false;
         holderObjekt = true;
         objekthold.transform.position = PickUpHolder.position;
         objekthold.transform.parent = PickUpHolder;
@@ -140,8 +140,8 @@ public class Mover : MonoBehaviour
         objekthold.GetComponent<Rigidbody>().isKinematic = false;
         if(Interact == true)
         {
-            objekthold.GetComponent<Rigidbody>().AddForce(transform.up * kraft2);
-            objekthold.GetComponent<Rigidbody>().AddForce(transform.forward * kraft);
+            objekthold.GetComponent<Rigidbody>().AddForce(transform.up * kraft);
+            objekthold.GetComponent<Rigidbody>().AddForce(transform.forward * yeet);
             
             Interact = false;
         }
