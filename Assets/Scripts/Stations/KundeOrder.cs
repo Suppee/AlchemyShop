@@ -30,7 +30,7 @@ public class KundeOrder : MasterStation
             var opskrift = AssetDatabase.LoadAssetAtPath<Recipes>(opskriftSti);
             fullproductlist.Add(opskrift);
         }
-        StartCoroutine(KundePause);
+        StartCoroutine(KundePause());
         //Invoke("SkabNyOrdre", 3);
     }
     
