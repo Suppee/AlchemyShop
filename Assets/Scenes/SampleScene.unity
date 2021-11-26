@@ -13822,6 +13822,7 @@ GameObject:
   - component: {fileID: 4350781767411305593}
   - component: {fileID: 8493670781443033209}
   - component: {fileID: 271913424031849692}
+  - component: {fileID: 8150544462565526880}
   m_Layer: 0
   m_Name: Wall_small
   m_TagString: Untagged
@@ -13829,6 +13830,20 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!64 &8150544462565526880
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8150544462565526879}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: -2975850740218912237, guid: 7152f4d1958b996409842e838cd88997, type: 3}
 --- !u!1 &8155981468823324835
 GameObject:
   m_ObjectHideFlags: 0
