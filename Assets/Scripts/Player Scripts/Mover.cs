@@ -90,12 +90,12 @@ public class Mover : MonoBehaviour
             {
                 if ((holderObjekt == true && !interaktionsobjekt.tag.Contains("Ingredient")) || (holderObjekt == false))
                 {
-                    Debug.Log(this.gameObject + " har aktivet" + interaktionsobjekt);
+                    //Debug.Log(this.gameObject + " har aktivet" + interaktionsobjekt);
                     interaktionsobjekt.GetComponent<MasterStation>().spillerref = this;
                     interaktionsobjekt.GetComponent<MasterStation>().Activate();
                 }
-                else
-                    Debug.Log("Kan ikke aktiver " + interaktionsobjekt);
+                //else
+                   //Debug.Log("Kan ikke aktiver " + interaktionsobjekt);
             }
             //Interger med Pick Up
             else if (interaktionsobjekt.tag.Contains("PickUp"))
