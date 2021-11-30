@@ -1,11 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI; 
+using UnityEngine.UI;
+using TMPro;
+
 public class Timer : MonoBehaviour
 {
    public float timeValue = 90;
-   public Text timeText;
+   public TMP_Text timeText;
     // Update is called once per frame
    public void Update()
     {
@@ -37,4 +39,5 @@ public class Timer : MonoBehaviour
 
         timeText.text = string.Format("{0:00}:{1:00}", minutes, seconds);
     }
+
 }

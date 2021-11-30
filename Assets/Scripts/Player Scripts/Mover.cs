@@ -132,7 +132,7 @@ public class Mover : MonoBehaviour
     public void Smid()
     {
        // Debug.Log(objekthold + " smidt");
-        objekthold.transform.GetChild(0).GetComponent<TrailRenderer>().enabled = true;
+        //objekthold.transform.GetChild(0).GetComponent<TrailRenderer>().enabled = true;
         holderObjekt = false;
         objekthold.transform.parent = null;        
         objekthold.GetComponent<MeshCollider>().enabled = true;

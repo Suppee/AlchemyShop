@@ -1,3 +1,4 @@
+using System.Collections;
 using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
@@ -13,7 +14,7 @@ public class KundeOrder : MasterStation
     public float mintimetillnextcustomer;
     public float maxtimetillnextcustomer;
     public GameObject orderPrefab;    
-    GameObject customercharacter;
+    public GameObject customercharacter;
     GameObject currentOrdersCanvas;
 
 
@@ -29,7 +30,8 @@ public class KundeOrder : MasterStation
             var opskrift = AssetDatabase.LoadAssetAtPath<Recipes>(opskriftSti);
             fullproductlist.Add(opskrift);
         }
-        Invoke("SkabNyOrdre", 3);
+        StartCoroutine(KundePause());
+        //Invoke("SkabNyOrdre", 3);
     }
     
     public override void Activate()
@@ -78,12 +80,6 @@ public class KundeOrder : MasterStation
     //Method to create a new order.
     public void SkabNyOrdre()
     {
-        
-
-        for (int i = 0; i < neworder.Count; i++)
-        {
-            Destroy(this.gameObject.transform.GetChild(0).gameObject.transform.GetChild(i + 1).gameObject);
-        }
         neworder.Clear();
 
         //Find order size by choosing a random number between 1 as the minimum order size and the largest order size + 1 because of the loop following.
@@ -110,9 +106,14 @@ public class KundeOrder : MasterStation
         Currentorder.GetComponent<OrderSetupScript>().Initiate();
     }
 
-    public void KundePause()
+    IEnumerator KundePause()
     {
-        Invoke("SkabNyOrdre", Random.Range(mintimetillnextcustomer, maxtimetillnextcustomer));
+        while (true)
+        {            
+            Invoke("SkabNyOrdre", Random.Range(mintimetillnextcustomer, maxtimetillnextcustomer));
+            Debug.Log("CUSTOMER");
+            yield return new WaitForSeconds(Random.Range(mintimetillnextcustomer, maxtimetillnextcustomer));
+        }
     }
     
 }

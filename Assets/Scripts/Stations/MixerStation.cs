@@ -12,6 +12,7 @@ public class MixerStation : MasterStation
     public List<ScriptableObject> Opskrifter;
     public GameObject produktPrefab;
 
+    public int maxIngridienser;
     public bool HarTingIHaanden;
     public string blandingskode;
     private bool Blander;
@@ -23,9 +24,11 @@ public class MixerStation : MasterStation
     // Aktiver station
     
     public override void Activate()
-    {               
+    {  
+        
+                    
         Debug.Log("Aktiveret" + this);
-        if (spillerref.holderObjekt == true && spillerref.objekthold.tag.Contains("Ingredient") && spillerref.playerIndex == index)
+          if (spillerref.holderObjekt == true && spillerref.objekthold.tag.Contains("Ingredient") && spillerref.playerIndex == index && blanding.Count < maxIngridienser)
         {
             // Tilf�j ingrediens til listen
             blanding.Add(spillerref.objekthold.GetComponent<IngrediensInfo>().Ingredient);     
@@ -37,7 +40,7 @@ public class MixerStation : MasterStation
             blandingskode = "";
             GenerereKode();
         }
-        else if (spillerref.holderObjekt == false)
+            else if (spillerref.holderObjekt == false)
         {
             //start mixer minigame
             foreach (Recipes opskrift in Opskrifter)
@@ -62,7 +65,7 @@ public class MixerStation : MasterStation
             blanding.Clear();
             blandingskode="";
         }
-        else 
+            else 
         {
             Debug.Log("Ikke din");
         }

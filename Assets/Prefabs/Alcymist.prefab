@@ -472,7 +472,7 @@ MonoBehaviour:
   - {fileID: 7629050311806608423}
   - {fileID: 6548854495972557662}
   - {fileID: 1331348470105487600}
-  index: 0
+  index: 1
 --- !u!64 &3801732957812287432
 MeshCollider:
   m_ObjectHideFlags: 0
