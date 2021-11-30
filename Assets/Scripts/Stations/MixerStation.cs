@@ -27,9 +27,9 @@ public class MixerStation : MasterStation
     {  
         
                     
-        Debug.Log("Aktiveret" + this);
+        //Debug.Log("Aktiveret" + this);
           if (spillerref.holderObjekt == true && spillerref.objekthold.tag.Contains("Ingredient") && spillerref.playerIndex == index && blanding.Count < maxIngridienser)
-        {
+          {
             // Tilf�j ingrediens til listen
             blanding.Add(spillerref.objekthold.GetComponent<IngrediensInfo>().Ingredient);     
             spillerref.objekthold.transform.position = mixspots[blanding.Count -1].gameObject.transform.position;
@@ -39,22 +39,25 @@ public class MixerStation : MasterStation
 
             blandingskode = "";
             GenerereKode();
-        }
-            else if (spillerref.holderObjekt == false)
-        {
+          }
+          else if (spillerref.holderObjekt == false)
+          {
             //start mixer minigame
             foreach (Recipes opskrift in Opskrifter)
             {
-                if(blandingskode.Equals(opskrift.Kode))
-                {
-                    GameObject nyProdukt = Instantiate(produktPrefab);
-                    nyProdukt.GetComponent<ProductInfo>().Opskrift = opskrift;
-                    spillerref.objekthold = nyProdukt;
-                    spillerref.SamlOp();                    
-                }
-                else
-                {
-                    Debug.Log("Stop");
+                for(int i = 0; i < opskrift.ingredients.Length; i++)
+                {                    
+                    if (blanding.Contains(opskrift.ingredients[i]))
+                    {                        
+                        Debug.Log(opskrift.ingredients[i] + "found in mix");
+                        if (i==opskrift.ingredients.Length-1)
+                        {                        
+                        GameObject nyProdukt = Instantiate(produktPrefab);
+                        nyProdukt.GetComponent<ProductInfo>().Opskrift = opskrift;
+                        spillerref.objekthold = nyProdukt;
+                        spillerref.SamlOp();
+                        }
+                    }
                 }
             }
             foreach(GameObject spot in mixspots)
