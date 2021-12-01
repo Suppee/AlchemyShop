@@ -21,4 +21,4 @@ MonoBehaviour:
   material: {fileID: 2110291619278664704, guid: 79f7ca91f2fb0b041ba5badd9f4a45fc, type: 3}
   productIcon: {fileID: 2800000, guid: 0abdc2594837e1d458f724c93cdc114f, type: 3}
   Kode: 3CRYEYEMUS
-  stationIcon: {fileID: 2800000, guid: d0945b5f92fa8194995ade13d6d512dd, type: 3}
+  stationIcon: {fileID: 2800000, guid: c565b4473b7a8f646974bdfc72c4eaf2, type: 3}

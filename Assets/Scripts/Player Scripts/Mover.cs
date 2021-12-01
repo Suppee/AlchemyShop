@@ -125,6 +125,7 @@ public class Mover : MonoBehaviour
         objekthold.GetComponent<MeshCollider>().enabled = false;        
         objekthold.GetComponent<Rigidbody>().useGravity = false;
         objekthold.GetComponent<Rigidbody>().isKinematic = true;
+        objekthold.GetComponent<Outline>().enabled = false;
         iRaekkevide.Remove(objekthold);
     }
 
@@ -138,6 +139,7 @@ public class Mover : MonoBehaviour
         objekthold.GetComponent<MeshCollider>().enabled = true;
         objekthold.GetComponent<Rigidbody>().useGravity = true;
         objekthold.GetComponent<Rigidbody>().isKinematic = false;
+        objekthold.GetComponent<Outline>().enabled = true;
         if(Interact == true)
         {
             objekthold.GetComponent<Rigidbody>().AddForce(transform.up * kraft);
@@ -181,15 +183,16 @@ public class Mover : MonoBehaviour
                 Debug.DrawLine(ting.transform.position, this.transform.position, Color.red, 3);
 
                 //Find afstand mellem objekt og spiller
-                float afstand = Vector3.Distance(ting.transform.position, this.transform.position);
-                           
+                float afstand = Vector3.Distance(ting.transform.position, this.transform.position); 
+                          
                 //Hvis afstanden er kortere end den korteste afstand saa saet den korteste afstand til den nye afstand
                 if (afstand <= kortestafstand)
                 {
                     kortestafstand = afstand;
-                    interaktionsobjekt = ting;                    
+                    interaktionsobjekt = ting;                
                 }
+                
             }
-            yield return interaktionsobjekt;
+            yield return interaktionsobjekt;   
     }
 }

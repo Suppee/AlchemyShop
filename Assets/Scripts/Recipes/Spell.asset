@@ -21,4 +21,4 @@ MonoBehaviour:
   material: {fileID: 7220005223078704897, guid: fe05d7caa7a34df4c9434786e525805c, type: 3}
   productIcon: {fileID: 2800000, guid: 7e21b9941828d497782f4413ce22ee6f, type: 3}
   Kode: 3MAGFOUBO
-  stationIcon: {fileID: 2800000, guid: c565b4473b7a8f646974bdfc72c4eaf2, type: 3}
+  stationIcon: {fileID: 2800000, guid: d0945b5f92fa8194995ade13d6d512dd, type: 3}
