@@ -41,6 +41,7 @@ public class Mover : MonoBehaviour
         controller = GetComponent<CharacterController>();
         m_Rigidbody = GetComponent<Rigidbody>();
         playerInputHandler = GetComponent<PlayerInputHandler>();
+        StartCoroutine("FindTaettestObjekt");
     }
 
     public void SetInputVector(Vector2 direction)
@@ -83,8 +84,8 @@ public class Mover : MonoBehaviour
     {
         if(iRaekkevide.Count > 0)
         {
-            StartCoroutine("FindTaettestObjekt");
-        
+            
+
             //Interger med Station
             if (interaktionsobjekt.tag.Contains("Station"))
             {
@@ -111,6 +112,8 @@ public class Mover : MonoBehaviour
         }
         else if (objekthold != null)
             Smid();
+
+        interaktionsobjekt.GetComponent<Outline>().enabled = false;
         interaktionsobjekt = null;      
     }
 
@@ -161,7 +164,7 @@ public class Mover : MonoBehaviour
     //Objekt kommer inden for raekkevidde
     private void OnTriggerEnter(Collider other)
     {        
-        if(!iRaekkevide.Contains(other.gameObject) && (other.gameObject.tag.Contains("Station") || (other.gameObject.tag.Contains("PickUp"))))
+        if(!iRaekkevide.Contains(other.gameObject) && ((other.gameObject.tag.Contains("Station") || (other.gameObject.tag.Contains("PickUp")))))
             iRaekkevide.Add(other.gameObject);   
     }
 
@@ -169,12 +172,19 @@ public class Mover : MonoBehaviour
     private void OnTriggerExit(Collider other)
     {
         if (iRaekkevide.Contains(other.gameObject))
-            iRaekkevide.Remove(other.gameObject);   
+        {
+            other.GetComponent<Outline>().enabled = false;
+            iRaekkevide.Remove(other.gameObject);
+        }
     }
 
     //Find taetteste objekt
     IEnumerator FindTaettestObjekt()
     {
+        while(true)
+        {
+
+        
             // Find taetteste objekt fra listen af objekter i raekkevidde
             float kortestafstand = Mathf.Infinity;
             foreach (GameObject ting in iRaekkevide)
@@ -189,10 +199,13 @@ public class Mover : MonoBehaviour
                 if (afstand <= kortestafstand)
                 {
                     kortestafstand = afstand;
-                    interaktionsobjekt = ting;                
+                    interaktionsobjekt = ting;
+                    interaktionsobjekt.GetComponent<Outline>().enabled = true;
                 }
                 
             }
-            yield return interaktionsobjekt;   
+            yield return interaktionsobjekt;
+        }
+        
     }
 }

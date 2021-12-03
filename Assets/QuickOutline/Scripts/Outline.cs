@@ -82,6 +82,8 @@ public class Outline : MonoBehaviour {
 
   void Awake() {
 
+        this.enabled = false;
+
     // Cache renderers
     renderers = GetComponentsInChildren<Renderer>();
 
