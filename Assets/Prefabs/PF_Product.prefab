@@ -17,7 +17,7 @@ GameObject:
   - component: {fileID: -4667344029080981115}
   m_Layer: 0
   m_Name: PF_Product
-  m_TagString: PickUp
+  m_TagString: Product PickUp
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -141,7 +141,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   outlineMode: 1
-  outlineColor: {r: 0.46877503, g: 1, b: 0, a: 1}
+  outlineColor: {r: 0, g: 1, b: 0, a: 1}
   outlineWidth: 4
   precomputeOutline: 0
   bakeKeys: []

@@ -29,21 +29,30 @@ public class PlayerInputHandler : MonoBehaviour
     {
         if(mover != null)
         {
-           mover.Interact = true;
+            if(context.started == true)
+            {
+                mover.Interact = true;
+            }
+           
         }
     }
 
-    public void OnPutDown(CallbackContext context)
+    public void OnPutDown(InputAction.CallbackContext context)
     {
         if( mover != null)
         {
-            mover.putDown = true;
+           
+            if(context.started == true)
+            { 
+                mover.putDown = true;
+            }
+            
         }
     }
 
     void LateUpdate()
     {
-       mover.Interact = false;
-       mover.putDown = false;
+        mover.Interact = false;
+        mover.putDown = false;
     }
 }

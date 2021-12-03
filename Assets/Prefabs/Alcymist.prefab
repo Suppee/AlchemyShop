@@ -466,6 +466,7 @@ MonoBehaviour:
   Opskrifter:
   - {fileID: 11400000, guid: ad5c9b6ff995a8c46987869aa9c3ede8, type: 2}
   produktPrefab: {fileID: 2473549004927088009, guid: ca5c31bc3a818a1439311b21ca5d2ed1, type: 3}
+  maxIngridienser: 0
   HarTingIHaanden: 0
   blandingskode: 
   mixspots:
@@ -484,8 +485,8 @@ MeshCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 4
-  m_Convex: 0
-  m_CookingOptions: 30
+  m_Convex: 1
+  m_CookingOptions: -1
   m_Mesh: {fileID: 4304708807700929720, guid: b5d38c87f97d63244a44a20a257762ee, type: 3}
 --- !u!1 &5535160259028509374
 GameObject:

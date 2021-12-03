@@ -36,7 +36,7 @@ public class KundeOrder : MasterStation
     
     public override void Activate()
     {
-        if(spillerref.holderObjekt == true)
+        if(spillerref.holderObjekt == true && spillerref.objekthold.tag.Contains("Product"))
         {
             for (int o = 0; o < currentOrdersCanvas.transform.childCount; o++)
             {
