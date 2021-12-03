@@ -1,12 +1,14 @@
+using System.Linq;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
 
+
 public class KundeOrder : MasterStation
 {
-    [HideInInspector]
-    public List<Recipes> fullproductlist;
+    //[HideInInspector]
+    public Recipes[] fullproductlist;
     [HideInInspector]
     public List<Recipes> neworder;
     public int moneyEarnedPerOrder = 10;
@@ -22,16 +24,8 @@ public class KundeOrder : MasterStation
     void Start()
     {
         currentOrdersCanvas = GameObject.Find("CurrentOrdersUI").gameObject;
-        //Find alle opskrifter
-        string[] opskriftlokationer = AssetDatabase.FindAssets("t:scriptableobject", new[] { "Assets/Scripts/Recipes" });
-        foreach (string opskriftstreng in opskriftlokationer)
-        {
-            var opskriftSti = AssetDatabase.GUIDToAssetPath(opskriftstreng);
-            var opskrift = AssetDatabase.LoadAssetAtPath<Recipes>(opskriftSti);
-            fullproductlist.Add(opskrift);
-        }
+        fullproductlist = Resources.LoadAll("Recipes", typeof(Recipes)).Cast<Recipes>().ToArray();
         StartCoroutine(KundePause());
-        //Invoke("SkabNyOrdre", 3);
     }
     
     public override void Activate()
@@ -89,7 +83,7 @@ public class KundeOrder : MasterStation
         for(int i = 0; i < orderstroelse; i++)
         {
             //Finds a random recipe in the list of all recipes by choosing a random number between 0 and the number of recipes in the list of all recipes. This number serves as the indes in a search.
-            int index = Random.Range(0, fullproductlist.Count);
+            int index = Random.Range(0, fullproductlist.Length);
 
             //Add the recipe at the given index from before into the list of recipes in the current active order, which stores the current order.
             neworder.Add(fullproductlist[index]);
@@ -109,11 +103,10 @@ public class KundeOrder : MasterStation
     IEnumerator KundePause()
     {
         while (true)
-        {            
-            Invoke("SkabNyOrdre", Random.Range(mintimetillnextcustomer, maxtimetillnextcustomer));
-            Debug.Log("CUSTOMER");
+        {
+            Invoke("SkabNyOrdre", 0f);
+           // Debug.Log("CUSTOMER");
             yield return new WaitForSeconds(Random.Range(mintimetillnextcustomer, maxtimetillnextcustomer));
         }
-    }
-    
+    }    
 }

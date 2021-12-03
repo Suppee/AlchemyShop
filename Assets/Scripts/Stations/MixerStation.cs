@@ -13,32 +13,26 @@ public class MixerStation : MasterStation
     public GameObject produktPrefab;
 
     public int maxIngridienser;
+    [HideInInspector]
     public bool HarTingIHaanden;
-    public string blandingskode;
     private bool Blander;
     public GameObject[] mixspots;
 
     [SerializeField]
     private int index;
 
-    // Aktiver station
-    
+    // Aktiver station    
     public override void Activate()
-    {  
-        
-                    
-        //Debug.Log("Aktiveret" + this);
+    {                     
+          //Debug.Log("Aktiveret" + this);
           if (spillerref.holderObjekt == true && spillerref.objekthold.tag.Contains("Ingredient") && spillerref.playerIndex == index && blanding.Count < maxIngridienser)
           {
-            // Tilf�j ingrediens til listen
+            // Tilfoej ingrediens til listen
             blanding.Add(spillerref.objekthold.GetComponent<IngrediensInfo>().Ingredient);     
             spillerref.objekthold.transform.position = mixspots[blanding.Count -1].gameObject.transform.position;
             spillerref.objekthold.transform.parent = mixspots[blanding.Count -1].gameObject.transform;
             spillerref.holderObjekt = false;
             spillerref.objekthold = null;
-
-            blandingskode = "";
-            GenerereKode();
           }
           else if (spillerref.holderObjekt == false)
           {
@@ -66,21 +60,11 @@ public class MixerStation : MasterStation
                 Destroy(spot.transform.GetChild(0).gameObject);
             }                
             blanding.Clear();
-            blandingskode="";
         }
             else 
         {
             Debug.Log("Ikke din");
         }
         spillerref = null;
-    }
-
-    public void GenerereKode()
-    {
-        blandingskode += blanding.Count.ToString();
-        foreach (Ingredient ing in blanding)
-        {
-            blandingskode += ing.Kode;
-        }
     }
 }

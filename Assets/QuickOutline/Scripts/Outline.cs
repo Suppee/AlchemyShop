@@ -82,8 +82,6 @@ public class Outline : MonoBehaviour {
 
   void Awake() {
 
-        this.enabled = false;
-
     // Cache renderers
     renderers = GetComponentsInChildren<Renderer>();
 
@@ -99,7 +97,10 @@ public class Outline : MonoBehaviour {
 
     // Apply material properties immediately
     needsUpdate = true;
-  }
+
+    // Disable by default
+    this.enabled = false;
+    }
 
   void OnEnable() {
     foreach (var renderer in renderers) {

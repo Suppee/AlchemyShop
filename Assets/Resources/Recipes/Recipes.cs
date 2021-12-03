@@ -10,17 +10,6 @@ public class Recipes : ScriptableObject
     public Mesh model;
     public Ingredient[] ingredients;
     public Material material;
-    public Texture productIcon;    
-    public string Kode;
+    public Texture productIcon;
     public Texture stationIcon;
-
-    void OnValidate()
-    {
-        Kode = "";
-        Kode += ingredients.Length.ToString();
-        foreach (Ingredient ing in ingredients)
-        {
-            Kode += ing.Kode;
-        }
-    }
 }
