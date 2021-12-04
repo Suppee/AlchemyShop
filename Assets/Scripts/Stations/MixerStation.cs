@@ -25,7 +25,7 @@ public class MixerStation : MasterStation
     public override void Activate()
     {                     
           //Debug.Log("Aktiveret" + this);
-          if (spillerref.holderObjekt == true && spillerref.objekthold.tag.Contains("Ingredient") && spillerref.playerIndex == index && blanding.Count < maxIngridienser)
+          if (spillerref.holderObjekt == true && spillerref.objekthold.tag.Contains("Ingredient") && blanding.Count < maxIngridienser)
           {
             // Tilfoej ingrediens til listen
             blanding.Add(spillerref.objekthold.GetComponent<IngrediensInfo>().Ingredient);     
@@ -34,7 +34,7 @@ public class MixerStation : MasterStation
             spillerref.holderObjekt = false;
             spillerref.objekthold = null;
           }
-          else if (spillerref.holderObjekt == false)
+          else if (spillerref.holderObjekt == false && spillerref.playerIndex == index)
           {
             //start mixer minigame
             foreach (Recipes opskrift in Opskrifter)
@@ -43,7 +43,7 @@ public class MixerStation : MasterStation
                 {                    
                     if (blanding.Contains(opskrift.ingredients[i]))
                     {                        
-                        Debug.Log(opskrift.ingredients[i] + "found in mix");
+                        //Debug.Log(opskrift.ingredients[i] + "found in mix");
                         if (i==opskrift.ingredients.Length-1)
                         {                        
                         GameObject nyProdukt = Instantiate(produktPrefab);
