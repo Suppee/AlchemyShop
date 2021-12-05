@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class ProduktInfo : MonoBehaviour
 {
-    public Recipes opskrift;
+    public ProductRecipe opskrift;
 
     // Start is called before the first frame update
     void Start()
@@ -12,11 +12,5 @@ public class ProduktInfo : MonoBehaviour
         this.GetComponent<MeshFilter>().mesh = opskrift.model;
         this.GetComponent<MeshRenderer>().material = opskrift.material;
         this.GetComponent<MeshCollider>().sharedMesh = opskrift.model;
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 }

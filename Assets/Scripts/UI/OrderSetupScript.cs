@@ -9,13 +9,13 @@ public class OrderSetupScript : MonoBehaviour
     public GameObject productCanvas;
     public Slider timeslider;
     public TMP_Text ordernumber;
-    public List<Recipes> order;
+    public List<ProductRecipe> order;
     public GameObject productarea;
    // [System.Serializable]
 
     public class serializableClass
     {
-        public List<Recipes> SingleOrder;
+        public List<ProductRecipe> SingleOrder;
     }
     public List<serializableClass> activeOrders; // = new List<serializableClass>();
     
@@ -23,7 +23,7 @@ public class OrderSetupScript : MonoBehaviour
     public void Initiate()
     {
         ordernumber.text = (transform.GetSiblingIndex() +1).ToString();
-        foreach (Recipes product in order)
+        foreach (ProductRecipe product in order)
         {
             GameObject currentProduct = Instantiate(productCanvas, productarea.transform);
             currentProduct.GetComponent<UIRecipeInfo>().currentrecipe = product;

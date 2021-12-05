@@ -8,9 +8,9 @@ using UnityEngine;
 public class KundeOrder : MasterStation
 {
     //[HideInInspector]
-    public Recipes[] fullproductlist;
+    public ProductRecipe[] fullproductlist;
     [HideInInspector]
-    public List<Recipes> neworder;
+    public List<ProductRecipe> neworder;
     public int moneyEarnedPerOrder = 10;
     bool neworderavailable;
     public float mintimetillnextcustomer;
@@ -24,7 +24,7 @@ public class KundeOrder : MasterStation
     void Start()
     {
         currentOrdersCanvas = GameObject.Find("CurrentOrdersUI").gameObject;
-        fullproductlist = Resources.LoadAll("Recipes", typeof(Recipes)).Cast<Recipes>().ToArray();
+        fullproductlist = Resources.LoadAll("Recipes", typeof(ProductRecipe)).Cast<ProductRecipe>().ToArray();
         StartCoroutine(KundePause());
     }
     
@@ -34,7 +34,7 @@ public class KundeOrder : MasterStation
         {
             for (int o = 0; o < currentOrdersCanvas.transform.childCount; o++)
             {
-                List<Recipes> CurrentOrder = currentOrdersCanvas.transform.GetChild(o).gameObject.GetComponent<OrderSetupScript>().order;                
+                List<ProductRecipe> CurrentOrder = currentOrdersCanvas.transform.GetChild(o).gameObject.GetComponent<OrderSetupScript>().order;                
 
                 for (int p = 0; p < CurrentOrder.Count; p++)
                 {

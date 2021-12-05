@@ -9,16 +9,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 272fee04f7a379043b47fa08d5121f01, type: 3}
+  m_Script: {fileID: 11500000, guid: 3398eb3b8c2f4b840abb6dd59322e2a6, type: 3}
   m_Name: Spell
   m_EditorClassIdentifier: 
-  name: Spell
-  model: {fileID: -6787765250471932267, guid: fe05d7caa7a34df4c9434786e525805c, type: 3}
   ingredients:
   - {fileID: 11400000, guid: 7334cfb914215468985e8f00fab7bfbb, type: 2}
   - {fileID: 11400000, guid: 318f3fe94b25190429edc826e9d3db36, type: 2}
   - {fileID: 11400000, guid: 08b43686c43c34295a01195219eb3371, type: 2}
   material: {fileID: 7220005223078704897, guid: fe05d7caa7a34df4c9434786e525805c, type: 3}
   productIcon: {fileID: 2800000, guid: 7e21b9941828d497782f4413ce22ee6f, type: 3}
-  Kode: 3MAGFOUBO
   stationIcon: {fileID: 2800000, guid: d0945b5f92fa8194995ade13d6d512dd, type: 3}
+  model: {fileID: -6787765250471932267, guid: fe05d7caa7a34df4c9434786e525805c, type: 3}

@@ -5,7 +5,7 @@ using UnityEngine;
 public class ProductInfo : MonoBehaviour
 {
     // Variabler
-    public Recipes Opskrift;
+    public ProductRecipe Opskrift;
 
     // Start is called before the first frame update
     void Start()
