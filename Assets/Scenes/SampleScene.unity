@@ -10382,6 +10382,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: PF_Table
       objectReference: {fileID: 0}
+    - target: {fileID: 1239974029306033075, guid: 37bd4032c1ea30049b759b0665cfe753, type: 3}
+      propertyPath: Opskrifter.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1239974029306033075, guid: 37bd4032c1ea30049b759b0665cfe753, type: 3}
+      propertyPath: Opskrifter.Array.data[0]
+      value: 
+      objectReference: {fileID: 11400000, guid: e4c279fdb120ba544b5140c0ab4493f3, type: 2}
     - target: {fileID: 1536573842661495508, guid: 37bd4032c1ea30049b759b0665cfe753, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -12439,6 +12447,10 @@ PrefabInstance:
       propertyPath: maxIngridienser
       value: 3
       objectReference: {fileID: 0}
+    - target: {fileID: 5055805481197588129, guid: bef8bdfe4231d8849959a22809113862, type: 3}
+      propertyPath: Opskrifter.Array.data[0]
+      value: 
+      objectReference: {fileID: 11400000, guid: aa7f9fdd96bef4b4da9faa9b149f9175, type: 2}
     - target: {fileID: 5397772638861314316, guid: bef8bdfe4231d8849959a22809113862, type: 3}
       propertyPath: m_Name
       value: PF_AlchemistStation
@@ -12594,6 +12606,10 @@ PrefabInstance:
       propertyPath: maxIngridienser
       value: 3
       objectReference: {fileID: 0}
+    - target: {fileID: 4025627522953984593, guid: e2802d1730306ae438e8ecc0ec4a9af8, type: 3}
+      propertyPath: Opskrifter.Array.data[0]
+      value: 
+      objectReference: {fileID: 11400000, guid: 36b90a5346cf0274c8464db84c357b17, type: 2}
     - target: {fileID: 4259436813607943676, guid: e2802d1730306ae438e8ecc0ec4a9af8, type: 3}
       propertyPath: m_Name
       value: PF_EnchantingStation

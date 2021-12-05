@@ -9,7 +9,7 @@ public class MixerStation : MasterStation
     // Variabler
     //[HideInInspector]
     public List<ScriptableObject> blanding;
-    public List<ScriptableObject> Opskrifter;
+    public List<MasterRecipe> Opskrifter;
     public GameObject produktPrefab;
 
     public int maxIngridienser;

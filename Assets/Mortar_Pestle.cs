@@ -19,7 +19,7 @@ public class Mortar_Pestle : MixerStation
         else if (spillerref.holderObjekt == false)
         {
             //start mixer minigame
-            foreach (ProductRecipe opskrift in Opskrifter)
+            foreach (CrossOverProduct opskrift in Opskrifter)
             {
                 for (int i = 0; i < opskrift.ingredients.Length; i++)
                 {
