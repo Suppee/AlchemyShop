@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 2138059551484883750}
   - component: {fileID: 6230458254472438738}
   - component: {fileID: 1239974029306033100}
-  - component: {fileID: 1239974029306033075}
+  - component: {fileID: 72696918}
   m_Layer: 0
   m_Name: PF_Table
   m_TagString: Mixing Station
@@ -27,7 +27,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1239974029306033074}
-  m_LocalRotation: {x: -0.6268799, y: -0.32714158, z: -0.32714158, w: 0.6268799}
+  m_LocalRotation: {x: -0.6268805, y: -0.32714033, z: -0.32714033, w: 0.6268805}
   m_LocalPosition: {x: 5.99, y: 0, z: 1.91}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -100,7 +100,7 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: -6692290496178104961, guid: e0e02d77ab3a7084b973f26b8941879d, type: 3}
---- !u!114 &1239974029306033075
+--- !u!114 &72696918
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -109,19 +109,18 @@ MonoBehaviour:
   m_GameObject: {fileID: 1239974029306033074}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7ab1a2364996f1f498dfcd2c649105ec, type: 3}
+  m_Script: {fileID: 11500000, guid: 5e2f51561cb97af4aa3b7cde480c6049, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   spillerref: {fileID: 0}
   playerPickup: {fileID: 0}
   blanding: []
   Opskrifter: []
-  produktPrefab: {fileID: 2473549004927088009, guid: ca5c31bc3a818a1439311b21ca5d2ed1, type: 3}
-  maxIngridienser: 1
+  produktPrefab: {fileID: 0}
+  maxIngridienser: 0
   HarTingIHaanden: 0
   blandingskode: 
-  mixspots:
-  - {fileID: 9208590731127227110}
+  mixspots: []
   index: 0
 --- !u!1 &3522932179989836342
 GameObject:
