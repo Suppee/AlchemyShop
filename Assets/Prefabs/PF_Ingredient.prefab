@@ -144,6 +144,7 @@ GameObject:
   - component: {fileID: 5175779227404207549}
   - component: {fileID: 5175779227404207550}
   - component: {fileID: -8621281841412327805}
+  - component: {fileID: 1084653959377379962}
   m_Layer: 0
   m_Name: PF_Ingredient
   m_TagString: Ingredient PickUp
@@ -276,3 +277,20 @@ MonoBehaviour:
   precomputeOutline: 0
   bakeKeys: []
   bakeValues: []
+--- !u!114 &1084653959377379962
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5175779227404207543}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9dfbcf6311d5e324aa840e58e1a0bafa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  target: {fileID: 0}
+  force: 10
+  rotationForce: 2000
+  secondsBeforeHoming: 1
+  launchForce: 10

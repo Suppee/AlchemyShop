@@ -80,7 +80,7 @@ public class Mover : MonoBehaviour
        
     }
     //Interger med objekt
-    private void OnPickUp()
+    public void OnPickUp()
     {
         if(iRaekkevide.Count > 0)
         {
@@ -113,7 +113,7 @@ public class Mover : MonoBehaviour
         else if (objekthold != null)
             Smid();
 
-        interaktionsobjekt.GetComponent<Outline>().enabled = false;
+        //interaktionsobjekt.GetComponent<Outline>().enabled = false;
         interaktionsobjekt = null;      
     }
 
@@ -133,7 +133,7 @@ public class Mover : MonoBehaviour
     }
 
     // Smid objekt i hånden
-    public void Smid()
+    public virtual void Smid()
     {
        // Debug.Log(objekthold + " smidt");
         //objekthold.transform.GetChild(0).GetComponent<TrailRenderer>().enabled = true;
