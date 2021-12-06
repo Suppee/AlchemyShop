@@ -6,8 +6,5 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "New Product Recipe", menuName = "Product Recipe")]
 public class ProductRecipe : MasterRecipe
 {
-    public Material material;
-    public Texture productIcon;
-    public Texture stationIcon;
-    public Mesh model;
+    public ProductItem product;
 }

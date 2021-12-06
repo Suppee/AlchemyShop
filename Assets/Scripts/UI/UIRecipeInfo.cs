@@ -17,8 +17,8 @@ public class UIRecipeInfo : MonoBehaviour
     // OnBegin is called by the Order Setup Script on the OrderUI Prefab to setup the individual products icons from its recipe reference.
     public void OnBegin()
     {
-        stationRef.texture = currentrecipe.stationIcon;
-        productRef.texture = currentrecipe.productIcon;
+        stationRef.texture = currentrecipe.product.stationIcon;
+        productRef.texture = currentrecipe.product.icon;
         first_ingredientRef.texture = currentrecipe.ingredients[0].icon;
         second_ingredientRef.texture = currentrecipe.ingredients[1].icon;
         third_ingredientRef.texture = currentrecipe.ingredients[2].icon;

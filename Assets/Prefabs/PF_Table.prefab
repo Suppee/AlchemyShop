@@ -116,10 +116,9 @@ MonoBehaviour:
   playerPickup: {fileID: 0}
   blanding: []
   Opskrifter: []
-  produktPrefab: {fileID: 0}
+  produktPrefab: {fileID: 5175779227404207543, guid: 4c01a965b8ac57e42afe4b2ba5fed5a7, type: 3}
   maxIngridienser: 0
   HarTingIHaanden: 0
-  blandingskode: 
   mixspots: []
   index: 0
 --- !u!1 &3522932179989836342

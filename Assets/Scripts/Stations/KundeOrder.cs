@@ -38,7 +38,7 @@ public class KundeOrder : MasterStation
 
                 for (int p = 0; p < CurrentOrder.Count; p++)
                 {
-                    if (spillerref.objekthold.GetComponent<ProductInfo>().Opskrift.name.Equals(CurrentOrder[p].name))
+                    if (spillerref.objekthold.GetComponent<ItemInfo>().itemRef.name.Equals(CurrentOrder[p].name))
                     {
                         Debug.Log("Produkt godkendt");                        
                         GameObject.Find("Ur_Penge").GetComponent<Penge>().gold += moneyEarnedPerOrder;

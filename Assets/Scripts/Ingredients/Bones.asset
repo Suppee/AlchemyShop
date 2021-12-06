@@ -13,7 +13,6 @@ MonoBehaviour:
   m_Name: Bones
   m_EditorClassIdentifier: 
   name: Bones
-  ingrediensModel: {fileID: 4300018, guid: 5f3a7deba91ee3341b2266db1be8c0a0, type: 3}
+  model: {fileID: 4300018, guid: 5f3a7deba91ee3341b2266db1be8c0a0, type: 3}
   material: {fileID: 2100000, guid: a7a4c7435abf6834a8651aa3c6e71d81, type: 2}
-  Kode: BO
   icon: {fileID: 2800000, guid: ec45bc7e9ac924f8a80252792f925516, type: 3}

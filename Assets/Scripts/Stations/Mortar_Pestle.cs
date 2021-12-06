@@ -10,7 +10,7 @@ public class Mortar_Pestle : MixerStation
         if (spillerref.holderObjekt == true && spillerref.objekthold.tag.Contains("Ingredient") && blanding.Count < maxIngridienser)
         {
             // Tilfoej ingrediens til listen
-            blanding.Add(spillerref.objekthold.GetComponent<IngrediensInfo>().Ingredient);
+            blanding.Add(spillerref.objekthold.GetComponent<ItemInfo>().itemRef);
             spillerref.objekthold.transform.position = mixspots[blanding.Count - 1].gameObject.transform.position;
             spillerref.objekthold.transform.parent = mixspots[blanding.Count - 1].gameObject.transform;
             spillerref.holderObjekt = false;

@@ -28,7 +28,7 @@ public class MixerStation : MasterStation
           if (spillerref.holderObjekt == true && spillerref.objekthold.tag.Contains("Ingredient") && blanding.Count < maxIngridienser)
           {
             // Tilfoej ingrediens til listen
-            blanding.Add(spillerref.objekthold.GetComponent<IngrediensInfo>().Ingredient);     
+            blanding.Add(spillerref.objekthold.GetComponent<ItemInfo>().itemRef);     
             spillerref.objekthold.transform.position = mixspots[blanding.Count -1].gameObject.transform.position;
             spillerref.objekthold.transform.parent = mixspots[blanding.Count -1].gameObject.transform;
             spillerref.holderObjekt = false;
@@ -46,9 +46,10 @@ public class MixerStation : MasterStation
                         //Debug.Log(opskrift.ingredients[i] + "found in mix");
                         if (i==opskrift.ingredients.Length-1)
                         {                        
-                        GameObject nyProdukt = Instantiate(produktPrefab);
-                        nyProdukt.GetComponent<ProductInfo>().Opskrift = opskrift;
-                        spillerref.objekthold = nyProdukt;
+                        GameObject newProduct = Instantiate(produktPrefab);
+                        newProduct.GetComponent<ItemInfo>().itemRef = opskrift.product;
+                            newProduct.tag = "Product PickUp";
+                        spillerref.objekthold = newProduct;
                         spillerref.SamlOp();
                         }
                     }

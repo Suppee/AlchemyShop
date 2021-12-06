@@ -13,7 +13,7 @@ public class IngredientStation : MasterStation
     public override void Activate()
     {
         GameObject NyIngredient = Instantiate(ingrediensPrefab);
-        NyIngredient.GetComponent<IngrediensInfo>().Ingredient = ingredient;
+        NyIngredient.GetComponent<ItemInfo>().itemRef = ingredient;
         spillerref.GetComponent<Mover>().objekthold = NyIngredient;
         spillerref.GetComponent<Mover>().SamlOp();        
     }

@@ -190,7 +190,7 @@ public class Mover : MonoBehaviour
             foreach (GameObject ting in iRaekkevide)
             {
                 //Debug line
-                Debug.DrawLine(ting.transform.position, this.transform.position, Color.red, 3);
+                //Debug.DrawLine(ting.transform.position, this.transform.position, Color.red, 3);
 
                 //Find afstand mellem objekt og spiller
                 float afstand = Vector3.Distance(ting.transform.position, this.transform.position); 
