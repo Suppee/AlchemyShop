@@ -14,10 +14,7 @@ public class Missile : MonoBehaviour
     
     void Start()
     {
-        rb = GetComponent<Rigidbody>();  
-        StartCoroutine(WaitBeforeHoming());  
-        target = GameObject.Find("PF_Alchemist").gameObject.transform;
-
+        
     }
 
 
@@ -38,13 +35,29 @@ public class Missile : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        this.enabled = false;
+        if(shouldFolow)
+        {
+            this.enabled = false;
+            this.gameObject.GetComponent<Rigidbody>().useGravity = true;
+        }
+    }
+
+    public void OnDisable()
+    {
+        shouldFolow = false;
+    }
+
+    public void OnEnable()
+    {
+        rb = GetComponent<Rigidbody>();   
+        target = GameObject.Find("PF_Alchemist").gameObject.transform;
+        StartCoroutine(WaitBeforeHoming()); 
     }
 
     private IEnumerator WaitBeforeHoming()
     {
         rb.AddForce(Vector3.up * launchForce, ForceMode.Impulse);
         yield return new WaitForSeconds(secondsBeforeHoming);
-        shouldFolow = true;
+        shouldFolow = true;  
     }
 }

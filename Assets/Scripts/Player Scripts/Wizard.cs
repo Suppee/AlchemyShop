@@ -6,21 +6,22 @@ public class Wizard : Mover
 {
     public override void Smid()
     {   
+        objekthold.GetComponent<Transform>();
         
+        objekthold.transform.parent = null;        
+        objekthold.GetComponent<MeshCollider>().enabled = true;
+        objekthold.GetComponent<Rigidbody>().isKinematic = false;
+        objekthold.GetComponent<Outline>().enabled = true;
         if(Interact == true)
         {
             objekthold.GetComponent<Missile>().enabled = true;
             Interact = false;
         }
-        objekthold.GetComponent<Transform>();
+        else
+        {
+           objekthold.GetComponent<Rigidbody>().useGravity = true;
+        }
         holderObjekt = false;
-        objekthold.transform.parent = null;        
-        objekthold.GetComponent<MeshCollider>().enabled = true;
-        objekthold.GetComponent<Rigidbody>().useGravity = true;
-        objekthold.GetComponent<Rigidbody>().isKinematic = false;
-        objekthold.GetComponent<Outline>().enabled = true;
-        
-     
         iRaekkevide.Add(objekthold);
         objekthold = null;
     }
