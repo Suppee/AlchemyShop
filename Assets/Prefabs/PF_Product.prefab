@@ -161,5 +161,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   target: {fileID: 0}
   force: 10
-  rotationForce: 600
+  rotationForce: 2000
   secondsBeforeHoming: 1
+  launchForce: 8

@@ -9,14 +9,29 @@ public class PlayerInputHandler : MonoBehaviour
 {
     private PlayerInput playerInput;
     private Mover mover;
+    private PauseMenu pauseMenus;
 
     
     private void Awake()
     {
+        pauseMenus = FindObjectOfType<PauseMenu>();
         playerInput = GetComponent<PlayerInput>();
         var movers = FindObjectsOfType<Mover>();
         var index = playerInput.playerIndex;
         mover = movers.FirstOrDefault(m => m.GetPlayerIndex() == index);
+        
+    }
+
+    public void OnPause(CallbackContext context)
+    {
+        if(mover != null)
+        {
+            if(context.started == true)
+            {
+                pauseMenus.paused = true;
+                Debug.Log("paused");
+            }
+        }
     }
     
     public void OnMove(CallbackContext context)
@@ -33,11 +48,10 @@ public class PlayerInputHandler : MonoBehaviour
             {
                 mover.Interact = true;
             }
-           
         }
     }
 
-    public void OnPutDown(InputAction.CallbackContext context)
+    public void OnPutDown(CallbackContext context)
     {
         if( mover != null)
         {
@@ -46,13 +60,15 @@ public class PlayerInputHandler : MonoBehaviour
             { 
                 mover.putDown = true;
             }
-            
         }
     }
+
+    
 
     void LateUpdate()
     {
         mover.Interact = false;
         mover.putDown = false;
+        pauseMenus.paused = false;
     }
 }
