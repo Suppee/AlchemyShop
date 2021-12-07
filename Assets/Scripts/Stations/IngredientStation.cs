@@ -7,7 +7,7 @@ public class IngredientStation : MasterStation
 {
     // Variables
     GameObject ingrediensPrefab;
-    public Ingredient ingredient;
+    public IngredientItem ingredient;
 
     public void OnRenderObject()
     {

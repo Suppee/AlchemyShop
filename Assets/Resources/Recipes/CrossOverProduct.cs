@@ -6,5 +6,5 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "New CrossOver Recipe", menuName = "CrossOver Recipe")]
 public class CrossOverProduct : MasterRecipe
 {
-    public Ingredient ingredient;
+    public IngredientItem ingredient;
 }

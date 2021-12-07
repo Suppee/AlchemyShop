@@ -23,6 +23,7 @@ public class Wizard : Mover
         }
         holderObjekt = false;
         iRaekkevide.Add(objekthold);
+        objekthold.GetComponent<AudioSource>().PlayOneShot(objekthold.GetComponent<ItemInfo>().itemRef.sound);
         objekthold = null;
     }
 }

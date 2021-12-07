@@ -45,10 +45,8 @@ public class Mover : MonoBehaviour
     }
 
     public void SetInputVector(Vector2 direction)
-    {
-       
-        inputVector = direction;
-       
+    {       
+        inputVector = direction;       
     }  
 
     public int GetPlayerIndex()
@@ -131,6 +129,7 @@ public class Mover : MonoBehaviour
         objekthold.GetComponent<Outline>().enabled = false;
         iRaekkevide.Remove(objekthold);
         objekthold.GetComponent<Missile>().enabled = false;
+        objekthold.GetComponent<AudioSource>().PlayOneShot(objekthold.GetComponent<ItemInfo>().itemRef.sound);
     }
 
     // Smid objekt i hånden
@@ -138,7 +137,7 @@ public class Mover : MonoBehaviour
     {
        // Debug.Log(objekthold + " smidt");
         //objekthold.transform.GetChild(0).GetComponent<TrailRenderer>().enabled = true;
-        holderObjekt = false;
+        holderObjekt = false;        
         objekthold.transform.parent = null;        
         objekthold.GetComponent<MeshCollider>().enabled = true;
         objekthold.GetComponent<Rigidbody>().useGravity = true;
@@ -152,6 +151,7 @@ public class Mover : MonoBehaviour
             Interact = false;
         }
         iRaekkevide.Add(objekthold);
+        objekthold.GetComponent<AudioSource>().PlayOneShot(objekthold.GetComponent<ItemInfo>().itemRef.sound);
         objekthold = null;
       
     }

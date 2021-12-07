@@ -8,4 +8,5 @@ public class MasterItem : ScriptableObject
     public Mesh model;
     public Material material;
     public Texture icon;
+    public AudioClip sound;
 }

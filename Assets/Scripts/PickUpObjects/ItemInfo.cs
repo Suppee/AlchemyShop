@@ -10,9 +10,9 @@ public class ItemInfo : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        this.GetComponent<MeshFilter>().mesh = itemRef.model;
-        this.GetComponent<MeshRenderer>().material = itemRef.material;
-        this.GetComponent<MeshCollider>().sharedMesh = itemRef.model;
+        gameObject.GetComponent<MeshFilter>().mesh = itemRef.model;
+        gameObject.GetComponent<MeshRenderer>().material = itemRef.material;
+        gameObject.GetComponent<MeshCollider>().sharedMesh = itemRef.model;
     }
 
     private void Update()
