@@ -11,6 +11,8 @@ GameObject:
   - component: {fileID: 5282803329129138017}
   - component: {fileID: 49371631249987381}
   - component: {fileID: 7969049430922044529}
+  - component: {fileID: 1005224896}
+  - component: {fileID: 1005224897}
   m_Layer: 0
   m_Name: Flask_2
   m_TagString: Untagged
@@ -81,6 +83,34 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!64 &1005224896
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 121377355939682041}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: -4683682885147116393, guid: e273eabbc11c13c4ab63aae3df31f9b7, type: 3}
+--- !u!64 &1005224897
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 121377355939682041}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: -4683682885147116393, guid: e273eabbc11c13c4ab63aae3df31f9b7, type: 3}
 --- !u!1 &1331348470105487600
 GameObject:
   m_ObjectHideFlags: 0
@@ -367,6 +397,8 @@ GameObject:
   - component: {fileID: 5902039802043787481}
   - component: {fileID: 5055805481197588129}
   - component: {fileID: 3801732957812287432}
+  - component: {fileID: 678511070}
+  - component: {fileID: 678511075}
   m_Layer: 0
   m_Name: Alcymist
   m_TagString: Mixing Station
@@ -464,15 +496,16 @@ MonoBehaviour:
   playerPickup: {fileID: 0}
   blanding: []
   Opskrifter:
-  - {fileID: 11400000, guid: ad5c9b6ff995a8c46987869aa9c3ede8, type: 2}
-  produktPrefab: {fileID: 5175779227404207543, guid: 4c01a965b8ac57e42afe4b2ba5fed5a7, type: 3}
-  maxIngridienser: 0
-  HarTingIHaanden: 0
+  - {fileID: 11400000, guid: aa7f9fdd96bef4b4da9faa9b149f9175, type: 2}
+  productPrefab: {fileID: 0}
+  maxIngredients: 3
   mixspots:
   - {fileID: 7629050311806608423}
   - {fileID: 6548854495972557662}
   - {fileID: 1331348470105487600}
-  index: 1
+  sharedStation: 0
+  playerIndex: 0
+  holdingObjects: 0
 --- !u!64 &3801732957812287432
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -487,6 +520,37 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: -1
   m_Mesh: {fileID: 4304708807700929720, guid: b5d38c87f97d63244a44a20a257762ee, type: 3}
+--- !u!65 &678511070
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5397772638861314316}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1.4000009, y: 1.4000008, z: 2}
+  m_Center: {x: -0.00000002980234, y: -0.00000031760848, z: 0.7071464}
+--- !u!114 &678511075
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5397772638861314316}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5fea29bb7c508c244a1f805a5fd3fc4d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  outlineMode: 1
+  outlineColor: {r: 1, g: 0, b: 0, a: 1}
+  outlineWidth: 3
+  precomputeOutline: 0
+  bakeKeys: []
+  bakeValues: []
 --- !u!1 &5535160259028509374
 GameObject:
   m_ObjectHideFlags: 0
@@ -498,6 +562,7 @@ GameObject:
   - component: {fileID: 2716007631998351588}
   - component: {fileID: 7910249961421206278}
   - component: {fileID: 2941366597806167827}
+  - component: {fileID: 669161571}
   m_Layer: 0
   m_Name: Flask_1
   m_TagString: Untagged
@@ -568,6 +633,20 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!64 &669161571
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5535160259028509374}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 2060297523685673239, guid: ffe3fccf970bf0446b33fce261d6ccea, type: 3}
 --- !u!1 &6548854495972557662
 GameObject:
   m_ObjectHideFlags: 0
@@ -801,6 +880,7 @@ GameObject:
   - component: {fileID: 2525647121363355974}
   - component: {fileID: 7327190743570206921}
   - component: {fileID: 8946396579043004441}
+  - component: {fileID: 1082355298}
   m_Layer: 0
   m_Name: Gas-jet
   m_TagString: Untagged
@@ -871,3 +951,17 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!64 &1082355298
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7784130347693841005}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 8975157551852342123, guid: 1501ca0146179cd4fbed0b1f1652010d, type: 3}

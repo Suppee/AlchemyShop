@@ -32,34 +32,7 @@ public class KundeOrder : MasterStation
     {
         if(spillerref.holderObjekt == true && spillerref.objekthold.tag.Contains("Product"))
         {
-            for (int o = 0; o < currentOrdersCanvas.transform.childCount; o++)
-            {
-                List<ProductRecipe> CurrentOrder = currentOrdersCanvas.transform.GetChild(o).gameObject.GetComponent<OrderSetupScript>().order;                
-
-                for (int p = 0; p < CurrentOrder.Count; p++)
-                {
-                    if (spillerref.objekthold.GetComponent<ItemInfo>().itemRef.name.Equals(CurrentOrder[p].name))
-                    {
-                        Debug.Log("Produkt godkendt");                        
-                        GameObject.Find("Ur_Penge").GetComponent<Penge>().gold += moneyEarnedPerOrder;
-                        Destroy();
-                        //Ret UI               
-                        currentOrdersCanvas.transform.GetChild(o).gameObject.transform.GetChild(2).gameObject.transform.GetChild(p).GetComponent<UIRecipeInfo>().productfinishedscreen.SetActive(true);
-                        CurrentOrder.RemoveAt(p);
-
-                        //Check om orderen er færdig
-                        if (CurrentOrder.Count == 0)
-                        {
-                            KundePause();
-                            GameObject.Find("Ur_Penge").GetComponent<Penge>().gold += moneyEarnedPerOrder;
-                            currentOrdersCanvas.transform.GetChild(o).gameObject.GetComponent<OrderSetupScript>().DeleteOrder();
-                        }
-                        return;
-                    }
-                    else
-                        Debug.Log("Produkt ikke godkendt");
-                }                
-            }
+            CheckItem(spillerref.objekthold);           
         }
         else if (neworderavailable == true && spillerref.holderObjekt == false)
         {
@@ -108,5 +81,46 @@ public class KundeOrder : MasterStation
            // Debug.Log("CUSTOMER");
             yield return new WaitForSeconds(Random.Range(mintimetillnextcustomer, maxtimetillnextcustomer));
         }
-    }    
+    }
+
+    public void OnTriggerEnter(Collider other)
+    {
+        if(other.tag.Contains("PickUp") && other.gameObject.transform.parent == null)
+        {
+            CheckItem(other.gameObject);
+        }
+        
+    }
+
+    public void CheckItem(GameObject item)
+    {
+        for (int o = 0; o < currentOrdersCanvas.transform.childCount; o++)
+        {
+            List<ProductRecipe> CurrentOrder = currentOrdersCanvas.transform.GetChild(o).gameObject.GetComponent<OrderSetupScript>().order;
+
+            for (int p = 0; p < CurrentOrder.Count; p++)
+            {
+                if (item.GetComponent<ItemInfo>().itemRef.name.Equals(CurrentOrder[p].name))
+                {
+                    Debug.Log("Produkt godkendt");
+                    GameObject.Find("Ur_Penge").GetComponent<Penge>().gold += moneyEarnedPerOrder;
+                    Destroy();
+                    //Ret UI               
+                    currentOrdersCanvas.transform.GetChild(o).gameObject.transform.GetChild(2).gameObject.transform.GetChild(p).GetComponent<UIRecipeInfo>().productfinishedscreen.SetActive(true);
+                    CurrentOrder.RemoveAt(p);
+
+                    //Check om orderen er færdig
+                    if (CurrentOrder.Count == 0)
+                    {
+                        KundePause();
+                        GameObject.Find("Ur_Penge").GetComponent<Penge>().gold += moneyEarnedPerOrder;
+                        currentOrdersCanvas.transform.GetChild(o).gameObject.GetComponent<OrderSetupScript>().DeleteOrder();
+                    }
+                    return;
+                }
+                else
+                    Debug.Log("Produkt ikke godkendt");
+            }
+        }
+    }
 }

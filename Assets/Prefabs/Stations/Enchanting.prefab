@@ -626,6 +626,7 @@ GameObject:
   - component: {fileID: 4025627522953984593}
   - component: {fileID: 4025627523451212530}
   - component: {fileID: 191420153}
+  - component: {fileID: 191420154}
   m_Layer: 0
   m_Name: Enchanting
   m_TagString: Mixing Station
@@ -762,6 +763,19 @@ MonoBehaviour:
   precomputeOutline: 0
   bakeKeys: []
   bakeValues: []
+--- !u!65 &191420154
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4259436813607943676}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1, z: 2}
+  m_Center: {x: -8.5559765e-10, y: -0.001243872, z: 0.6490784}
 --- !u!1 &7173623746040810496
 GameObject:
   m_ObjectHideFlags: 0

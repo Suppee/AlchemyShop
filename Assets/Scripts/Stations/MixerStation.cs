@@ -31,10 +31,7 @@ public class MixerStation : MasterStation
           //Debug.Log("Aktiveret" + this);
           if (spillerref.holderObjekt == true && spillerref.objekthold.tag.Contains("Ingredient") && blanding.Count < maxIngredients)
           {
-            // Tilfoej ingrediens til listen
-            blanding.Add(spillerref.objekthold.GetComponent<ItemInfo>().itemRef);     
-            spillerref.objekthold.transform.position = mixspots[blanding.Count -1].gameObject.transform.position;
-            spillerref.objekthold.transform.parent = mixspots[blanding.Count -1].gameObject.transform;
+            AddIngredient(spillerref.objekthold);
             spillerref.holderObjekt = false;
             spillerref.objekthold = null;
           }
@@ -86,5 +83,26 @@ public class MixerStation : MasterStation
             Debug.Log("Ikke din");
             }
         spillerref = null;
+    }
+
+    public void AddIngredient(GameObject item)
+    {
+        // Tilfoej ingrediens til listen
+        blanding.Add(item.GetComponent<ItemInfo>().itemRef);
+        item.transform.position = mixspots[blanding.Count - 1].gameObject.transform.position;
+        item.transform.parent = mixspots[blanding.Count - 1].gameObject.transform;
+        item.GetComponent<Rigidbody>().useGravity = false;
+        item.GetComponent<Rigidbody>().isKinematic = true;
+
+
+    }
+
+    public void OnTriggerEnter(Collider other)
+    {
+        if (other.tag.Contains("Ingredient") && other.gameObject.transform.parent == null)
+        {
+            AddIngredient(other.gameObject);
+        }
+
     }
 }

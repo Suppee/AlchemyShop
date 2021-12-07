@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: Crystals_I
   m_EditorClassIdentifier: 
   name: Crystals
-  model: {fileID: 0}
+  model: {fileID: 4300000, guid: 4d7cc98ae5cab2947a8d9fa3c15e4fa8, type: 3}
   material: {fileID: 2100000, guid: 5e60f1e1db19e4f65b8e799c633c3912, type: 2}
   icon: {fileID: 2800000, guid: b5b48f3aa22b7444c9be461e6b929546, type: 3}

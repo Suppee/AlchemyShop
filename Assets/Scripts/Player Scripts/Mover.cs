@@ -130,6 +130,7 @@ public class Mover : MonoBehaviour
         objekthold.GetComponent<Rigidbody>().isKinematic = true;
         objekthold.GetComponent<Outline>().enabled = false;
         iRaekkevide.Remove(objekthold);
+        objekthold.GetComponent<Missile>().enabled = false;
     }
 
     // Smid objekt i hånden
@@ -153,12 +154,6 @@ public class Mover : MonoBehaviour
         iRaekkevide.Add(objekthold);
         objekthold = null;
       
-    }
-    
-    // Boevling (har ingen funktion lige nu)
-    void OnBoevle()
-    {
-        print("Boevler");
     }
 
     //Objekt kommer inden for raekkevidde
