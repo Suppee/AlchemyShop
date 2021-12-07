@@ -6,8 +6,24 @@ using UnityEngine.UI;
 public class IngredientStation : MasterStation
 {
     // Variables
-    public GameObject ingrediensPrefab;
+    GameObject ingrediensPrefab;
     public Ingredient ingredient;
+
+    public void OnValidate()
+    {
+        
+    }
+
+    public void OnRenderObject()
+    {
+        gameObject.transform.GetChild(2).GetComponent<MeshFilter>().mesh = ingredient.model;
+        gameObject.transform.GetChild(2).GetComponent<MeshRenderer>().material = ingredient.material;
+    }
+
+    public void Start()
+    {
+        ingrediensPrefab = Resources.Load<GameObject>("Prefabs/PF_Item") as GameObject;        
+    }
 
     // Hidkald Prefab
     public override void Activate()

@@ -193,19 +193,20 @@ public class Mover : MonoBehaviour
                 //Debug.DrawLine(ting.transform.position, this.transform.position, Color.red, 3);
 
                 //Find afstand mellem objekt og spiller
-                float afstand = Vector3.Distance(ting.transform.position, this.transform.position); 
-                          
-                //Hvis afstanden er kortere end den korteste afstand saa saet den korteste afstand til den nye afstand
-                if (afstand <= kortestafstand)
+                if(ting)
                 {
-                    kortestafstand = afstand;
-                    interaktionsobjekt = ting;
-                    interaktionsobjekt.GetComponent<Outline>().enabled = true;
-                }
-                
+                    float afstand = Vector3.Distance(ting.transform.position, this.transform.position);
+
+                    //Hvis afstanden er kortere end den korteste afstand saa saet den korteste afstand til den nye afstand
+                    if (afstand <= kortestafstand)
+                    {
+                        kortestafstand = afstand;
+                        interaktionsobjekt = ting;
+                        interaktionsobjekt.GetComponent<Outline>().enabled = true;
+                    }
+                }          
             }
             yield return interaktionsobjekt;
-        }
-        
+        }        
     }
 }
