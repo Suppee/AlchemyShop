@@ -39,20 +39,31 @@ public class MixerStation : MasterStation
             //start mixer minigame
             foreach (ProductRecipe opskrift in Opskrifter)
             {
+                var hasAll = true;
+                var found = false;
                 for(int i = 0; i < opskrift.ingredients.Length; i++)
-                {                    
+                {
                     if (blanding.Contains(opskrift.ingredients[i]))
-                    {                        
+                    {
+                        found = true;
                         //Debug.Log(opskrift.ingredients[i] + "found in mix");
-                        if (i==opskrift.ingredients.Length-1)
-                        {                        
-                        GameObject newProduct = Instantiate(produktPrefab);
-                        newProduct.GetComponent<ItemInfo>().itemRef = opskrift.product;
-                            newProduct.tag = "Product PickUp";
-                        spillerref.objekthold = newProduct;
-                        spillerref.SamlOp();
-                        }
+                       
                     }
+                    else
+                    {
+                        found = false;
+                        if (!found) hasAll = false;
+                    }
+
+                }
+                
+                if (hasAll)
+                {
+                    GameObject newProduct = Instantiate(produktPrefab);
+                    newProduct.GetComponent<ItemInfo>().itemRef = opskrift.product;
+                    newProduct.tag = "Product PickUp";
+                    spillerref.objekthold = newProduct;
+                    spillerref.SamlOp();
                 }
             }
             foreach(GameObject spot in mixspots)
@@ -61,11 +72,11 @@ public class MixerStation : MasterStation
                 Destroy(spot.transform.GetChild(0).gameObject);
             }                
             blanding.Clear();
-        }
+            }
             else 
-        {
+            {
             Debug.Log("Ikke din");
-        }
+            }
         spillerref = null;
     }
 }
