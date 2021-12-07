@@ -9,11 +9,6 @@ public class IngredientStation : MasterStation
     GameObject ingrediensPrefab;
     public Ingredient ingredient;
 
-    public void OnValidate()
-    {
-        
-    }
-
     public void OnRenderObject()
     {
         gameObject.transform.GetChild(2).GetComponent<MeshFilter>().mesh = ingredient.model;

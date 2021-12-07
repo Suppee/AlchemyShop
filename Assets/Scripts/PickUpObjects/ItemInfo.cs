@@ -14,4 +14,10 @@ public class ItemInfo : MonoBehaviour
         this.GetComponent<MeshRenderer>().material = itemRef.material;
         this.GetComponent<MeshCollider>().sharedMesh = itemRef.model;
     }
+
+    private void Update()
+    {
+        if(gameObject.GetComponent<Rigidbody>().velocity == Vector3.zero  && gameObject.tag.Contains("Ingredient") && gameObject.transform.parent == null)
+            Destroy(gameObject, 15);
+    }
 }
