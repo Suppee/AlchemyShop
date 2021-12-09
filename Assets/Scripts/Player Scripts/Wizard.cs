@@ -23,7 +23,6 @@ public class Wizard : Mover
            objekthold.GetComponent<Rigidbody>().useGravity = true;
         }
         holderObjekt = false;
-        iRaekkevide.Add(objekthold);
         objekthold.GetComponent<AudioSource>().PlayOneShot(objekthold.GetComponent<ItemInfo>().itemRef.sound);
         objekthold = null;
     }

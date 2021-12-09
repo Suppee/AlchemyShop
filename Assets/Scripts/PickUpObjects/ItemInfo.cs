@@ -22,22 +22,15 @@ public class ItemInfo : MonoBehaviour
         bool yayeet = true;
         while(yayeet)
         {
-            Debug.Log(gameObject.GetComponent<Rigidbody>().velocity);
             if (gameObject.GetComponent<Rigidbody>().velocity == Vector3.zero && gameObject.tag.Contains("Ingredient") && gameObject.transform.parent == null)
             {
                 yield return new WaitForSeconds(5);
-                Debug.Log(yayeet);
                 yayeet = false;
             }
             yield return new WaitForSeconds(0.1f);
-
-
         }
         if (gameObject.GetComponent<Rigidbody>().velocity == Vector3.zero && gameObject.tag.Contains("Ingredient") && gameObject.transform.parent == null)
-        {            
-            Debug.Log(gameObject + "is a no more.");
             Destroy(gameObject);
-        }
         yield return new WaitForSeconds(.1f);
     }
 
