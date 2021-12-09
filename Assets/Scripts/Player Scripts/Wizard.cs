@@ -15,6 +15,7 @@ public class Wizard : Mover
         if(Interact == true)
         {
             objekthold.GetComponent<Missile>().enabled = true;
+            objekthold.GetComponent<TrailRenderer>().enabled = true;
             Interact = false;
         }
         else

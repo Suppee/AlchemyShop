@@ -144,10 +144,11 @@ public class Mover : MonoBehaviour
         objekthold.GetComponent<Rigidbody>().isKinematic = false;
         objekthold.GetComponent<Outline>().enabled = true;
         if(Interact == true)
-        {
+        {   
             objekthold.GetComponent<Rigidbody>().AddForce(transform.up * kraft);
             objekthold.GetComponent<Rigidbody>().AddForce(transform.forward * yeet);
-            
+            objekthold.GetComponent<TrailRenderer>().enabled = true;
+
             Interact = false;
         }
         iRaekkevide.Add(objekthold);
@@ -198,6 +199,7 @@ public class Mover : MonoBehaviour
                         kortestafstand = afstand;
                         interaktionsobjekt = ting;
                         interaktionsobjekt.GetComponent<Outline>().enabled = true;
+                        
                     }
                 }          
             }

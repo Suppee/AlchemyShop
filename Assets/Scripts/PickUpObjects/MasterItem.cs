@@ -9,4 +9,5 @@ public class MasterItem : ScriptableObject
     public Material material;
     public Texture icon;
     public AudioClip sound;
+    public ParticleSystem particle;
 }
