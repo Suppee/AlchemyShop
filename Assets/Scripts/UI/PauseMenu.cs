@@ -11,9 +11,9 @@ public class PauseMenu : MonoBehaviour
 
     void Update()
     {
-        if(paused)
+        if(paused == true)
         {
-            if (gamePaused)
+            if (gamePaused == true)
             {
                 Resume();
             }

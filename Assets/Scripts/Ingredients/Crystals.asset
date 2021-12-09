@@ -10,10 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 808f220b674cfae4fb89834882b001a3, type: 3}
-  m_Name: Crystals_I
+  m_Name: Crystals
   m_EditorClassIdentifier: 
   name: Crystals
   model: {fileID: 4300078, guid: 5f3a7deba91ee3341b2266db1be8c0a0, type: 3}
   material: {fileID: 2100000, guid: 5e60f1e1db19e4f65b8e799c633c3912, type: 2}
   icon: {fileID: 2800000, guid: b5b48f3aa22b7444c9be461e6b929546, type: 3}
-  sound: {fileID: 0}

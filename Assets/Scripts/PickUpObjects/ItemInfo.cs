@@ -6,6 +6,7 @@ public class ItemInfo : MonoBehaviour
 {
     // Variabler
     public MasterItem itemRef;
+    public bool trail = false;
 
     // Start is called before the first frame update
     void Start()
@@ -38,5 +39,24 @@ public class ItemInfo : MonoBehaviour
             Destroy(gameObject);
         }
         yield return new WaitForSeconds(.1f);
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        Debug.Log(trail);
+        if(trail == true)
+            StartCoroutine(WaitBeforeStoping());
+    }
+    private IEnumerator WaitBeforeStoping()
+    {
+        yield return new WaitForSeconds(2);
+        gameObject.GetComponent<TrailRenderer>().enabled = false;
+    }
+
+    private IEnumerator Hello()
+    {
+        yield return new WaitForSeconds(1);
+        trail = true;
+        Debug.Log(trail);
     }
 }
