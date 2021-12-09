@@ -12,7 +12,8 @@ public class ItemInfo : MonoBehaviour
     {
         gameObject.GetComponent<MeshFilter>().mesh = itemRef.model;
         gameObject.GetComponent<MeshRenderer>().material = itemRef.material;
-        gameObject.GetComponent<MeshCollider>().sharedMesh = itemRef.model;       
+        gameObject.GetComponent<MeshCollider>().sharedMesh = itemRef.model;
+        StartCoroutine(Despawn());
     }
 
     IEnumerator Despawn()
@@ -20,14 +21,22 @@ public class ItemInfo : MonoBehaviour
         bool yayeet = true;
         while(yayeet)
         {
-            if (gameObject.GetComponent<Rigidbody>().velocity == Vector3.zero && gameObject.tag.Contains("Ingredient") && gameObject.transform.parent == null)
-                yield return new WaitForSeconds(15);
+            Debug.Log(gameObject.GetComponent<Rigidbody>().velocity);
             if (gameObject.GetComponent<Rigidbody>().velocity == Vector3.zero && gameObject.tag.Contains("Ingredient") && gameObject.transform.parent == null)
             {
+                yield return new WaitForSeconds(5);
+                Debug.Log(yayeet);
                 yayeet = false;
-                Debug.Log(gameObject + "is a no more.");
-                Destroy(gameObject);
-            }                
-        }        
+            }
+            yield return new WaitForSeconds(0.1f);
+
+
+        }
+        if (gameObject.GetComponent<Rigidbody>().velocity == Vector3.zero && gameObject.tag.Contains("Ingredient") && gameObject.transform.parent == null)
+        {            
+            Debug.Log(gameObject + "is a no more.");
+            Destroy(gameObject);
+        }
+        yield return new WaitForSeconds(.1f);
     }
 }
