@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: FourClover_I
   m_EditorClassIdentifier: 
   name: FourClover
-  model: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
-  material: {fileID: 2100000, guid: 5f96fa866b9fda745b18e6b373643dfa, type: 2}
+  model: {fileID: -8365129639449590315, guid: f61844bf80d06cf499f7504d66dd18cf, type: 3}
+  material: {fileID: 7364498864460103964, guid: f61844bf80d06cf499f7504d66dd18cf, type: 3}
   icon: {fileID: 2800000, guid: 4a599935a176d7345a06fbd9e7298fb4, type: 3}
+  sound: {fileID: 0}

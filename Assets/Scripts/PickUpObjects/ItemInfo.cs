@@ -12,12 +12,22 @@ public class ItemInfo : MonoBehaviour
     {
         gameObject.GetComponent<MeshFilter>().mesh = itemRef.model;
         gameObject.GetComponent<MeshRenderer>().material = itemRef.material;
-        gameObject.GetComponent<MeshCollider>().sharedMesh = itemRef.model;
+        gameObject.GetComponent<MeshCollider>().sharedMesh = itemRef.model;       
     }
 
-    private void Update()
+    IEnumerator Despawn()
     {
-        if(gameObject.GetComponent<Rigidbody>().velocity == Vector3.zero  && gameObject.tag.Contains("Ingredient") && gameObject.transform.parent == null)
-            Destroy(gameObject, 15);
+        bool yayeet = true;
+        while(yayeet)
+        {
+            if (gameObject.GetComponent<Rigidbody>().velocity == Vector3.zero && gameObject.tag.Contains("Ingredient") && gameObject.transform.parent == null)
+                yield return new WaitForSeconds(15);
+            if (gameObject.GetComponent<Rigidbody>().velocity == Vector3.zero && gameObject.tag.Contains("Ingredient") && gameObject.transform.parent == null)
+            {
+                yayeet = false;
+                Debug.Log(gameObject + "is a no more.");
+                Destroy(gameObject);
+            }                
+        }        
     }
 }

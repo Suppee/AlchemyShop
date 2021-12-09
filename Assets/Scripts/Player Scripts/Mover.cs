@@ -120,7 +120,7 @@ public class Mover : MonoBehaviour
     {
        // Debug.Log(interaktionsobjekt + " samlet op");
         //objekthold.transform.GetChild(0).GetComponent<TrailRenderer>().enabled = false;
-        holderObjekt = true;
+        
         objekthold.transform.position = PickUpHolder.position;
         objekthold.transform.parent = PickUpHolder;
         objekthold.GetComponent<MeshCollider>().enabled = false;        
@@ -130,14 +130,15 @@ public class Mover : MonoBehaviour
         iRaekkevide.Remove(objekthold);
         objekthold.GetComponent<Missile>().enabled = false;
         objekthold.GetComponent<AudioSource>().PlayOneShot(objekthold.GetComponent<ItemInfo>().itemRef.sound);
+        holderObjekt = true;
     }
 
     // Smid objekt i hånden
     public virtual void Smid()
     {
-       // Debug.Log(objekthold + " smidt");
-        //objekthold.transform.GetChild(0).GetComponent<TrailRenderer>().enabled = true;
-        holderObjekt = false;        
+        // Debug.Log(objekthold + " smidt");
+        // objekthold.transform.GetChild(0).GetComponent<TrailRenderer>().enabled = true;
+               
         objekthold.transform.parent = null;        
         objekthold.GetComponent<MeshCollider>().enabled = true;
         objekthold.GetComponent<Rigidbody>().useGravity = true;
@@ -153,17 +154,18 @@ public class Mover : MonoBehaviour
         iRaekkevide.Add(objekthold);
         objekthold.GetComponent<AudioSource>().PlayOneShot(objekthold.GetComponent<ItemInfo>().itemRef.sound);
         objekthold = null;
-      
+        holderObjekt = false;
+
     }
 
-    //Objekt kommer inden for raekkevidde
+    // Objekt kommer inden for raekkevidde
     private void OnTriggerEnter(Collider other)
     {        
         if(!iRaekkevide.Contains(other.gameObject) && ((other.gameObject.tag.Contains("Station") || (other.gameObject.tag.Contains("PickUp")))))
             iRaekkevide.Add(other.gameObject);   
     }
 
-    //Objekt forlader raekkevidde
+    // Objekt forlader raekkevidde
     private void OnTriggerExit(Collider other)
     {
         if (iRaekkevide.Contains(other.gameObject))
@@ -173,7 +175,7 @@ public class Mover : MonoBehaviour
         }
     }
 
-    //Find taetteste objekt
+    // Find taetteste objekt
     IEnumerator FindTaettestObjekt()
     {
         while(true)
@@ -184,15 +186,15 @@ public class Mover : MonoBehaviour
             float kortestafstand = Mathf.Infinity;
             foreach (GameObject ting in iRaekkevide)
             {
-                //Debug line
-                //Debug.DrawLine(ting.transform.position, this.transform.position, Color.red, 3);
+                // Debug line
+                // Debug.DrawLine(ting.transform.position, this.transform.position, Color.red, 3);
 
-                //Find afstand mellem objekt og spiller
+                // Find afstand mellem objekt og spiller
                 if(ting)
                 {
                     float afstand = Vector3.Distance(ting.transform.position, this.transform.position);
 
-                    //Hvis afstanden er kortere end den korteste afstand saa saet den korteste afstand til den nye afstand
+                    // Hvis afstanden er kortere end den korteste afstand saa saet den korteste afstand til den nye afstand
                     if (afstand <= kortestafstand)
                     {
                         kortestafstand = afstand;
