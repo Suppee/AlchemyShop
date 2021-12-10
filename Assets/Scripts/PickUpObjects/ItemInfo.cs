@@ -19,24 +19,30 @@ public class ItemInfo : MonoBehaviour
 
     IEnumerator Despawn()
     {
-        bool yayeet = true;
-        while(yayeet)
-        {
-            if (gameObject.GetComponent<Rigidbody>().velocity == Vector3.zero && gameObject.tag.Contains("Ingredient") && gameObject.transform.parent == null)
+        while(true)
+        { 
+            bool yayeet = true;
+            while(yayeet)
             {
-                yield return new WaitForSeconds(5);
-                yayeet = false;
+                //Debug.Log(gameObject.GetComponent<Rigidbody>().velocity);
+                if (gameObject.GetComponent<Rigidbody>().velocity == Vector3.zero && gameObject.tag.Contains("Ingredient") && gameObject.transform.parent == null)
+                {
+                    yield return new WaitForSeconds(15);
+                    yayeet = false;
+                }
+                yield return new WaitForSeconds(0.1f);
             }
-            yield return new WaitForSeconds(0.1f);
+            if (gameObject.GetComponent<Rigidbody>().velocity == Vector3.zero && gameObject.tag.Contains("Ingredient") && gameObject.transform.parent == null)
+                Destroy(gameObject);
+            yield return new WaitForSeconds(.1f);
         }
-        if (gameObject.GetComponent<Rigidbody>().velocity == Vector3.zero && gameObject.tag.Contains("Ingredient") && gameObject.transform.parent == null)
-            Destroy(gameObject);
-        yield return new WaitForSeconds(.1f);
+
+
     }
 
     private void OnCollisionEnter(Collision collision)
     {
-        Debug.Log(trail);
+        //Debug.Log(trail);
         if(trail == true)
             StartCoroutine(WaitBeforeStoping());
     }

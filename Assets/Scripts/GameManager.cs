@@ -3,8 +3,21 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
+    
 public class GameManager : MonoBehaviour
 {
+    // This sets up the game manager to be accessible by other scripts
+    private static GameManager _instance;
+    public static GameManager Instance
+    {
+        get
+        {
+            if (_instance == null)
+                Debug.LogError("Game Manager is Null!!!");
+
+            return _instance;
+        }
+    }
     bool GameHasEnded = false; 
     public float restartDelay = 0;
     public int money;
@@ -13,6 +26,7 @@ public class GameManager : MonoBehaviour
     public int WinningMoney = 100;
     public GameObject victoryUI;
     public GameObject LoseUI;
+    public List<Order> currentorders;
 
     public void Update()
     {

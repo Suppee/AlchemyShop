@@ -258,6 +258,7 @@ GameObject:
   - component: {fileID: 2769364323562606827}
   - component: {fileID: 7652694769003542251}
   - component: {fileID: -100359542077041435}
+  - component: {fileID: -3422493574839543256}
   m_Layer: 5
   m_Name: PF_OrderUI
   m_TagString: Untagged
@@ -380,8 +381,23 @@ MonoBehaviour:
   productCanvas: {fileID: 8469318482179963251, guid: 7e40950581f5fab49988c184d3b21da1, type: 3}
   timeslider: {fileID: 796339748422194691}
   ordernumber: {fileID: 8511029877231820905}
-  order: []
+  order:
+  - {fileID: 0}
   productarea: {fileID: 6583477093480749377}
+--- !u!114 &-3422493574839543256
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2509431956048704936}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4c2a92e727068904292ae101784627b2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  products:
+  - {fileID: 0}
 --- !u!1 &2530514489111028075
 GameObject:
   m_ObjectHideFlags: 0

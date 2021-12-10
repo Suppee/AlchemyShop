@@ -45,6 +45,7 @@ public class Missile : MonoBehaviour
     public void OnDisable()
     {
         shouldFolow = false;
+        StopAllCoroutines();
     }
 
     public void OnEnable()

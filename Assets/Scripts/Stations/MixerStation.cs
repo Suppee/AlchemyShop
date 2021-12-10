@@ -93,6 +93,8 @@ public class MixerStation : MasterStation
         item.transform.parent = mixspots[blanding.Count - 1].gameObject.transform;
         item.GetComponent<Rigidbody>().useGravity = false;
         item.GetComponent<Rigidbody>().isKinematic = true;
+        item.GetComponent<MeshCollider>().enabled = false;
+        
 
 
     }

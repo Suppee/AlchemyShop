@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using System.Timers;
 
 public class Mover : MonoBehaviour
 {
@@ -85,7 +86,7 @@ public class Mover : MonoBehaviour
             
 
             //Interger med Station
-            if (interaktionsobjekt.tag.Contains("Station"))
+            if (interaktionsobjekt && interaktionsobjekt.tag.Contains("Station"))
             {
                 if ((holderObjekt == true && !interaktionsobjekt.tag.Contains("Ingredient")) || (holderObjekt == false))
                 {
@@ -97,7 +98,7 @@ public class Mover : MonoBehaviour
                    //Debug.Log("Kan ikke aktiver " + interaktionsobjekt);
             }
             //Interger med Pick Up
-            else if (interaktionsobjekt.tag.Contains("PickUp"))
+            else if (interaktionsobjekt && interaktionsobjekt.tag.Contains("PickUp"))
             {
                 if (holderObjekt == true)
                     Smid();
@@ -118,16 +119,12 @@ public class Mover : MonoBehaviour
     // Saml objekt op - attach object to player and removes gravity and collission
     public void SamlOp()
     {
-       // Debug.Log(interaktionsobjekt + " samlet op");
-        //objekthold.transform.GetChild(0).GetComponent<TrailRenderer>().enabled = false;
-        
         objekthold.transform.position = PickUpHolder.position;
         objekthold.transform.parent = PickUpHolder;
         objekthold.GetComponent<MeshCollider>().enabled = false;        
         objekthold.GetComponent<Rigidbody>().useGravity = false;
         objekthold.GetComponent<Rigidbody>().isKinematic = true;
         objekthold.GetComponent<Outline>().enabled = false;
-        iRaekkevide.Remove(objekthold);
         objekthold.GetComponent<Missile>().enabled = false;
         objekthold.GetComponent<AudioSource>().PlayOneShot(objekthold.GetComponent<ItemInfo>().itemRef.sound);
         holderObjekt = true;
@@ -136,9 +133,6 @@ public class Mover : MonoBehaviour
     // Smid objekt i hånden
     public virtual void Smid()
     {
-        // Debug.Log(objekthold + " smidt");
-        // objekthold.transform.GetChild(0).GetComponent<TrailRenderer>().enabled = true;
-               
         objekthold.transform.parent = null;        
         objekthold.GetComponent<MeshCollider>().enabled = true;
         objekthold.GetComponent<Rigidbody>().useGravity = true;
@@ -152,7 +146,6 @@ public class Mover : MonoBehaviour
 
             Interact = false;
         }
-        iRaekkevide.Add(objekthold);
         objekthold.GetComponent<AudioSource>().PlayOneShot(objekthold.GetComponent<ItemInfo>().itemRef.sound);
         objekthold = null;
         holderObjekt = false;
@@ -163,7 +156,12 @@ public class Mover : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {        
         if(!iRaekkevide.Contains(other.gameObject) && ((other.gameObject.tag.Contains("Station") || (other.gameObject.tag.Contains("PickUp")))))
-            iRaekkevide.Add(other.gameObject);   
+            iRaekkevide.Add(other.gameObject);
+        foreach(GameObject o in iRaekkevide)
+        {
+            if (!o)
+                iRaekkevide.Remove(o);
+        }
     }
 
     // Objekt forlader raekkevidde
@@ -171,6 +169,8 @@ public class Mover : MonoBehaviour
     {
         if (iRaekkevide.Contains(other.gameObject))
         {
+            if (interaktionsobjekt = other.gameObject)
+                interaktionsobjekt = null;
             other.GetComponent<Outline>().enabled = false;
             iRaekkevide.Remove(other.gameObject);
         }
