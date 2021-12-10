@@ -34,7 +34,7 @@ public class KundeOrder : MasterStation
         }
         else if (neworderavailable == true && spillerref.holderObjekt == false)
         {
-            print("Order Taget");
+            //Debug.Log("Order Taget");
             StartNewOrder();
         }      
     }
@@ -100,28 +100,47 @@ public class KundeOrder : MasterStation
 
             for (int p = 0; p < CurrentOrder.Count; p++)
             {
-                if (item.GetComponent<ItemInfo>().itemRef.name.Equals(CurrentOrder[p].name) && !neworder.finishedproducts[p])
+                if (item.GetComponent<ItemInfo>().itemRef.name.Equals(CurrentOrder[p].name) && !GameManager.Instance.currentorders[o].finishedproducts[p])
                 {
                     // Debug.Log("Produkt godkendt");
                     GameManager.Instance.gameHUDRef.GetComponent<Penge>().gold += moneyEarnedPerOrder;
                     Destroy();
+                    neworder.finishedproducts[p] = true;
 
                     // Ret UI
                     neworder.orderUI.ProductComplete(p);
+                    bool finishedall = true;
+                    bool finished = false;
+                    for (int f = 1; f < neworder.finishedproducts.Count; f++)
+                    {
+                        
+                        if (neworder.finishedproducts[f]) finished = true;
+                        else
+                        {
+                            finished = false;
+                            if (!finished) finishedall = false;
+
+                        }
+                       
+                    }
+                    if (finishedall)
+                    {
+                        neworder.orderUI.DeleteOrder();
+                        neworderavailable = true;
+                        KundePause();
+                        GameManager.Instance.gameHUDRef.GetComponent<Penge>().gold += moneyEarnedPerOrder;
+                    }
 
                     // Check om orderen er færdig
                     if (CurrentOrder.Count == 0)
                     {
-                        neworderavailable = true;
-                        KundePause();
-                        GameManager.Instance.gameHUDRef.GetComponent<Penge>().gold += moneyEarnedPerOrder;
-                        neworder.orderUI.DeleteOrder();                        
+                                             
                     }
                     return;
                 }
                 else
                 {
-                    Debug.Log("Produkt ikke godkendt");                    
+                    //Debug.Log("Produkt ikke godkendt");                    
                 }                   
             }
         }

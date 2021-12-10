@@ -127,18 +127,19 @@ public class Mover : MonoBehaviour
         objekthold.GetComponent<Outline>().enabled = false;
         objekthold.GetComponent<Missile>().enabled = false;
         objekthold.GetComponent<AudioSource>().PlayOneShot(objekthold.GetComponent<ItemInfo>().itemRef.sound);
+        iRaekkevide.Remove(objekthold);
         holderObjekt = true;
     }
 
     // Smid objekt i hånden
     public virtual void Smid()
     {
-        objekthold.transform.parent = null;        
-        objekthold.GetComponent<MeshCollider>().enabled = true;
+        objekthold.transform.parent = null;                
         objekthold.GetComponent<Rigidbody>().useGravity = true;
         objekthold.GetComponent<Rigidbody>().isKinematic = false;
         objekthold.GetComponent<Outline>().enabled = true;
-        if(Interact == true)
+        objekthold.GetComponent<MeshCollider>().enabled = true;
+        if (Interact == true)
         {   
             objekthold.GetComponent<Rigidbody>().AddForce(transform.up * kraft);
             objekthold.GetComponent<Rigidbody>().AddForce(transform.forward * yeet);
