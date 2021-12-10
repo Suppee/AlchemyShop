@@ -32,7 +32,7 @@ Transform:
   m_Children: []
   m_Father: {fileID: 7619901421445011667}
   m_RootOrder: 2
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 32.399998, z: 15}
 --- !u!23 &4951206727799295003
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -92,7 +92,8 @@ Animation:
   m_Enabled: 1
   serializedVersion: 3
   m_Animation: {fileID: 7400000, guid: 0cbff6d9d54e4c048842cbf87c01bc04, type: 2}
-  m_Animations: []
+  m_Animations:
+  - {fileID: 7400000, guid: 0cbff6d9d54e4c048842cbf87c01bc04, type: 2}
   m_WrapMode: 0
   m_PlayAutomatically: 1
   m_AnimatePhysics: 0
@@ -255,7 +256,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5fea29bb7c508c244a1f805a5fd3fc4d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  outlineMode: 1
+  outlineMode: 0
   outlineColor: {r: 1, g: 0.95381, b: 0, a: 1}
   outlineWidth: 2
   precomputeOutline: 0

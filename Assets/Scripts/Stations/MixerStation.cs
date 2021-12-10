@@ -7,11 +7,12 @@ public class MixerStation : MasterStation
 {
     // Station Variables
     [HideInInspector]
-    public List<ScriptableObject> blanding;
+    public List<MasterItem> blanding;
     public List<MasterRecipe> Opskrifter;
     public GameObject productPrefab;
     public int maxIngredients;    
     public GameObject[] mixspots;
+    public IngredientItem roev;
 
     // Player Station Interaction Variables
     public bool sharedStation;
@@ -69,6 +70,24 @@ public class MixerStation : MasterStation
                     
                     spillerref.objekthold = newProduct;
                     spillerref.SamlOp();
+                }
+                else
+                {
+                    if(blanding.Count > 0)
+                    {
+                        //Debug.Log("mix no good");
+                        for (int i = 0; i < 20; i++)
+                        {
+                            GameObject newProduct = Instantiate(productPrefab, mixspots[Random.Range(0, mixspots.Length)].transform);
+                            if (sharedStation)
+                                newProduct.GetComponent<ItemInfo>().itemRef = blanding[0];
+                            else
+                                newProduct.GetComponent<ItemInfo>().itemRef = roev;
+
+                        }
+                    }
+                   
+                   
                 }
             }
             foreach(GameObject spot in mixspots)

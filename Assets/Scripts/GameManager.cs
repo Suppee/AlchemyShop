@@ -27,6 +27,12 @@ public class GameManager : MonoBehaviour
     public GameObject victoryUI;
     public GameObject LoseUI;
     public List<Order> currentorders;
+    public GameObject gameHUDRef;
+
+    private void Awake()
+    {
+        _instance = this;
+    }
 
     public void Update()
     {
@@ -34,7 +40,6 @@ public class GameManager : MonoBehaviour
         {
             EndGame();
         }
-
     }
 
     public void EndGame()

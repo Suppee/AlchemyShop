@@ -9,13 +9,13 @@ public class OrderSetupScript : MonoBehaviour
     public GameObject productCanvas;
     public Slider timeslider;
     public TMP_Text ordernumber;
-    public List<ProductRecipe> order;
+    public Order order;
     public GameObject productarea;
 
     public void Initiate()
     {
         ordernumber.text = (transform.GetSiblingIndex() +1).ToString();
-        foreach (ProductRecipe product in order)
+        foreach (ProductRecipe product in order.products)
         {
             GameObject currentProduct = Instantiate(productCanvas, productarea.transform);
             currentProduct.GetComponent<UIRecipeInfo>().currentrecipe = product;
@@ -24,13 +24,18 @@ public class OrderSetupScript : MonoBehaviour
         }
         LayoutRebuilder.ForceRebuildLayoutImmediate(this.gameObject.transform.parent.GetComponent<RectTransform>());
 
-        timeslider.GetComponent<SliderTime>().gameTime = 30 * order.Count;
-        timeslider.GetComponent<RectTransform>().sizeDelta = new Vector2(100*order.Count, 20);
+        timeslider.GetComponent<SliderTime>().gameTime = 30 * order.products.Count;
+        timeslider.GetComponent<RectTransform>().sizeDelta = new Vector2(100*order.products.Count, 20);
         timeslider.GetComponent<SliderTime>().OnStart();
     }    
 
     public void DeleteOrder()
     {
         Destroy(this.gameObject);
+    }
+
+    public void ProductComplete(int p)
+    {
+        productarea.transform.GetChild(p).GetComponent<UIRecipeInfo>().productfinishedscreen.SetActive(true);
     }
 }

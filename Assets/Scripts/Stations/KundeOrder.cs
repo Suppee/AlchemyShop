@@ -10,22 +10,20 @@ public class KundeOrder : MasterStation
     //[HideInInspector]
     public ProductRecipe[] fullproductlist;
     [HideInInspector]
-    public List<ProductRecipe> neworder;
+    public Order neworder;
     public int moneyEarnedPerOrder = 10;
-    bool neworderavailable;
+    bool neworderavailable = false;
     public float mintimetillnextcustomer;
     public float maxtimetillnextcustomer;
     public GameObject orderPrefab;    
     public GameObject customercharacter;
-    GameObject currentOrdersCanvas;
 
 
     // Start is called before the first frame update
     void Start()
     {
-        currentOrdersCanvas = GameObject.Find("CurrentOrdersUI").gameObject;
         fullproductlist = Resources.LoadAll("Recipes", typeof(ProductRecipe)).Cast<ProductRecipe>().ToArray();
-        StartCoroutine(KundePause());
+        Invoke("SkabNyOrdre", Random.Range(mintimetillnextcustomer, maxtimetillnextcustomer));
     }
     
     public override void Activate()
@@ -38,15 +36,16 @@ public class KundeOrder : MasterStation
         {
             print("Order Taget");
             StartNewOrder();
-            neworderavailable = false;
-        }
-      
+        }      
     }
 
     //Method to create a new order.
     public void SkabNyOrdre()
     {
-        neworder.Clear();
+        neworder = new Order();
+        neworder.products = new List<ProductRecipe>();
+        neworder.finishedproducts = new List<bool>();
+        GameManager.Instance.currentorders.Add(neworder);
 
         //Find order size by choosing a random number between 1 as the minimum order size and the largest order size + 1 because of the loop following.
         int orderstroelse = Random.Range(1,4);
@@ -57,9 +56,11 @@ public class KundeOrder : MasterStation
             //Finds a random recipe in the list of all recipes by choosing a random number between 0 and the number of recipes in the list of all recipes. This number serves as the indes in a search.
             int index = Random.Range(0, fullproductlist.Length);
 
-            //Add the recipe at the given index from before into the list of recipes in the current active order, which stores the current order.
-            neworder.Add(fullproductlist[index]);
-           
+            //Add the recipe at the given index from before into the list of recipes in the current active order, which stores the current order.            
+            neworder.products.Add(fullproductlist[index]);
+            neworder.finishedproducts.Add(false);
+
+
         }
         neworderavailable = true;
         customercharacter.SetActive(true);
@@ -67,19 +68,19 @@ public class KundeOrder : MasterStation
 
     public void StartNewOrder()
     {
-        GameObject Currentorder = Instantiate(orderPrefab, currentOrdersCanvas.transform, true);
+        neworderavailable = false;
+        GameObject orderUI = Resources.Load<GameObject>("Prefabs/PF_OrderUI");
+        GameObject Currentorder = Instantiate(orderUI, GameManager.Instance.gameHUDRef.transform.GetChild(0), true);
+        neworder.orderUI = Currentorder.GetComponent<OrderSetupScript>();
         Currentorder.GetComponent<OrderSetupScript>().order = neworder;
         Currentorder.GetComponent<OrderSetupScript>().Initiate();
     }
 
     IEnumerator KundePause()
     {
-        while (true)
-        {
+            yield return new WaitForSeconds(Random.Range(mintimetillnextcustomer, maxtimetillnextcustomer));
             Invoke("SkabNyOrdre", 0f);
            // Debug.Log("CUSTOMER");
-            yield return new WaitForSeconds(Random.Range(mintimetillnextcustomer, maxtimetillnextcustomer));
-        }
     }
 
     public void OnTriggerEnter(Collider other)
@@ -93,32 +94,35 @@ public class KundeOrder : MasterStation
 
     public void CheckItem(GameObject item)
     {
-        for (int o = 0; o < currentOrdersCanvas.transform.childCount; o++)
+        for (int o = 0; o < GameManager.Instance.currentorders.Count; o++)
         {
-            List<ProductRecipe> CurrentOrder = currentOrdersCanvas.transform.GetChild(o).gameObject.GetComponent<OrderSetupScript>().order;
+            List<ProductRecipe> CurrentOrder = GameManager.Instance.currentorders[o].products;
 
             for (int p = 0; p < CurrentOrder.Count; p++)
             {
-                if (item.GetComponent<ItemInfo>().itemRef.name.Equals(CurrentOrder[p].name))
+                if (item.GetComponent<ItemInfo>().itemRef.name.Equals(CurrentOrder[p].name) && !neworder.finishedproducts[p])
                 {
-                    Debug.Log("Produkt godkendt");
-                    GameObject.Find("Ur_Penge").GetComponent<Penge>().gold += moneyEarnedPerOrder;
+                    // Debug.Log("Produkt godkendt");
+                    GameManager.Instance.gameHUDRef.GetComponent<Penge>().gold += moneyEarnedPerOrder;
                     Destroy();
-                    //Ret UI               
-                    currentOrdersCanvas.transform.GetChild(o).gameObject.transform.GetChild(2).gameObject.transform.GetChild(p).GetComponent<UIRecipeInfo>().productfinishedscreen.SetActive(true);
-                    CurrentOrder.RemoveAt(p);
 
-                    //Check om orderen er færdig
+                    // Ret UI
+                    neworder.orderUI.ProductComplete(p);
+
+                    // Check om orderen er færdig
                     if (CurrentOrder.Count == 0)
                     {
+                        neworderavailable = true;
                         KundePause();
-                        GameObject.Find("Ur_Penge").GetComponent<Penge>().gold += moneyEarnedPerOrder;
-                        currentOrdersCanvas.transform.GetChild(o).gameObject.GetComponent<OrderSetupScript>().DeleteOrder();
+                        GameManager.Instance.gameHUDRef.GetComponent<Penge>().gold += moneyEarnedPerOrder;
+                        neworder.orderUI.DeleteOrder();                        
                     }
                     return;
                 }
                 else
-                    Debug.Log("Produkt ikke godkendt");
+                {
+                    Debug.Log("Produkt ikke godkendt");                    
+                }                   
             }
         }
     }
