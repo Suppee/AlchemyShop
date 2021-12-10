@@ -39,7 +39,6 @@ public class KundeOrder : MasterStation
             print("Order Taget");
             StartNewOrder();
             neworderavailable = false;
-            customercharacter.SetActive(false);
         }
       
     }
