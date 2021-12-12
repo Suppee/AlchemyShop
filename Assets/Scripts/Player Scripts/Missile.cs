@@ -11,6 +11,7 @@ public class Missile : MonoBehaviour
     [SerializeField] private float launchForce;
     private Rigidbody rb;
     private bool shouldFolow;
+    public GameObject levitateeffect;
     
     void Start()
     {
@@ -57,6 +58,8 @@ public class Missile : MonoBehaviour
 
     private IEnumerator WaitBeforeHoming()
     {
+        var effect = Instantiate(levitateeffect, new Vector3(gameObject.transform.position.x,0, gameObject.transform.position.z), Quaternion.Euler(new Vector3(-90,0,0)), null);
+        effect.transform.parent = null;
         rb.AddForce(Vector3.up * launchForce, ForceMode.Impulse);
         yield return new WaitForSeconds(secondsBeforeHoming);
         shouldFolow = true;  
