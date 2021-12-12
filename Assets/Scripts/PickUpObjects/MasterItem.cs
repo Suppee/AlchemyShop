@@ -9,5 +9,10 @@ public class MasterItem : ScriptableObject
     public Material material;
     public Texture icon;
     public AudioClip sound;
-    public ParticleSystem particle;
+    public GameObject particle;
+
+    public void activeparticlesat(GameObject here)
+    {
+        Instantiate(particle, here.transform );
+    }
 }

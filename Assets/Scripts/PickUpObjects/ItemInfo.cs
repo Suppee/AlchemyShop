@@ -7,6 +7,7 @@ public class ItemInfo : MonoBehaviour
     // Variabler
     public MasterItem itemRef;
     public bool trail = false;
+    public GameObject poofeffect;
 
     // Start is called before the first frame update
     void Start()
@@ -27,13 +28,18 @@ public class ItemInfo : MonoBehaviour
                 //Debug.Log(gameObject.GetComponent<Rigidbody>().velocity);
                 if (gameObject.GetComponent<Rigidbody>().velocity == Vector3.zero && gameObject.tag.Contains("Ingredient") && gameObject.transform.parent == null)
                 {
-                    yield return new WaitForSeconds(15);
+                    yield return new WaitForSeconds(8);
                     yayeet = false;
                 }
                 yield return new WaitForSeconds(0.1f);
             }
             if (gameObject.GetComponent<Rigidbody>().velocity == Vector3.zero && gameObject.tag.Contains("Ingredient") && gameObject.transform.parent == null)
+            {
+                Instantiate(poofeffect, gameObject.transform);
+                yield return new WaitForSeconds(0.2f);
                 Destroy(gameObject);
+            }
+
             yield return new WaitForSeconds(.1f);
         }
 
