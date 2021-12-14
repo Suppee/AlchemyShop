@@ -775,10 +775,14 @@ MonoBehaviour:
   spillerref: {fileID: 0}
   playerPickup: {fileID: 0}
   fullproductlist: []
-  neworder: []
+  neworder:
+    orderStarted: 0
+    products: []
+    finishedproducts: 
+    orderUI: {fileID: 0}
   moneyEarnedPerOrder: 10
-  mintimetillnextcustomer: 30
-  maxtimetillnextcustomer: 40
+  mintimetillnextcustomer: 2
+  maxtimetillnextcustomer: 5
   orderPrefab: {fileID: 2509431956048704936, guid: 792f7eedcd5b54b46ae0bceff0d32c8b, type: 3}
   customercharacter: {fileID: 4985430116925310657}
 --- !u!64 &5547065349317560399
