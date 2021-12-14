@@ -10876,5 +10876,17 @@ PrefabInstance:
       propertyPath: m_Name
       value: Goblin alchemist
       objectReference: {fileID: 0}
+    - target: {fileID: 7042939552678802922, guid: 970e4e049b5815b4aaa0ffd668fc53b7, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7042939552678802922, guid: 970e4e049b5815b4aaa0ffd668fc53b7, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7042939552678802922, guid: 970e4e049b5815b4aaa0ffd668fc53b7, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 970e4e049b5815b4aaa0ffd668fc53b7, type: 3}
