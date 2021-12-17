@@ -21,7 +21,11 @@ public class Mover : MonoBehaviour
     PlayerInputHandler playerInputHandler;
     public bool Interact = false;
     public bool putDown = false;
-    
+
+    public bool moving = false;
+    public bool moving2 = false; 
+    public Vector3 lastPos;
+
     // Interger Variabler 
     public List<GameObject> iRaekkevide;    // Objekter indenfor raekkevidde af spilleren    
     public GameObject interaktionsobjekt;   // Det objekt man forsøger at interger med
@@ -43,11 +47,12 @@ public class Mover : MonoBehaviour
         m_Rigidbody = GetComponent<Rigidbody>();
         playerInputHandler = GetComponent<PlayerInputHandler>();
         StartCoroutine("FindTaettestObjekt");
+        lastPos = this.transform.position;
     }
 
     public void SetInputVector(Vector2 direction)
     {       
-        inputVector = direction;       
+        inputVector = direction; 
     }  
 
     public int GetPlayerIndex()
@@ -59,6 +64,19 @@ public class Mover : MonoBehaviour
     {
         direction = new Vector3(inputVector.x, 0, inputVector.y) * speed;
         controller.SimpleMove(direction);
+
+         var displacement = this.transform.position - lastPos;
+        lastPos = this.transform.position;
+   
+        if(displacement.magnitude > 0.001)  // return true if char moved 1mm
+        {
+            this.moving = true;
+            Debug.Log(this.transform.position);
+        } 
+        else 
+        {
+            this.moving = false;
+        }
 
         if (direction.magnitude >= 0.1f)
         {
@@ -150,7 +168,6 @@ public class Mover : MonoBehaviour
         objekthold.GetComponent<AudioSource>().PlayOneShot(objekthold.GetComponent<ItemInfo>().itemRef.sound);
         objekthold = null;
         holderObjekt = false;
-
     }
 
     // Objekt kommer inden for raekkevidde

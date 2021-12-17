@@ -25,5 +25,8 @@ public class Wizard : Mover
         holderObjekt = false;
         objekthold.GetComponent<AudioSource>().PlayOneShot(objekthold.GetComponent<ItemInfo>().itemRef.sound);
         objekthold = null;
+        
+        var displacement = this.transform.position - lastPos;
+        lastPos = this.transform.position;
     }
 }
