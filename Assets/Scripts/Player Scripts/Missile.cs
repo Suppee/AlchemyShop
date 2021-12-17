@@ -52,7 +52,7 @@ public class Missile : MonoBehaviour
     public void OnEnable()
     {
         rb = GetComponent<Rigidbody>();   
-        target = GameObject.Find("PF_Alchemist").gameObject.transform;
+        target = GameObject.Find("PF_Alchemist 1").gameObject.transform;
         StartCoroutine(WaitBeforeHoming()); 
     }
 

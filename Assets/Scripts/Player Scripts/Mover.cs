@@ -25,7 +25,6 @@ public class Mover : MonoBehaviour
     public bool putDown = false;
 
     public bool moving = false;
-    public bool moving2 = false; 
     public Vector3 lastPos;
 
     // Interger Variabler 
