@@ -11,6 +11,8 @@ public class Mover : MonoBehaviour
     [SerializeField]
     public float speed = 5;
 
+ 
+
     CharacterController controller;
     Vector3 direction = Vector3.zero;
     Vector2 inputVector = Vector2.zero;
@@ -64,6 +66,7 @@ public class Mover : MonoBehaviour
     {
         direction = new Vector3(inputVector.x, 0, inputVector.y) * speed;
         controller.SimpleMove(direction);
+        
 
          var displacement = this.transform.position - lastPos;
         lastPos = this.transform.position;
