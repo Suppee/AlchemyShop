@@ -71,7 +71,6 @@ public class Mover : MonoBehaviour
         if(displacement.magnitude > 0.001)  // return true if char moved 1mm
         {
             this.moving = true;
-            Debug.Log(this.transform.position);
         } 
         else 
         {
