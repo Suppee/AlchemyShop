@@ -687,22 +687,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   players:
-  - name: Arrows
-    routes:
-    - original: 63
-      remapped: 63
-    - original: 64
-      remapped: 64
-    - original: 61
-      remapped: 61
-    - original: 62
-      remapped: 62
-    - original: 19
-      remapped: 8
-    - original: 32
-      remapped: 7
-    - original: 60
-      remapped: 60
   - name: WASD
     routes:
     - original: 63
@@ -717,6 +701,22 @@ MonoBehaviour:
       remapped: 19
     - original: 32
       remapped: 32
+    - original: 60
+      remapped: 60
+  - name: Arrows
+    routes:
+    - original: 63
+      remapped: 63
+    - original: 64
+      remapped: 64
+    - original: 61
+      remapped: 61
+    - original: 62
+      remapped: 62
+    - original: 19
+      remapped: 7
+    - original: 32
+      remapped: 8
     - original: 60
       remapped: 60
 --- !u!1 &167368759
@@ -7006,7 +7006,11 @@ PrefabInstance:
     - target: {fileID: 4951206727799295003, guid: 1e6729553470add46b00befc40ea8d7f, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 9d8103c4f549e304ebbc88c0779b2349, type: 2}
+      objectReference: {fileID: 2100000, guid: 5e60f1e1db19e4f65b8e799c633c3912, type: 2}
+    - target: {fileID: 5207317070073013450, guid: 1e6729553470add46b00befc40ea8d7f, type: 3}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: 4300078, guid: 5f3a7deba91ee3341b2266db1be8c0a0, type: 3}
     - target: {fileID: 7130468507137409641, guid: 1e6729553470add46b00befc40ea8d7f, type: 3}
       propertyPath: m_Name
       value: PF_IngredientStation (7)
