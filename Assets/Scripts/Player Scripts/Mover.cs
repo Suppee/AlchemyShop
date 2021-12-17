@@ -91,7 +91,7 @@ public class Mover : MonoBehaviour
                 if ((holderObjekt == true && !interaktionsobjekt.tag.Contains("Ingredient")) || (holderObjekt == false))
                 {
                     //Debug.Log(this.gameObject + " har aktivet" + interaktionsobjekt);
-                    interaktionsobjekt.GetComponent<MasterStation>().spillerref = this;
+                    interaktionsobjekt.GetComponent<MasterStation>().spillerref = this; 
                     interaktionsobjekt.GetComponent<MasterStation>().Activate();
                 }
                 //else
@@ -182,8 +182,6 @@ public class Mover : MonoBehaviour
     {
         while(true)
         {
-
-        
             // Find taetteste objekt fra listen af objekter i raekkevidde
             float kortestafstand = Mathf.Infinity;
             foreach (GameObject ting in iRaekkevide)
