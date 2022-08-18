@@ -16,7 +16,7 @@ public class MasterStation : MonoBehaviour
     { 
     }
 
-    public void Destroy()
+    protected virtual void Destroy()
     {
         Destroy(spillerref.objekthold);
         spillerref.holderObjekt = false;
