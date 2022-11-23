@@ -18,6 +18,7 @@ public class GameManager : MonoBehaviour
             return _instance;
         }
     }
+
     bool GameHasEnded = false; 
     public float restartDelay = 0;
     public int money;
