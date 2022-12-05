@@ -66,9 +66,10 @@ public class BasePlayer : MonoBehaviour
     // Player Input Interact with object
     public void OnInteract(InputValue context)
     {
+        
         if (context.isPressed == true && GameManager.Instance.curState == GameState.Playing)
             {
-                Interact = true;
+                OnInteract();
             }
     }
 
@@ -109,24 +110,24 @@ public class BasePlayer : MonoBehaviour
             transform.rotation = Quaternion.Euler(0f, angle, 0f);  
         }
         
-        if (Interact == true)
-        {
-           Invoke("OnPickUp",0);          
-        }
+        //if (Interact == true)
+        //{
+        //   Invoke("OnPickUp",0);          
+        //}
 
-        if (putDown == true)
-        {
-            Invoke("OnPickUp",0);
-        }
+        //if (putDown == true)
+        //{
+        //    Invoke("OnPickUp",0);
+        //}
        
     }
     //Interger med objekt
-    public void OnPickUp()
+    public void OnInteract()
     {
-        if(inRange.Count > 0)
+        if (inRange.Count > 0)
         {          
 
-            //Interger med Station
+            //  Check if Interaction with Station
             if (interactionObj && interactionObj.tag.Contains("Station"))
             {
                 if ((holdingObj == true && !interactionObj.tag.Contains("Ingredient")) || (holdingObj == false))
@@ -138,7 +139,8 @@ public class BasePlayer : MonoBehaviour
                 //else
                    //Debug.Log("Kan ikke aktiver " + interaktionsobjekt);
             }
-            //Interger med Pick Up
+
+            //  Check if Interaction with Pick Up
             else if (interactionObj && interactionObj.tag.Contains("PickUp"))
             {
                 if (holdingObj == true)
@@ -160,6 +162,7 @@ public class BasePlayer : MonoBehaviour
     // Saml objekt op - attach object to player and removes gravity and collission
     public void SamlOp()
     {
+        Debug.Log("PickUp");
         heldObj.transform.position = PickUpHolder.position;
         heldObj.transform.parent = PickUpHolder;
         heldObj.GetComponent<MeshCollider>().enabled = false;        
@@ -175,6 +178,7 @@ public class BasePlayer : MonoBehaviour
     // Smid objekt i hånden
     public virtual void Smid()
     {
+        Debug.Log("Drop");
         heldObj.transform.parent = null;                
         heldObj.GetComponent<Rigidbody>().useGravity = true;
         heldObj.GetComponent<Rigidbody>().isKinematic = false;
