@@ -3,11 +3,11 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEditor;
 
-public class MasterStation : MonoBehaviour
+public class BaseStation : MonoBehaviour
 {
     //Variabler
     [HideInInspector]
-    public Mover spillerref;
+    public BasePlayer spillerref;
     [HideInInspector]
     public GameObject playerPickup;
 
@@ -16,11 +16,11 @@ public class MasterStation : MonoBehaviour
     { 
     }
 
-    protected virtual void Destroy()
+    protected virtual void AcceptPickUp()
     {
-        Destroy(spillerref.objekthold);
-        spillerref.holderObjekt = false;
-        spillerref.objekthold = null;
+        Destroy(spillerref.heldObj);
+        spillerref.holdingObj = false;
+        spillerref.heldObj = null;
     }
  
 }

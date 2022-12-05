@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class IngredientStation : MasterStation
+public class IngredientStation : BaseStation
 {
     // Variables
     GameObject ingrediensPrefab;
@@ -25,7 +25,7 @@ public class IngredientStation : MasterStation
     {
         GameObject NyIngredient = Instantiate(ingrediensPrefab);
         NyIngredient.GetComponent<ItemInfo>().itemRef = ingredient;
-        spillerref.GetComponent<Mover>().objekthold = NyIngredient;
-        spillerref.GetComponent<Mover>().SamlOp();        
+        spillerref.GetComponent<BasePlayer>().heldObj = NyIngredient;
+        spillerref.GetComponent<BasePlayer>().SamlOp();        
     }
 }

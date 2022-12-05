@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MixerStation : MasterStation 
+public class WorkStation : BaseStation 
     // Ejer de ting MasterStation script har (eller inherit)
 {
     // Station Variables
@@ -30,13 +30,13 @@ public class MixerStation : MasterStation
     public override void Activate()
     {                     
         //Debug.Log("Aktiveret" + this);
-        if (spillerref.holderObjekt == true && spillerref.objekthold.tag.Contains("Ingredient") && blanding.Count < maxIngredients)
+        if (spillerref.holdingObj == true && spillerref.heldObj.tag.Contains("Ingredient") && blanding.Count < maxIngredients)
         {
-          AddIngredient(spillerref.objekthold);
-          spillerref.holderObjekt = false;
-          spillerref.objekthold = null;
+          AddIngredient(spillerref.heldObj);
+          spillerref.holdingObj = false;
+          spillerref.heldObj = null;
         }
-        else if ((!sharedStation && spillerref.holderObjekt == false && spillerref.playerIndex == playerIndex) || (sharedStation && spillerref.holderObjekt == false))
+        else if ((!sharedStation && spillerref.holdingObj == false && spillerref.playerIndex == playerIndex) || (sharedStation && spillerref.holdingObj == false))
         {
           //start mixer minigame
           foreach (MasterRecipe opskrift in Opskrifter)
@@ -68,7 +68,7 @@ public class MixerStation : MasterStation
                         newProduct.GetComponent<ItemInfo>().itemRef = opskriftref.ingredient;
                     }                        
                     
-                    spillerref.objekthold = newProduct;
+                    spillerref.heldObj = newProduct;
                     spillerref.SamlOp();
                 }
                 else
