@@ -109,10 +109,10 @@ MonoBehaviour:
   inRange: []
   interactionObj: {fileID: 0}
   holdingObj: 0
-  PickUpHolder: {fileID: 0}
+  PickUpHolder: {fileID: 397008915291519801}
   heldObj: {fileID: 0}
-  yeet: 600
-  kraft: 300
+  throwing: 0
+  power: 200
 --- !u!136 &8360178011830923160
 CapsuleCollider:
   m_ObjectHideFlags: 0
