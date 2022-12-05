@@ -49,33 +49,34 @@ public class BasePlayer : MonoBehaviour
     {
         return playerIndex;
     }
-    public void OnPause(InputAction.CallbackContext context)
+
+    // Pause Game
+    public void OnPause(InputValue context)
     {
-            if (context.started == true)
-            {
-            GameManager.Instance.PauseGame();
-            }
+        GameManager.Instance.PauseGame();
     }
 
+    // Player Input Move character
     public void OnMove(InputValue context)
     {
         if (GameManager.Instance.curState == GameState.Playing)
             inputVector = context.Get<Vector2>();
     }
 
+    // Player Input Interact with object
     public void OnInteract(InputValue context)
     {
-        if (GameManager.Instance.curState == GameState.Playing)
-            if (context.isPressed == true)
+        if (context.isPressed == true && GameManager.Instance.curState == GameState.Playing)
             {
                 Interact = true;
             }
     }
 
+    // Player Input Put down held object
     public void OnPutDown(InputValue context)
     {
 
-            if (context.isPressed == true)
+            if (context.isPressed == true && GameManager.Instance.curState == GameState.Playing)
             {
                 putDown = true;
             }

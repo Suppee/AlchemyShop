@@ -69,8 +69,7 @@ public class GameManager : MonoBehaviour
 
     public void StartRound(GameMode gamemode, string lvlName)
     {
-        curState = GameState.StartRound;
-        SceneManager.LoadScene(lvlName);
+        curState = GameState.StartRound;        
         RoundManager.Instance.StartRound(gamemode, lvlName);
     }
 
@@ -79,10 +78,14 @@ public class GameManager : MonoBehaviour
 
     }
 
+    // Pause Game
     public void PauseGame()
     {
-
+        curState = GameState.Paused;
+        UIManager.Instance.PauseMenu();
     }
+
+    // Quit Application
     public void EndGame()
     {
         Application.Quit();

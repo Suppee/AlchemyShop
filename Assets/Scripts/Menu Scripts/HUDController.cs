@@ -14,7 +14,7 @@ public class HUDController : MonoBehaviour
     {
         goldText = transform.GetChild(1).transform.Find("CurrentMoney").gameObject;
         OrderUIArea = transform.Find("CurrentOrdersUI").gameObject;
-        ProductPrefab = Resources.Load<GameObject>("Prefabs/UI/PF_ProductUI");
+        ProductPrefab = Resources.Load<GameObject>("Menus & UI/PF_ProductUI");
     }
 
     // Update is called once per frame
@@ -25,7 +25,7 @@ public class HUDController : MonoBehaviour
 
     public void StartOrderUI(Order neworder)
     {
-        GameObject orderUI = Resources.Load<GameObject>("Prefabs/UI/PF_OrderUI");
+        GameObject orderUI = Resources.Load<GameObject>("Menus & UI/PF_OrderUI");
         GameObject Currentorder = Instantiate(orderUI, OrderUIArea.transform, false);
         neworder.orderUI = Currentorder.GetComponent<OrderUI>();
 

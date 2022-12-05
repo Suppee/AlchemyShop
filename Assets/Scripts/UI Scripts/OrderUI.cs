@@ -39,7 +39,7 @@ public class OrderUI : MonoBehaviour
     public void SetupOrderUI(Order order)
     {
         // Setup Order Number Text Element
-        //ordernumber.text = (transform.GetSiblingIndex() +1).ToString();
+        ordernumber.text = (transform.GetSiblingIndex() +1).ToString();
 
         // Add Product Prefab for each product in order
         foreach (ProductRecipe product in order.products)
@@ -65,8 +65,8 @@ public class OrderUI : MonoBehaviour
         {
             fill.GetComponent<Image>().color = sliderGradient.Evaluate(timeSlider.value / timeSlider.maxValue);
             timeSlider.value = order.orderTime;
+            yield return new WaitForEndOfFrame();
         }
-        return null;
     }
 
     // Product Completed

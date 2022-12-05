@@ -47,11 +47,13 @@ public class RoundManager : MonoBehaviour
     // Round Start Methods
     public void StartRound(GameMode gamemode, string LevelName)
     {
-        gameMode = gamemode;
+        gameMode = gamemode;        
         StartCoroutine(StartingRound(LevelName));        
     }
     IEnumerator StartingRound(string LevelName)
     {
+        // Load new level
+        SceneManager.LoadScene(LevelName);
         yield return new WaitWhile(() =>SceneManager.GetActiveScene().name == LevelName);
         // SPAWN PLAYERS
 
@@ -129,12 +131,11 @@ public class RoundManager : MonoBehaviour
         StartCoroutine(OrderTimer(newOrder));
     }
     IEnumerator OrderTimer(Order order)
-    {
-        
+    {        
         while (order.orderTime > 0)
         {
-            Debug.Log(order.orderTime);
             order.orderTime -= Time.deltaTime;
+            yield return new WaitForFixedUpdate();
         }
         order.orderTime = 0;
         FinishOrder(order);
@@ -148,8 +149,9 @@ public class RoundManager : MonoBehaviour
         ScorePoints();
     }
     public void FinishOrder(Order order)
-    {
-        Destroy(order.orderUI);
+    {        
+        Destroy(order.orderUI.gameObject);
+        currentorders.Remove(order);
         ScorePoints();
     }
     public void ScorePoints()
