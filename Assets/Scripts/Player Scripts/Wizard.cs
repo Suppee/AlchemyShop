@@ -2,29 +2,29 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Wizard : Mover
+public class Wizard : BasePlayer
 {
     public override void Smid()
     {   
-        objekthold.GetComponent<Transform>();
+        heldObj.GetComponent<Transform>();
         
-        objekthold.transform.parent = null;        
-        objekthold.GetComponent<MeshCollider>().enabled = true;
-        objekthold.GetComponent<Rigidbody>().isKinematic = false;
-        objekthold.GetComponent<Outline>().enabled = true;
+        heldObj.transform.parent = null;        
+        heldObj.GetComponent<MeshCollider>().enabled = true;
+        heldObj.GetComponent<Rigidbody>().isKinematic = false;
+        heldObj.GetComponent<Outline>().enabled = true;
         if(Interact == true)
         {
-            objekthold.GetComponent<Missile>().enabled = true;
-            objekthold.GetComponent<TrailRenderer>().enabled = true;
+            heldObj.GetComponent<Missile>().enabled = true;
+            heldObj.GetComponent<TrailRenderer>().enabled = true;
             Interact = false;
         }
         else
         {
-           objekthold.GetComponent<Rigidbody>().useGravity = true;
+           heldObj.GetComponent<Rigidbody>().useGravity = true;
         }
-        holderObjekt = false;
-        objekthold.GetComponent<AudioSource>().PlayOneShot(objekthold.GetComponent<ItemInfo>().itemRef.sound);
-        objekthold = null;
+        holdingObj = false;
+        heldObj.GetComponent<AudioSource>().PlayOneShot(heldObj.GetComponent<ItemInfo>().itemRef.sound);
+        heldObj = null;
         
         var displacement = this.transform.position - lastPos;
         lastPos = this.transform.position;

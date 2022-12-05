@@ -48,7 +48,6 @@ public class ItemInfo : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        //Debug.Log(trail);
         if(trail == true)
             StartCoroutine(WaitBeforeStoping());
     }

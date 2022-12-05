@@ -4,14 +4,11 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using System.Timers;
 
-public class Mover : MonoBehaviour
+public class BasePlayer : MonoBehaviour
 {
     // Bevaegelse Variable
-
     [SerializeField]
-    public float speed = 5;
-
- 
+    public float speed = 5; 
 
     CharacterController controller;
     Vector3 direction = Vector3.zero;
@@ -20,7 +17,6 @@ public class Mover : MonoBehaviour
     float turnSmoothVelocity;
     
     public int  playerIndex = 0;
-    PlayerInputHandler playerInputHandler;
     public bool Interact = false;
     public bool putDown = false;
 
@@ -28,38 +24,64 @@ public class Mover : MonoBehaviour
     public Vector3 lastPos;
 
     // Interger Variabler 
-    public List<GameObject> iRaekkevide;    // Objekter indenfor raekkevidde af spilleren    
-    public GameObject interaktionsobjekt;   // Det objekt man forsøger at interger med
-    public bool holderObjekt;               // Bool til at tjekke om man holdet et objekt eller ej
+    public List<GameObject> inRange;    // Objekter indenfor raekkevidde af spilleren    
+    public GameObject interactionObj;   // Det objekt man forsøger at interger med
+    public bool holdingObj;               // Bool til at tjekke om man holdet et objekt eller ej
     public Transform PickUpHolder;          // Placeringen af objektet på spilleren
-    public GameObject objekthold;           // Objektet man holder
+    public GameObject heldObj;           // Objektet man holder
 
     // Kast/lægge ting
     Rigidbody m_Rigidbody;
 
     [SerializeField]
-    private float yeet;    
+    private float throwing;    
     [SerializeField]
-    private float kraft = 200;
+    private float power = 200;
 
     private void Awake()
     {
         controller = GetComponent<CharacterController>();
-        m_Rigidbody = GetComponent<Rigidbody>();
-        playerInputHandler = GetComponent<PlayerInputHandler>();
+        m_Rigidbody = GetComponent<Rigidbody>();        
         StartCoroutine("FindTaettestObjekt");
         lastPos = this.transform.position;
     }
-
-    public void SetInputVector(Vector2 direction)
-    {       
-        inputVector = direction; 
-    }  
-
     public int GetPlayerIndex()
     {
         return playerIndex;
     }
+    public void OnPause(InputAction.CallbackContext context)
+    {
+            if (context.started == true)
+            {
+            GameManager.Instance.PauseGame();
+            }
+    }
+
+    public void OnMove(InputValue context)
+    {
+        if (GameManager.Instance.curState == GameState.Playing)
+            inputVector = context.Get<Vector2>();
+    }
+
+    public void OnInteract(InputValue context)
+    {
+        if (GameManager.Instance.curState == GameState.Playing)
+            if (context.isPressed == true)
+            {
+                Interact = true;
+            }
+    }
+
+    public void OnPutDown(InputValue context)
+    {
+
+            if (context.isPressed == true)
+            {
+                putDown = true;
+            }
+    }
+
+    
 
     public void Update()
     {
@@ -100,109 +122,108 @@ public class Mover : MonoBehaviour
     //Interger med objekt
     public void OnPickUp()
     {
-        if(iRaekkevide.Count > 0)
-        {
-            
+        if(inRange.Count > 0)
+        {          
 
             //Interger med Station
-            if (interaktionsobjekt && interaktionsobjekt.tag.Contains("Station"))
+            if (interactionObj && interactionObj.tag.Contains("Station"))
             {
-                if ((holderObjekt == true && !interaktionsobjekt.tag.Contains("Ingredient")) || (holderObjekt == false))
+                if ((holdingObj == true && !interactionObj.tag.Contains("Ingredient")) || (holdingObj == false))
                 {
                     //Debug.Log(this.gameObject + " har aktivet" + interaktionsobjekt);
-                    interaktionsobjekt.GetComponent<MasterStation>().spillerref = this; 
-                    interaktionsobjekt.GetComponent<MasterStation>().Activate();
+                    interactionObj.GetComponent<BaseStation>().spillerref = this; 
+                    interactionObj.GetComponent<BaseStation>().Activate();
                 }
                 //else
                    //Debug.Log("Kan ikke aktiver " + interaktionsobjekt);
             }
             //Interger med Pick Up
-            else if (interaktionsobjekt && interaktionsobjekt.tag.Contains("PickUp"))
+            else if (interactionObj && interactionObj.tag.Contains("PickUp"))
             {
-                if (holderObjekt == true)
+                if (holdingObj == true)
                     Smid();
                 else
                 {
-                    objekthold = interaktionsobjekt;
+                    heldObj = interactionObj;
                     SamlOp();
                 }                      
             }
         }
-        else if (objekthold != null)
+        else if (heldObj != null)
             Smid();
 
         //interaktionsobjekt.GetComponent<Outline>().enabled = false;
-        interaktionsobjekt = null;      
+        interactionObj = null;      
     }
 
     // Saml objekt op - attach object to player and removes gravity and collission
     public void SamlOp()
     {
-        objekthold.transform.position = PickUpHolder.position;
-        objekthold.transform.parent = PickUpHolder;
-        objekthold.GetComponent<MeshCollider>().enabled = false;        
-        objekthold.GetComponent<Rigidbody>().useGravity = false;
-        objekthold.GetComponent<Rigidbody>().isKinematic = true;
-        objekthold.GetComponent<Outline>().enabled = false;
-        objekthold.GetComponent<Missile>().enabled = false;
-        objekthold.GetComponent<AudioSource>().PlayOneShot(objekthold.GetComponent<ItemInfo>().itemRef.sound);
-        iRaekkevide.Remove(objekthold);
-        holderObjekt = true;
+        heldObj.transform.position = PickUpHolder.position;
+        heldObj.transform.parent = PickUpHolder;
+        heldObj.GetComponent<MeshCollider>().enabled = false;        
+        heldObj.GetComponent<Rigidbody>().useGravity = false;
+        heldObj.GetComponent<Rigidbody>().isKinematic = true;
+        heldObj.GetComponent<Outline>().enabled = false;
+        heldObj.GetComponent<Missile>().enabled = false;
+        heldObj.GetComponent<AudioSource>().PlayOneShot(heldObj.GetComponent<ItemInfo>().itemRef.sound);
+        inRange.Remove(heldObj);
+        holdingObj = true;
     }
 
     // Smid objekt i hånden
     public virtual void Smid()
     {
-        objekthold.transform.parent = null;                
-        objekthold.GetComponent<Rigidbody>().useGravity = true;
-        objekthold.GetComponent<Rigidbody>().isKinematic = false;
-        objekthold.GetComponent<Outline>().enabled = true;
-        objekthold.GetComponent<MeshCollider>().enabled = true;
+        heldObj.transform.parent = null;                
+        heldObj.GetComponent<Rigidbody>().useGravity = true;
+        heldObj.GetComponent<Rigidbody>().isKinematic = false;
+        heldObj.GetComponent<Outline>().enabled = true;
+        heldObj.GetComponent<MeshCollider>().enabled = true;
         if (Interact == true)
         {   
-            objekthold.GetComponent<Rigidbody>().AddForce(transform.up * kraft);
-            objekthold.GetComponent<Rigidbody>().AddForce(transform.forward * yeet);
-            objekthold.GetComponent<TrailRenderer>().enabled = true;
+            heldObj.GetComponent<Rigidbody>().AddForce(transform.up * power);
+            heldObj.GetComponent<Rigidbody>().AddForce(transform.forward * throwing);
+            heldObj.GetComponent<TrailRenderer>().enabled = true;
 
             Interact = false;
         }
-        objekthold.GetComponent<AudioSource>().PlayOneShot(objekthold.GetComponent<ItemInfo>().itemRef.sound);
-        objekthold = null;
-        holderObjekt = false;
+        heldObj.GetComponent<AudioSource>().PlayOneShot(heldObj.GetComponent<ItemInfo>().itemRef.sound);
+        heldObj = null;
+        holdingObj = false;
     }
 
     // Objekt kommer inden for raekkevidde
     private void OnTriggerEnter(Collider other)
     {        
-        if(!iRaekkevide.Contains(other.gameObject) && ((other.gameObject.tag.Contains("Station") || (other.gameObject.tag.Contains("PickUp")))))
-            iRaekkevide.Add(other.gameObject);
-        foreach(GameObject o in iRaekkevide)
+        if(!inRange.Contains(other.gameObject) && ((other.gameObject.tag.Contains("Station") || (other.gameObject.tag.Contains("PickUp")))))
+            inRange.Add(other.gameObject);
+        foreach(GameObject o in inRange)
         {
             if (!o)
-                iRaekkevide.Remove(o);
+                inRange.Remove(o);
         }
     }
 
     // Objekt forlader raekkevidde
     private void OnTriggerExit(Collider other)
     {
-        if (iRaekkevide.Contains(other.gameObject))
+        if (inRange.Contains(other.gameObject))
         {
-            if (interaktionsobjekt = other.gameObject)
-                interaktionsobjekt = null;
+            if (interactionObj = other.gameObject)
+                interactionObj = null;
             other.GetComponent<Outline>().enabled = false;
-            iRaekkevide.Remove(other.gameObject);
+            inRange.Remove(other.gameObject);
         }
     }
 
-    // Find taetteste objekt
+    // Find closest interactable object
     IEnumerator FindTaettestObjekt()
     {
         while(true)
         {
             // Find taetteste objekt fra listen af objekter i raekkevidde
             float kortestafstand = Mathf.Infinity;
-            foreach (GameObject ting in iRaekkevide)
+            foreach (GameObject ting in inRange)
             {
                 // Debug line
                 // Debug.DrawLine(ting.transform.position, this.transform.position, Color.red, 3);
@@ -216,13 +237,13 @@ public class Mover : MonoBehaviour
                     if (afstand <= kortestafstand)
                     {
                         kortestafstand = afstand;
-                        interaktionsobjekt = ting;
-                        interaktionsobjekt.GetComponent<Outline>().enabled = true;
+                        interactionObj = ting;
+                        interactionObj.GetComponent<Outline>().enabled = true;
                         
                     }
                 }          
             }
-            yield return interaktionsobjekt;
+            yield return interactionObj;
         }        
     }
 }

@@ -8,7 +8,8 @@ public class Order
     public bool orderStarted;
     public List<ProductRecipe> products;
     public List<bool> finishedproducts;
-    public OrderSetupScript orderUI;
+    public OrderUI orderUI;
+    public float orderTime;
 }
 
 
