@@ -26,6 +26,7 @@ Transform:
   m_LocalRotation: {x: -0.00000005960463, y: 0.0000000069821597, z: 0.0000000102214965, w: 1}
   m_LocalPosition: {x: 1.102, y: 0.679, z: 0.453}
   m_LocalScale: {x: 0.81632644, y: 0.81632626, z: 0.81632644}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 113434128127706873}
   m_RootOrder: 5
@@ -43,6 +44,7 @@ GameObject:
   - component: {fileID: 4580188238420912576}
   - component: {fileID: 8360178011830923160}
   - component: {fileID: 4805923761587041468}
+  - component: {fileID: 2648730327468207790}
   m_Layer: 0
   m_Name: PF_Player
   m_TagString: Player
@@ -60,6 +62,7 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 2, y: 0, z: 0}
   m_LocalScale: {x: 0.7, y: 0.7, z: 0.7}
+  m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 113434128127706873}
   - {fileID: 5213798133026148258}
@@ -77,7 +80,7 @@ CharacterController:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Height: 3
+  m_Height: 3.06
   m_Radius: 0.7
   m_SlopeLimit: 45
   m_StepOffset: 0.3
@@ -98,16 +101,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 5
   turnSmoothTime: 0.1
-  playerIndex: 0
+  playerIndex: 1
   Interact: 0
   putDown: 0
-  iRaekkevide: []
-  interaktionsobjekt: {fileID: 0}
-  holderObjekt: 0
-  PickUpHolder: {fileID: 397008915291519801}
-  objekthold: {fileID: 0}
-  yeet: 0
-  kraft: 200
+  moving: 0
+  lastPos: {x: 0, y: 0, z: 0}
+  inRange: []
+  interactionObj: {fileID: 0}
+  holdingObj: 0
+  PickUpHolder: {fileID: 0}
+  heldObj: {fileID: 0}
+  yeet: 600
+  kraft: 300
 --- !u!136 &8360178011830923160
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -138,6 +143,36 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 4
   m_CollisionDetection: 0
+--- !u!114 &2648730327468207790
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3697861280693806101}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 62899f850307741f2a39c98a8b639597, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Actions: {fileID: -944628639613478452, guid: d1f5eb6883cb8fa42957fb7c2da968fc, type: 3}
+  m_NotificationBehavior: 0
+  m_UIInputModule: {fileID: 0}
+  m_DeviceLostEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_DeviceRegainedEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_ControlsChangedEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_ActionEvents: []
+  m_NeverAutoSwitchControlSchemes: 0
+  m_DefaultControlScheme: 
+  m_DefaultActionMap: default
+  m_SplitScreenIndex: -1
+  m_Camera: {fileID: 0}
 --- !u!1 &5642133826682439378
 GameObject:
   m_ObjectHideFlags: 0
@@ -165,6 +200,7 @@ Transform:
   m_LocalRotation: {x: -0.7071068, y: 0, z: -0, w: 0.7071067}
   m_LocalPosition: {x: -0, y: 0, z: 0}
   m_LocalScale: {x: 51.368492, y: 51.368492, z: 62.226208}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 4042721267090767535}
   m_RootOrder: 1
@@ -180,6 +216,7 @@ SkinnedMeshRenderer:
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
@@ -188,7 +225,7 @@ SkinnedMeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
+  - {fileID: 2100000, guid: 75a387ff6a4f5b94bbb02455f82c9121, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

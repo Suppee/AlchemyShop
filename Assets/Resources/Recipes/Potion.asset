@@ -14,6 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ingredients:
   - {fileID: 11400000, guid: 000487a55fa314b96946156cfe20587b, type: 2}
-  - {fileID: 11400000, guid: aa4fb6fef4b514c3bbdf433f7e08765d, type: 2}
+  - {fileID: 11400000, guid: 7334cfb914215468985e8f00fab7bfbb, type: 2}
   - {fileID: 11400000, guid: 2f74380b8f7e44a79b09a9cd71d903f0, type: 2}
   product: {fileID: 11400000, guid: 8e76cbbbfa5235c46a5d4db2473e3643, type: 2}
