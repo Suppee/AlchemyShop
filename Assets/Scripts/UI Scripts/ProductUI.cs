@@ -3,10 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class UIRecipeInfo : MonoBehaviour
+public class ProductUI : MonoBehaviour
 {
     //References to recipe and all icon locations.
-    public ProductRecipe currentrecipe;
     public RawImage stationRef;
     public RawImage productRef;
     public RawImage first_ingredientRef;
@@ -15,7 +14,7 @@ public class UIRecipeInfo : MonoBehaviour
     public GameObject productfinishedscreen;
 
     // OnBegin is called by the Order Setup Script on the OrderUI Prefab to setup the individual products icons from its recipe reference.
-    public void OnBegin()
+    public void OnBegin(ProductRecipe currentrecipe)
     {
         stationRef.texture = currentrecipe.product.stationIcon;
         productRef.texture = currentrecipe.product.icon;
