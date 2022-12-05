@@ -7,18 +7,17 @@ public class MainMenu : MonoBehaviour
 {
     public void PlayGame()
     {
-        SceneManager.LoadScene("SampleScene");
+        GameManager.Instance.StartRound(GameMode.Duel, "Level 0");
     }
 
     public void Tutorial()
     {
-        SceneManager.LoadScene("tutorial");
+        GameManager.Instance.StartRound(GameMode.Tutorial, "Tutorial Level");
     }
 
     public void QuitGame()
     {
-        Debug.Log("Exit");
-        Application.Quit();
+        GameManager.Instance.EndGame();
     }
 
 }
