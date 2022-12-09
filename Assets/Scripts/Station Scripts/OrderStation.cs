@@ -17,7 +17,7 @@ public class OrderStation : BaseStation
     // Start is called before the first frame update
     void Start()
     {
-        Invoke("NewOrder", Random.Range(mintimetillnextcustomer, maxtimetillnextcustomer));
+        Invoke("NewOrderAvailable", Random.Range(mintimetillnextcustomer, maxtimetillnextcustomer));
     }
     
     public override void Activate()
@@ -34,9 +34,10 @@ public class OrderStation : BaseStation
     }
 
     //Method to create a new order.
-    public void NewOrder()
+    public void NewOrderAvailable()
     {
         neworder = RoundManager.Instance.GenerateRandomOrder(2);
+        neworder.OrderStation = this;
         neworderavailable = true;
         customercharacter.SetActive(true);
     }
@@ -44,13 +45,20 @@ public class OrderStation : BaseStation
     public void StartNewOrder()
     {
         neworderavailable = false;
-        RoundManager.Instance.StartOrder(neworder);        
+        RoundManager.Instance.StartOrder(neworder);
+        neworder = null;
+    }
+
+    public void Reset()
+    {
+        customercharacter.SetActive(false);
+        StartCoroutine(KundePause());
     }
 
     IEnumerator KundePause()
     {
             yield return new WaitForSeconds(Random.Range(mintimetillnextcustomer, maxtimetillnextcustomer));
-            Invoke("NewOrder", 0f);
+            Invoke("NewOrderAvailable", 0f);
            // Debug.Log("CUSTOMER");
     }
 
@@ -68,40 +76,26 @@ public class OrderStation : BaseStation
     {
         for (int o = 0; o < RoundManager.Instance.currentorders.Count; o++)
         {
-            List<ProductRecipe> CurrentOrder = RoundManager.Instance.currentorders[o].products;
+            Order OrderToCheck = RoundManager.Instance.currentorders[o];
 
-            for (int p = 0; p < CurrentOrder.Count; p++)
+            for (int p = 0; p < OrderToCheck.products.Count; p++)
             {
                 // Check if product is accepted
-                if (item.GetComponent<ItemInfo>().itemRef.name.Equals(CurrentOrder[p].name) && !RoundManager.Instance.currentorders[o].finishedproducts[p])
+                if (item.GetComponent<PickUpObject>().itemRef.name.Equals(OrderToCheck.products[p].name) && !OrderToCheck.finishedproducts[p])
                 {
                     // Product Accepted
-                    RoundManager.Instance.FinishProduct(RoundManager.Instance.currentorders[o], p);
+                    RoundManager.Instance.FinishProduct(OrderToCheck, p);
                     AcceptPickUp();                    
 
                     // Check if order is finished
                     bool finishedall = true;
-                    bool finished = false;
-                    for (int f = 1; f < neworder.finishedproducts.Count; f++)
-                    {
-                        
-                        if (neworder.finishedproducts[f]) finished = true;
-                        else
-                        {
-                            finished = false;
-                            if (!finished) finishedall = false;
-
-                        }
-                       
+                    for (int f = 0; f < OrderToCheck.finishedproducts.Count; f++)
+                    {                        
+                        if (!OrderToCheck.finishedproducts[f]) finishedall = false;                   
                     }
 
                     // Run finish order
-                    if (finishedall)
-                    {
-                        RoundManager.Instance.FinishOrder(RoundManager.Instance.currentorders[o]);
-                        neworderavailable = true;
-                        KundePause();                        
-                    }
+                    if (finishedall) RoundManager.Instance.FinishOrder(OrderToCheck);
                     return;
                 }
                 else

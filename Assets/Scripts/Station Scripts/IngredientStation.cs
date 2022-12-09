@@ -24,7 +24,7 @@ public class IngredientStation : BaseStation
     public override void Activate()
     {
         GameObject NyIngredient = Instantiate(ingrediensPrefab);
-        NyIngredient.GetComponent<ItemInfo>().itemRef = ingredient;
+        NyIngredient.GetComponent<PickUpObject>().itemRef = ingredient;
         spillerref.GetComponent<BasePlayer>().heldObj = NyIngredient;
         spillerref.GetComponent<BasePlayer>().SamlOp();        
     }

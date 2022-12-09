@@ -34,25 +34,21 @@ public class UIManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        victoryUIRef = Resources.Load<GameObject>("Menus & UI/Victory");
-        LoseUIRef = Resources.Load<GameObject>("Menus & UI/Lose");
-        HUDRef = Resources.Load<GameObject>("Menus & UI/HUD");
-        PauseMenuRef = Resources.Load<GameObject>("Menus & UI/PauseMenu");
         OrderUIRef = Resources.Load<GameObject>("Menus & UI/PF_OrderUI");
         ProductUIRef = Resources.Load<GameObject>("Menus & UI/PF_ProductUI");
     }
 
     public void HUD()
     {
-        HUDRef = Instantiate(HUDRef);
+        HUDRef = Instantiate(Resources.Load<GameObject>("Menus & UI/HUD"));
     }
     public void EndScreen()
     {
-        LoseUIRef = Instantiate(LoseUIRef);
+        LoseUIRef = Instantiate(Resources.Load<GameObject>("Menus & UI/Lose"));
     }
     public void PauseMenu()
     {
-        PauseMenuRef = Instantiate(PauseMenuRef);
+        PauseMenuRef = Instantiate(Resources.Load<GameObject>("Menus & UI/PauseMenu"));
     }
 
    

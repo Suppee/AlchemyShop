@@ -59,9 +59,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 588686e84cbdb5243a8d313cf0b9d4a9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  victoryUI: {fileID: 0}
-  LoseUI: {fileID: 0}
-  gameHUDRef: {fileID: 0}
+  victoryUIRef: {fileID: 0}
+  LoseUIRef: {fileID: 0}
+  HUDRef: {fileID: 0}
+  PauseMenuRef: {fileID: 0}
+  OrderUIRef: {fileID: 0}
+  ProductUIRef: {fileID: 0}
 --- !u!114 &1758758142135543054
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -74,8 +77,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 578dc5f5dc7f9c447ab86737510f6c5c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  timeValue: 90
+  gameMode: 0
+  roundTime: 90
+  startCountdown: 3
   money: 0
   WinningMoney: 100
-  restartDelay: 0
+  moneyEarnedPerOrder: 10
   currentorders: []
+  restartDelay: 10

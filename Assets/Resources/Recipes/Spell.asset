@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Spell
   m_EditorClassIdentifier: 
   ingredients:
-  - {fileID: 11400000, guid: 7334cfb914215468985e8f00fab7bfbb, type: 2}
-  - {fileID: 11400000, guid: 318f3fe94b25190429edc826e9d3db36, type: 2}
-  - {fileID: 11400000, guid: 08b43686c43c34295a01195219eb3371, type: 2}
-  product: {fileID: 11400000, guid: 3e9e5f177c7ed4848a7d9702ba002f95, type: 2}
+  - {fileID: 11400000, guid: 2c65d53e6bb62b144be9b057c0cf489f, type: 2}
+  - {fileID: 11400000, guid: f8b604ee3fd909c439586301605f2178, type: 2}
+  - {fileID: 11400000, guid: 49397a6747f23e6438343cc70431da1a, type: 2}
+  product: {fileID: 11400000, guid: 48cf11dbb4558c649abe617a4ba6d1ce, type: 2}

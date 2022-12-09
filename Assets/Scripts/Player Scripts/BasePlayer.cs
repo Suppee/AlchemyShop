@@ -170,7 +170,7 @@ public class BasePlayer : MonoBehaviour
         heldObj.GetComponent<Rigidbody>().isKinematic = true;
         heldObj.GetComponent<Outline>().enabled = false;
         heldObj.GetComponent<Missile>().enabled = false;
-        heldObj.GetComponent<AudioSource>().PlayOneShot(heldObj.GetComponent<ItemInfo>().itemRef.sound);
+        heldObj.GetComponent<AudioSource>().PlayOneShot(heldObj.GetComponent<PickUpObject>().itemRef.sound);
         inRange.Remove(heldObj);
         holdingObj = true;
     }
@@ -192,7 +192,7 @@ public class BasePlayer : MonoBehaviour
 
             Interact = false;
         }
-        heldObj.GetComponent<AudioSource>().PlayOneShot(heldObj.GetComponent<ItemInfo>().itemRef.sound);
+        heldObj.GetComponent<AudioSource>().PlayOneShot(heldObj.GetComponent<PickUpObject>().itemRef.sound);
         heldObj = null;
         holdingObj = false;
     }

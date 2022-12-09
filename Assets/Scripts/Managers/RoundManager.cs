@@ -47,17 +47,21 @@ public class RoundManager : MonoBehaviour
     // Round Start Methods
     public void StartRound(GameMode gamemode, string LevelName)
     {
+        GameManager.Instance.UpdateGameState(GameState.StartRound);
         gameMode = gamemode;        
         StartCoroutine(StartingRound(LevelName));        
     }
     IEnumerator StartingRound(string LevelName)
     {
         // Load new level
+        Debug.Log("Load " + LevelName);
         SceneManager.LoadScene(LevelName);
-        yield return new WaitWhile(() =>SceneManager.GetActiveScene().name == LevelName);
+        yield return new WaitUntil(() =>SceneManager.GetActiveScene().name == LevelName);
+        Debug.Log("Loaded " + LevelName);
         // SPAWN PLAYERS
 
         // Spawn HUD
+        Debug.Log("Load HUD");
         UIManager.Instance.HUD();
 
         // Start intro Countdown
@@ -65,19 +69,20 @@ public class RoundManager : MonoBehaviour
 
         // Set Game State to playing (allows player control)
         GameManager.Instance.UpdateGameState(GameState.Playing);
-
+        roundTime = 90;
         // Start Round Timer
         yield return StartCoroutine(RoundTimer());
     }
     IEnumerator StartCountdown()
     {
-        while (startCountdown > 0)
+        int curCountdown = startCountdown;
+        while (curCountdown > 0)
         {
-            startCountdown--;
+            curCountdown--;
             Debug.Log(startCountdown);
             yield return new WaitForSeconds(1);
         }
-        startCountdown = 0;
+        curCountdown = 0;
 
     }
     IEnumerator RoundTimer()
@@ -90,7 +95,7 @@ public class RoundManager : MonoBehaviour
         roundTime = 0;
         EndRound();
         
-        yield return null;
+        yield return 0;
     }
     
     // Order Methods
@@ -149,20 +154,25 @@ public class RoundManager : MonoBehaviour
         ScorePoints();
     }
     public void FinishOrder(Order order)
-    {        
+    {
+        StopCoroutine(OrderTimer(order));
         Destroy(order.orderUI.gameObject);
+        order.OrderStation.Reset();
         currentorders.Remove(order);
+        
         ScorePoints();
     }
     public void ScorePoints()
     {
         RoundManager.Instance.money += moneyEarnedPerOrder;
+        UIManager.Instance.HUDRef.GetComponent<HUDController>().DisplayGold();
     }
 
     // Round End Methods
     public void EndRound()
     {
         StartCoroutine(EndingRound());
+        GameManager.Instance.UpdateGameState(GameState.EndRound);
     }
     IEnumerator EndingRound()
     {
@@ -177,12 +187,12 @@ public class RoundManager : MonoBehaviour
             case GameMode.Coop:
                 if (RoundManager.Instance.money >= WinningMoney)
                 {
-                    UIManager.Instance.victoryUIRef.SetActive(true);
+                    UIManager.Instance.EndScreen();
                     Invoke("RestartRound", restartDelay);
                 }
                 else
                 {
-                    UIManager.Instance.LoseUIRef.SetActive(true);
+                    UIManager.Instance.EndScreen();
                     Invoke("RestartRound", restartDelay);
                 }
                 break;
@@ -190,14 +200,11 @@ public class RoundManager : MonoBehaviour
             default:
                 break;
         }
-
-
-        return null;
+        yield return 0;
     }
 
     private void RestartRound()
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         StartRound(gameMode, SceneManager.GetActiveScene().name);
     }
 }

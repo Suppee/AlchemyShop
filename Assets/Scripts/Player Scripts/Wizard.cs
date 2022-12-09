@@ -23,7 +23,7 @@ public class Wizard : BasePlayer
            heldObj.GetComponent<Rigidbody>().useGravity = true;
         }
         holdingObj = false;
-        heldObj.GetComponent<AudioSource>().PlayOneShot(heldObj.GetComponent<ItemInfo>().itemRef.sound);
+        heldObj.GetComponent<AudioSource>().PlayOneShot(heldObj.GetComponent<PickUpObject>().itemRef.sound);
         heldObj = null;
         
         var displacement = this.transform.position - lastPos;

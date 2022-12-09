@@ -7,7 +7,7 @@ public class MainMenu : MonoBehaviour
 {
     public void PlayGame()
     {
-        GameManager.Instance.StartRound(GameMode.Duel, "Level 0");
+        GameManager.Instance.StartRound(GameMode.Coop, "Level 0");
     }
 
     public void Tutorial()

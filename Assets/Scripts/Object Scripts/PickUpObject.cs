@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ItemInfo : MonoBehaviour
+public class PickUpObject : MonoBehaviour
 {
     // Variabler
     public MasterItem itemRef;
@@ -51,13 +51,14 @@ public class ItemInfo : MonoBehaviour
         if(trail == true)
             StartCoroutine(WaitBeforeStoping());
     }
+
     private IEnumerator WaitBeforeStoping()
     {
         yield return new WaitForSeconds(2);
         gameObject.GetComponent<TrailRenderer>().enabled = false;
     }
 
-    private IEnumerator Hello()
+    private IEnumerator Trail()
     {
         yield return new WaitForSeconds(1);
         trail = true;

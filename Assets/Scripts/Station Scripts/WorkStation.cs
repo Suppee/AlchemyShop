@@ -59,13 +59,13 @@ public class WorkStation : BaseStation
                     if (opskrift is ProductRecipe)
                     {
                         var opskriftref = opskrift as ProductRecipe;
-                        newProduct.GetComponent<ItemInfo>().itemRef = opskriftref.product;
+                        newProduct.GetComponent<PickUpObject>().itemRef = opskriftref.product;
                         newProduct.tag = "Product PickUp";
                     }                        
                     else if (opskrift is CrossOverProduct)
                     {
                         var opskriftref = opskrift as CrossOverProduct;
-                        newProduct.GetComponent<ItemInfo>().itemRef = opskriftref.ingredient;
+                        newProduct.GetComponent<PickUpObject>().itemRef = opskriftref.ingredient;
                     }                        
                     
                     spillerref.heldObj = newProduct;
@@ -80,9 +80,9 @@ public class WorkStation : BaseStation
                         {
                             GameObject newProduct = Instantiate(productPrefab, mixspots[Random.Range(0, mixspots.Length)].transform);
                             if (sharedStation)
-                                newProduct.GetComponent<ItemInfo>().itemRef = blanding[0];
+                                newProduct.GetComponent<PickUpObject>().itemRef = blanding[0];
                             else
-                                newProduct.GetComponent<ItemInfo>().itemRef = roev;
+                                newProduct.GetComponent<PickUpObject>().itemRef = roev;
 
                         }
                     }
@@ -107,7 +107,7 @@ public class WorkStation : BaseStation
     public void AddIngredient(GameObject item)
     {
         // Tilfoej ingrediens til listen
-        blanding.Add(item.GetComponent<ItemInfo>().itemRef);
+        blanding.Add(item.GetComponent<PickUpObject>().itemRef);
         item.transform.position = mixspots[blanding.Count - 1].gameObject.transform.position;
         item.transform.parent = mixspots[blanding.Count - 1].gameObject.transform;
         item.GetComponent<Rigidbody>().useGravity = false;

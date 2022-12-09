@@ -17,12 +17,6 @@ public class HUDController : MonoBehaviour
         ProductPrefab = Resources.Load<GameObject>("Menus & UI/PF_ProductUI");
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
     public void StartOrderUI(Order neworder)
     {
         GameObject orderUI = Resources.Load<GameObject>("Menus & UI/PF_OrderUI");
@@ -34,6 +28,6 @@ public class HUDController : MonoBehaviour
 
     public void DisplayGold()
     {           
-        goldText.GetComponent<TextMeshPro>().text = RoundManager.Instance.money.ToString();
+        goldText.GetComponent<TextMeshProUGUI>().text = RoundManager.Instance.money.ToString();
     }
 }
