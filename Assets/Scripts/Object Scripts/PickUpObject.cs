@@ -1,8 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Mirror;
 
-public class PickUpObject : MonoBehaviour
+public class PickUpObject : NetworkBehaviour
 {
     // Variabler
     public MasterItem itemRef;
@@ -10,6 +11,7 @@ public class PickUpObject : MonoBehaviour
     public GameObject poofeffect;
 
     // Start is called before the first frame update
+[Command(requiresAuthority = false)]
     void Start()
     {
         gameObject.GetComponent<MeshFilter>().mesh = itemRef.model;

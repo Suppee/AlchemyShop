@@ -3,8 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using System.Timers;
+using Mirror;
 
-public class BasePlayer : MonoBehaviour
+public class BasePlayer : NetworkBehaviour
 {
     // Bevaegelse Variable
     [SerializeField]
@@ -38,6 +39,14 @@ public class BasePlayer : MonoBehaviour
     [SerializeField]
     private float power = 200;
 
+    public override void OnStartAuthority()
+    {
+        base.OnStartAuthority();
+
+        UnityEngine.InputSystem.PlayerInput playerInput = GetComponent<UnityEngine.InputSystem.PlayerInput>();
+        playerInput.enabled = true;
+    }
+
     private void Awake()
     {
         controller = GetComponent<CharacterController>();
@@ -59,7 +68,7 @@ public class BasePlayer : MonoBehaviour
     // Player Input Move character
     public void OnMove(InputValue context)
     {
-        if (GameManager.Instance.curState == GameState.Playing)
+        if (isLocalPlayer && GameManager.Instance.curState == GameState.Playing)
             inputVector = context.Get<Vector2>();
     }
 
@@ -67,7 +76,7 @@ public class BasePlayer : MonoBehaviour
     public void OnInteract(InputValue context)
     {
         
-        if (context.isPressed == true && GameManager.Instance.curState == GameState.Playing)
+        if (isLocalPlayer &&context.isPressed == true && GameManager.Instance.curState == GameState.Playing)
             {
                 OnInteract();
             }
@@ -77,7 +86,7 @@ public class BasePlayer : MonoBehaviour
     public void OnPutDown(InputValue context)
     {
 
-            if (context.isPressed == true && GameManager.Instance.curState == GameState.Playing)
+            if (isLocalPlayer && context.isPressed == true && GameManager.Instance.curState == GameState.Playing)
             {
                 putDown = true;
             }
@@ -170,9 +179,13 @@ public class BasePlayer : MonoBehaviour
         heldObj.GetComponent<Rigidbody>().isKinematic = true;
         heldObj.GetComponent<Outline>().enabled = false;
         heldObj.GetComponent<Missile>().enabled = false;
-        heldObj.GetComponent<AudioSource>().PlayOneShot(heldObj.GetComponent<PickUpObject>().itemRef.sound);
+        heldObj.GetComponent<AudioSource>().PlayOneShot(heldObj.GetComponent<PickUpObject>().itemRef.sound);  
+        //heldObj.GetComponent<NetworkIdentity>().AssignClientAuthority(connectionToClient);
         inRange.Remove(heldObj);
         holdingObj = true;
+
+      
+
     }
 
     // Smid objekt i hånden

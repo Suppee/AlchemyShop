@@ -2,8 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEditor;
+using Mirror;
 
-public class BaseStation : MonoBehaviour
+public class BaseStation : NetworkBehaviour
 {
     //Variabler
     [HideInInspector]

@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using Mirror;
 
 public class IngredientStation : BaseStation
 {
@@ -24,8 +25,12 @@ public class IngredientStation : BaseStation
     public override void Activate()
     {
         GameObject NyIngredient = Instantiate(ingrediensPrefab);
+        NetworkServer.Spawn(NyIngredient); 
         NyIngredient.GetComponent<PickUpObject>().itemRef = ingredient;
         spillerref.GetComponent<BasePlayer>().heldObj = NyIngredient;
-        spillerref.GetComponent<BasePlayer>().SamlOp();        
+        spillerref.GetComponent<BasePlayer>().SamlOp(); 
+        //spillerref.GetComponent<BasePlayer>().heldObj.GetComponent<NetworkIdentity>().AssignClientAuthority(connectionToClient);
+
+            
     }
 }

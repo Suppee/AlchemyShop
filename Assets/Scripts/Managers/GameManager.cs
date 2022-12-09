@@ -31,7 +31,6 @@ public class GameManager : MonoBehaviour
         _instance = this;
         DontDestroyOnLoad(this.gameObject);
     }
-
     public void UpdateGameState(GameState newState)
     {
         curState = newState;
