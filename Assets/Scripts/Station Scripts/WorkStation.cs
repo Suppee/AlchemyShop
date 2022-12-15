@@ -68,7 +68,7 @@ public class WorkStation : BaseStation
                         newProduct.GetComponent<PickUpObject>().itemRef = opskriftref.ingredient;
                     }                        
                     
-                    spillerref.SamlOp(newProduct);
+                    spillerref.PlayerPickUp(newProduct);
                 }
                 else
                 {

@@ -19,23 +19,17 @@ public class IngredientStation : BaseStation
 
     public void Start()
     {
-        ingrediensPrefab = Resources.Load<GameObject>("Prefabs/PF_Item") as GameObject;        
+        ingrediensPrefab = Resources.Load<GameObject>("Prefabs/PF_Item");        
     }
 
     // Hidkald Prefab
-    [Server]
+    [Command(requiresAuthority = false)]
     public override void Activate()
     {
         GameObject NyIngredient = Instantiate(ingrediensPrefab);
         NetworkServer.Spawn(NyIngredient, connectionToClient); 
         NyIngredient.GetComponent<PickUpObject>().itemRef = ingredient;
-        Test();
+        spillerref.GetComponent<BasePlayer>().PlayerPickUp(NyIngredient);
         //spillerref.GetComponent<BasePlayer>().heldObj.GetComponent<NetworkIdentity>().AssignClientAuthority(connectionToClient);
-    }
-
-    public void Test()
-    {
-        Debug.Log(spillerref);
-        spillerref.GetComponent<BasePlayer>().SamlOp(NyIngredient); 
     }
 }

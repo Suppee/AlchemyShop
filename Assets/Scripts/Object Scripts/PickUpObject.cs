@@ -20,6 +20,24 @@ public class PickUpObject : NetworkBehaviour
         StartCoroutine(Despawn());
     }
 
+    //[ClientRpc]
+    public void PickUp(Transform parentTransform)
+    {
+        transform.position = parentTransform.position;
+        transform.parent = parentTransform;
+        GetComponent<MeshCollider>().enabled = false;
+        GetComponent<Rigidbody>().useGravity = false;
+        GetComponent<Rigidbody>().isKinematic = true;
+        GetComponent<Outline>().enabled = false;
+        GetComponent<Missile>().enabled = false;
+        //PickUpObj.GetComponent<AudioSource>().PlayOneShot(heldObj.GetComponent<PickUpObject>().itemRef.sound);  
+    }
+
+    public void Drop()
+    {
+
+    }
+
     IEnumerator Despawn()
     {
         while(true)

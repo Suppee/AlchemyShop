@@ -28,7 +28,11 @@ public class BasePlayer : NetworkBehaviour
     public List<GameObject> inRange;    // Objekter indenfor raekkevidde af spilleren    
     public GameObject interactionObj;   // Det objekt man forsøger at interger med
     public bool holdingObj;               // Bool til at tjekke om man holdet et objekt eller ej
-    public Transform PickUpHolder;          // Placeringen af objektet på spilleren
+
+    [SyncVar]
+    public Transform PickUpHolder;  // Placeringen af objektet på spilleren
+
+    [SyncVar]    
     public GameObject heldObj;           // Objektet man holder
 
     // Kast/lægge ting
@@ -131,7 +135,7 @@ public class BasePlayer : NetworkBehaviour
        
     }
     //Interger med objekt
-    [Command]
+    [Client]
     public void OnInteract()
     {
         if (inRange.Count > 0)
@@ -157,7 +161,7 @@ public class BasePlayer : NetworkBehaviour
                     Smid();
                 else
                 {
-                    SamlOp(interactionObj);
+                    PlayerPickUp(interactionObj);
                 }                      
             }
         }
@@ -169,18 +173,14 @@ public class BasePlayer : NetworkBehaviour
     }
 
     // Saml objekt op - attach object to player and removes gravity and collission
-
-    public void SamlOp(GameObject PickUpObj)
+    [Command(requiresAuthority = false)]
+    public void PlayerPickUp(GameObject PickUpObj)
     {
         Debug.Log("PickUp");
-        PickUpObj.transform.position = PickUpHolder.position;
-        PickUpObj.transform.parent = PickUpHolder;
-        PickUpObj.GetComponent<MeshCollider>().enabled = false;        
-        PickUpObj.GetComponent<Rigidbody>().useGravity = false;
-        PickUpObj.GetComponent<Rigidbody>().isKinematic = true;
-        PickUpObj.GetComponent<Outline>().enabled = false;
-        PickUpObj.GetComponent<Missile>().enabled = false;
-        PickUpObj.GetComponent<AudioSource>().PlayOneShot(heldObj.GetComponent<PickUpObject>().itemRef.sound);  
+        PickUpObj.GetComponent<PickUpObject>().PickUp(PickUpHolder);
+        heldObj = PickUpObj;
+        
+        //PickUpObj.GetComponent<AudioSource>().PlayOneShot(heldObj.GetComponent<PickUpObject>().itemRef.sound);  
         //heldObj.GetComponent<NetworkIdentity>().AssignClientAuthority(connectionToClient);
         inRange.Remove(PickUpObj);
         holdingObj = true;

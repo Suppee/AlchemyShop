@@ -15,6 +15,7 @@ public class BaseStation : NetworkBehaviour
     //Aktiver Station Metode
     public virtual void Activate()
     { 
+
     }
 
     protected virtual void AcceptPickUp()
