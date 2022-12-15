@@ -9,6 +9,7 @@ public class IngredientStation : BaseStation
     // Variables
     GameObject ingrediensPrefab;
     public IngredientItem ingredient;
+    GameObject NyIngredient;
 
     public void OnRenderObject()
     {
@@ -22,15 +23,19 @@ public class IngredientStation : BaseStation
     }
 
     // Hidkald Prefab
+    [Server]
     public override void Activate()
     {
         GameObject NyIngredient = Instantiate(ingrediensPrefab);
-        NetworkServer.Spawn(NyIngredient); 
+        NetworkServer.Spawn(NyIngredient, connectionToClient); 
         NyIngredient.GetComponent<PickUpObject>().itemRef = ingredient;
-        spillerref.GetComponent<BasePlayer>().heldObj = NyIngredient;
-        spillerref.GetComponent<BasePlayer>().SamlOp(); 
+        Test();
         //spillerref.GetComponent<BasePlayer>().heldObj.GetComponent<NetworkIdentity>().AssignClientAuthority(connectionToClient);
+    }
 
-            
+    public void Test()
+    {
+        Debug.Log(spillerref);
+        spillerref.GetComponent<BasePlayer>().SamlOp(NyIngredient); 
     }
 }

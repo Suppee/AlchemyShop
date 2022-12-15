@@ -131,6 +131,7 @@ public class BasePlayer : NetworkBehaviour
        
     }
     //Interger med objekt
+    [Command]
     public void OnInteract()
     {
         if (inRange.Count > 0)
@@ -156,8 +157,7 @@ public class BasePlayer : NetworkBehaviour
                     Smid();
                 else
                 {
-                    heldObj = interactionObj;
-                    SamlOp();
+                    SamlOp(interactionObj);
                 }                      
             }
         }
@@ -169,23 +169,21 @@ public class BasePlayer : NetworkBehaviour
     }
 
     // Saml objekt op - attach object to player and removes gravity and collission
-    public void SamlOp()
+
+    public void SamlOp(GameObject PickUpObj)
     {
         Debug.Log("PickUp");
-        heldObj.transform.position = PickUpHolder.position;
-        heldObj.transform.parent = PickUpHolder;
-        heldObj.GetComponent<MeshCollider>().enabled = false;        
-        heldObj.GetComponent<Rigidbody>().useGravity = false;
-        heldObj.GetComponent<Rigidbody>().isKinematic = true;
-        heldObj.GetComponent<Outline>().enabled = false;
-        heldObj.GetComponent<Missile>().enabled = false;
-        heldObj.GetComponent<AudioSource>().PlayOneShot(heldObj.GetComponent<PickUpObject>().itemRef.sound);  
+        PickUpObj.transform.position = PickUpHolder.position;
+        PickUpObj.transform.parent = PickUpHolder;
+        PickUpObj.GetComponent<MeshCollider>().enabled = false;        
+        PickUpObj.GetComponent<Rigidbody>().useGravity = false;
+        PickUpObj.GetComponent<Rigidbody>().isKinematic = true;
+        PickUpObj.GetComponent<Outline>().enabled = false;
+        PickUpObj.GetComponent<Missile>().enabled = false;
+        PickUpObj.GetComponent<AudioSource>().PlayOneShot(heldObj.GetComponent<PickUpObject>().itemRef.sound);  
         //heldObj.GetComponent<NetworkIdentity>().AssignClientAuthority(connectionToClient);
-        inRange.Remove(heldObj);
+        inRange.Remove(PickUpObj);
         holdingObj = true;
-
-      
-
     }
 
     // Smid objekt i hånden
@@ -205,12 +203,13 @@ public class BasePlayer : NetworkBehaviour
 
             Interact = false;
         }
-        heldObj.GetComponent<AudioSource>().PlayOneShot(heldObj.GetComponent<PickUpObject>().itemRef.sound);
+        //heldObj.GetComponent<AudioSource>().PlayOneShot(heldObj.GetComponent<PickUpObject>().itemRef.sound);
         heldObj = null;
         holdingObj = false;
     }
 
     // Objekt kommer inden for raekkevidde
+    [Client]
     private void OnTriggerEnter(Collider other)
     {        
         if(!inRange.Contains(other.gameObject) && ((other.gameObject.tag.Contains("Station") || (other.gameObject.tag.Contains("PickUp")))))
@@ -223,6 +222,7 @@ public class BasePlayer : NetworkBehaviour
     }
 
     // Objekt forlader raekkevidde
+    [Client]
     private void OnTriggerExit(Collider other)
     {
         if (inRange.Contains(other.gameObject))
@@ -235,6 +235,7 @@ public class BasePlayer : NetworkBehaviour
     }
 
     // Find closest interactable object
+    [Client]
     IEnumerator FindTaettestObjekt()
     {
         while(true)
@@ -251,7 +252,7 @@ public class BasePlayer : NetworkBehaviour
                 {
                     float afstand = Vector3.Distance(ting.transform.position, this.transform.position);
 
-                    // Hvis afstanden er kortere end den korteste afstand saa saet den korteste afstand til den nye afstand
+                    // Hvis afstanden er kortere end den korteste afstand så sæt den korteste afstand til den nye afstand
                     if (afstand <= kortestafstand)
                     {
                         kortestafstand = afstand;

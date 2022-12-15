@@ -11,7 +11,7 @@ public class PickUpObject : NetworkBehaviour
     public GameObject poofeffect;
 
     // Start is called before the first frame update
-[Command(requiresAuthority = false)]
+    [Server]
     void Start()
     {
         gameObject.GetComponent<MeshFilter>().mesh = itemRef.model;

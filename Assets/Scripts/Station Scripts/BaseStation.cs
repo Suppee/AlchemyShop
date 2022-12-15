@@ -22,6 +22,5 @@ public class BaseStation : NetworkBehaviour
         Destroy(spillerref.heldObj);
         spillerref.holdingObj = false;
         spillerref.heldObj = null;
-    }
- 
+    } 
 }
