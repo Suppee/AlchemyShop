@@ -28,8 +28,15 @@ public class GameManager : MonoBehaviour
     private void Awake()
     {
         // Initialize GameManager Instance
+        if (_instance != null)
+            Destroy(this);
         _instance = this;
         DontDestroyOnLoad(this.gameObject);
+    }
+
+    private void Start()
+    {
+        UpdateGameState(curState);
     }
     public void UpdateGameState(GameState newState)
     {
@@ -46,7 +53,7 @@ public class GameManager : MonoBehaviour
                 break;
 
             case GameState.MainMenu:
-
+                GoToMainMenu();
                 break;
 
             case GameState.Playing:
@@ -55,6 +62,10 @@ public class GameManager : MonoBehaviour
 
             case GameState.Paused:
 
+                break;
+
+            case GameState.Testing:
+                StartRound(GameMode.Coop, "level 0");
                 break;
         }
         // Quit Application
@@ -67,13 +78,13 @@ public class GameManager : MonoBehaviour
     }
 
     public void StartRound(GameMode gamemode, string lvlName)
-    {
-        curState = GameState.StartRound;        
+    {      
         RoundManager.Instance.StartRound(gamemode, lvlName);
     }
 
     public void GoToPlaying()
     {
+
 
     }
 
@@ -92,5 +103,5 @@ public class GameManager : MonoBehaviour
 
 }
 
-    public enum GameState { MainMenu,StartRound,Playing,EndRound,Paused}
+    public enum GameState { MainMenu,StartRound,Playing,EndRound,Paused,Testing}
 

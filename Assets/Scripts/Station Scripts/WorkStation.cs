@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Mirror;
 
 public class WorkStation : BaseStation 
     // Ejer de ting MasterStation script har (eller inherit)
@@ -30,13 +31,13 @@ public class WorkStation : BaseStation
     public override void Activate()
     {                     
         //Debug.Log("Aktiveret" + this);
-        if (spillerref.holdingObj == true && spillerref.heldObj.tag.Contains("Ingredient") && blanding.Count < maxIngredients)
+        if (spillerref.heldObj == true && spillerref.heldObj.tag.Contains("Ingredient") && blanding.Count < maxIngredients)
         {
           AddIngredient(spillerref.heldObj);
-          spillerref.holdingObj = false;
+          //spillerref.holdingObj = false;
           spillerref.heldObj = null;
         }
-        else if ((!sharedStation && spillerref.holdingObj == false && spillerref.playerIndex == playerIndex) || (sharedStation && spillerref.holdingObj == false))
+        else if ((!sharedStation && spillerref.heldObj == null && spillerref.playerIndex == playerIndex) || (sharedStation && spillerref.heldObj == null))
         {
           //start mixer minigame
           foreach (MasterRecipe opskrift in Opskrifter)
@@ -68,22 +69,13 @@ public class WorkStation : BaseStation
                         newProduct.GetComponent<PickUpObject>().itemRef = opskriftref.ingredient;
                     }                        
                     
-                    spillerref.PlayerPickUp(newProduct);
+                    spillerref.ObjectPickUp(newProduct);
                 }
                 else
                 {
                     if(blanding.Count > 0)
                     {
-                        //Debug.Log("mix no good");
-                        for (int i = 0; i < 20; i++)
-                        {
-                            GameObject newProduct = Instantiate(productPrefab, mixspots[Random.Range(0, mixspots.Length)].transform);
-                            if (sharedStation)
-                                newProduct.GetComponent<PickUpObject>().itemRef = blanding[0];
-                            else
-                                newProduct.GetComponent<PickUpObject>().itemRef = roev;
 
-                        }
                     }
                    
                    
@@ -112,9 +104,21 @@ public class WorkStation : BaseStation
         item.GetComponent<Rigidbody>().useGravity = false;
         item.GetComponent<Rigidbody>().isKinematic = true;
         item.GetComponent<MeshCollider>().enabled = false;
-        
+    }
 
+    [ClientRpc]
+    public void MixFail()
+    {
+        //Debug.Log("mix no good");
+        for (int i = 0; i < 20; i++)
+        {
+            GameObject newProduct = Instantiate(productPrefab, mixspots[Random.Range(0, mixspots.Length)].transform);
+            if (sharedStation)
+                newProduct.GetComponent<PickUpObject>().itemRef = blanding[0];
+            else
+                newProduct.GetComponent<PickUpObject>().itemRef = roev;
 
+        }
     }
 
     public void OnTriggerEnter(Collider other)

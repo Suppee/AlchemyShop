@@ -6,6 +6,8 @@ using Mirror;
 public class PickUpObject : NetworkBehaviour
 {
     // Variabler
+    [SyncVar]
+    public GameObject parent;
     public MasterItem itemRef;
     public bool trail = false;
     public GameObject poofeffect;
@@ -20,7 +22,7 @@ public class PickUpObject : NetworkBehaviour
         StartCoroutine(Despawn());
     }
 
-    //[ClientRpc]
+    [Command (requiresAuthority = false)]
     public void PickUp(Transform parentTransform)
     {
         transform.position = parentTransform.position;
@@ -29,13 +31,16 @@ public class PickUpObject : NetworkBehaviour
         GetComponent<Rigidbody>().useGravity = false;
         GetComponent<Rigidbody>().isKinematic = true;
         GetComponent<Outline>().enabled = false;
-        GetComponent<Missile>().enabled = false;
-        //PickUpObj.GetComponent<AudioSource>().PlayOneShot(heldObj.GetComponent<PickUpObject>().itemRef.sound);  
+        GetComponent<Missile>().enabled = false; 
     }
 
     public void Drop()
     {
-
+        transform.parent = null;
+        GetComponent<Rigidbody>().useGravity = true;
+        GetComponent<Rigidbody>().isKinematic = false;
+        GetComponent<Outline>().enabled = true;
+        GetComponent<MeshCollider>().enabled = true;
     }
 
     IEnumerator Despawn()

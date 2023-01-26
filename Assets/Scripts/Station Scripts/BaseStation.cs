@@ -21,7 +21,7 @@ public class BaseStation : NetworkBehaviour
     protected virtual void AcceptPickUp()
     {
         Destroy(spillerref.heldObj);
-        spillerref.holdingObj = false;
+        //spillerref.holdingObj = false;
         spillerref.heldObj = null;
     } 
 }

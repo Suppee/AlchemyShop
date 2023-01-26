@@ -27,9 +27,10 @@ public class IngredientStation : BaseStation
     public override void Activate()
     {
         GameObject NyIngredient = Instantiate(ingrediensPrefab);
-        NetworkServer.Spawn(NyIngredient, connectionToClient); 
+        NetworkServer.Spawn(NyIngredient, connectionToClient);
+       // NyIngredient.GetComponent<NetworkIdentity>().AssignClientAuthority(connectionToClient);
         NyIngredient.GetComponent<PickUpObject>().itemRef = ingredient;
-        spillerref.GetComponent<BasePlayer>().PlayerPickUp(NyIngredient);
+        spillerref.GetComponent<BasePlayer>().ObjectPickUp(NyIngredient);
         //spillerref.GetComponent<BasePlayer>().heldObj.GetComponent<NetworkIdentity>().AssignClientAuthority(connectionToClient);
     }
 }

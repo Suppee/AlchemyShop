@@ -62,7 +62,7 @@ public class Tutorial : MonoBehaviour
             } 
         }
 
-        if((spillerref.holdingObj && step4 == true) || (spillerref2.holdingObj && step4 == true))
+        if((spillerref.heldObj && step4 == true) || (spillerref2.heldObj && step4 == true))
         {
             control = false;
             step4 = false;

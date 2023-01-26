@@ -22,11 +22,11 @@ public class OrderStation : BaseStation
     
     public override void Activate()
     {
-        if(spillerref.holdingObj == true && spillerref.heldObj.tag.Contains("Product"))
+        if(spillerref.heldObj == true && spillerref.heldObj.tag.Contains("Product"))
         {
             CheckItem(spillerref.heldObj);           
         }
-        else if (neworderavailable == true && spillerref.holdingObj == false)
+        else if (neworderavailable == true && spillerref.heldObj == null)
         {
             //Debug.Log("Order Taget");
             StartNewOrder();

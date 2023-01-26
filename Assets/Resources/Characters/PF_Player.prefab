@@ -113,7 +113,6 @@ MonoBehaviour:
   lastPos: {x: 0, y: 0, z: 0}
   inRange: []
   interactionObj: {fileID: 0}
-  holdingObj: 0
   PickUpHolder: {fileID: 397008915291519801}
   heldObj: {fileID: 0}
   throwing: 0
@@ -210,8 +209,8 @@ MonoBehaviour:
   syncDirection: 1
   syncMode: 0
   syncInterval: 0
-  target: {fileID: 4042721267090767535}
-  clientAuthority: 1
+  target: {fileID: 397008915291519801}
+  clientAuthority: 0
   onlySyncOnChange: 1
   bufferResetMultiplier: 5
   positionSensitivity: 0.01

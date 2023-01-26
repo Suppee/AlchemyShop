@@ -27,7 +27,7 @@ public class BasePlayer : NetworkBehaviour
     // Interger Variabler 
     public List<GameObject> inRange;    // Objekter indenfor raekkevidde af spilleren    
     public GameObject interactionObj;   // Det objekt man forsøger at interger med
-    public bool holdingObj;               // Bool til at tjekke om man holdet et objekt eller ej
+    //public bool holdingObj;               // Bool til at tjekke om man holdet et objekt eller ej
 
     [SyncVar]
     public Transform PickUpHolder;  // Placeringen af objektet på spilleren
@@ -47,7 +47,7 @@ public class BasePlayer : NetworkBehaviour
     {
         base.OnStartAuthority();
 
-        UnityEngine.InputSystem.PlayerInput playerInput = GetComponent<UnityEngine.InputSystem.PlayerInput>();
+        PlayerInput playerInput = GetComponent<PlayerInput>();
         playerInput.enabled = true;
     }
 
@@ -144,7 +144,7 @@ public class BasePlayer : NetworkBehaviour
             //  Check if Interaction with Station
             if (interactionObj && interactionObj.tag.Contains("Station"))
             {
-                if ((holdingObj == true && !interactionObj.tag.Contains("Ingredient")) || (holdingObj == false))
+                if ((heldObj == true && !interactionObj.tag.Contains("Ingredient")) || (heldObj == false))
                 {
                     //Debug.Log(this.gameObject + " har aktivet" + interaktionsobjekt);
                     interactionObj.GetComponent<BaseStation>().spillerref = this; 
@@ -157,11 +157,11 @@ public class BasePlayer : NetworkBehaviour
             //  Check if Interaction with Pick Up
             else if (interactionObj && interactionObj.tag.Contains("PickUp"))
             {
-                if (holdingObj == true)
+                if (heldObj == true)
                     Smid();
                 else
                 {
-                    PlayerPickUp(interactionObj);
+                    ObjectPickUp(interactionObj);
                 }                      
             }
         }
@@ -173,28 +173,24 @@ public class BasePlayer : NetworkBehaviour
     }
 
     // Saml objekt op - attach object to player and removes gravity and collission
-    [Command(requiresAuthority = false)]
-    public void PlayerPickUp(GameObject PickUpObj)
+    [Command]
+    public void ObjectPickUp(GameObject PickUpObj)
     {
         Debug.Log("PickUp");
-        PickUpObj.GetComponent<PickUpObject>().PickUp(PickUpHolder);
+       
         heldObj = PickUpObj;
         
-        //PickUpObj.GetComponent<AudioSource>().PlayOneShot(heldObj.GetComponent<PickUpObject>().itemRef.sound);  
-        //heldObj.GetComponent<NetworkIdentity>().AssignClientAuthority(connectionToClient);
+        heldObj.GetComponent<PickUpObject>().PickUp(PickUpHolder);
         inRange.Remove(PickUpObj);
-        holdingObj = true;
+        //holdingObj = true;
     }
 
     // Smid objekt i hånden
+    [Command]    
     public virtual void Smid()
     {
         Debug.Log("Drop");
-        heldObj.transform.parent = null;                
-        heldObj.GetComponent<Rigidbody>().useGravity = true;
-        heldObj.GetComponent<Rigidbody>().isKinematic = false;
-        heldObj.GetComponent<Outline>().enabled = true;
-        heldObj.GetComponent<MeshCollider>().enabled = true;
+        heldObj.GetComponent<PickUpObject>().Drop();
         if (Interact == true)
         {   
             heldObj.GetComponent<Rigidbody>().AddForce(transform.up * power);
@@ -205,7 +201,7 @@ public class BasePlayer : NetworkBehaviour
         }
         //heldObj.GetComponent<AudioSource>().PlayOneShot(heldObj.GetComponent<PickUpObject>().itemRef.sound);
         heldObj = null;
-        holdingObj = false;
+        //holdingObj = false;
     }
 
     // Objekt kommer inden for raekkevidde

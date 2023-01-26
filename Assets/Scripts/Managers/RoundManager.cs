@@ -56,8 +56,8 @@ public class RoundManager : MonoBehaviour
     {
         // Load new level
         Debug.Log("Load " + LevelName);
-        SceneManager.LoadScene(LevelName);
-        yield return new WaitUntil(() =>SceneManager.GetActiveScene().name == LevelName);
+        //SceneManager.LoadScene(LevelName);
+        //yield return new WaitUntil(() => SceneManager.GetActiveScene().name == LevelName);
         Debug.Log("Loaded " + LevelName);
         // SPAWN PLAYERS
 
@@ -70,8 +70,9 @@ public class RoundManager : MonoBehaviour
 
         // Set Game State to playing (allows player control)
         GameManager.Instance.UpdateGameState(GameState.Playing);
-        roundTime = 90;
+
         // Start Round Timer
+        roundTime = 1000;
         yield return StartCoroutine(RoundTimer());
     }
     IEnumerator StartCountdown()
